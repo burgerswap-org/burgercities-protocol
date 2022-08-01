@@ -1,0 +1,126 @@
+{
+	"ownerWallet": {
+		"address": "0x2d4e68cAF597d1e980b5e8684164460161f8C29b",
+		"constructorArgs": [],
+		"upgradedAddress": "",
+		"deployed": true,
+		"upgraded": true,
+		"verified": true
+	},
+	"signerWallet": {
+		"address": "0x13a2032Ec8E6f8Def8338bBF86588aA5df4Ad2e6",
+		"constructorArgs": [],
+		"upgradedAddress": "",
+		"deployed": true,
+		"upgraded": true,
+		"verified": true
+	},
+	"USDT": {
+		"address": "",
+		"constructorArgs": [],
+		"upgradedAddress": "",
+		"deployed": true,
+		"upgraded": true,
+		"verified": true
+	},
+	"Burger": {
+		"address": "",
+		"constructorArgs": [],
+		"upgradedAddress": "",
+		"deployed": true,
+		"upgraded": true,
+		"verified": true
+	},
+	"Clothing721": {
+		"address": "",
+		"constructorArgs": [],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"ClothingManage": {
+		"address": "",
+		"constructorArgs": [
+			"${Clothing721.address}"
+		],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"BurgerCityConfig": {
+		"address": "",
+		"constructorArgs": [],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"Hero721": {
+		"address": "",
+		"constructorArgs": [],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"HeroBox": {
+		"address": "",
+		"constructorArgs": [
+			"${Hero721.address}","${USDT.address}"
+		],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"HeroManage": {
+		"address": "",
+		"constructorArgs": [
+			"${Hero721.address}","${Burger.address}"
+		],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"NFTLease": {
+		"address": "",
+		"constructorArgs": [
+			"${Burger.address}","${HeroManage.address}","${Hero721.address}"
+		],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"NFTSwap": {
+		"address": "",
+		"constructorArgs": [],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"Pay": {
+		"address": "",
+		"constructorArgs": [
+			"${Burger.address}"
+		],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	}
+	
+}

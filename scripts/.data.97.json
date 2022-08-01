@@ -1,0 +1,129 @@
+{
+  "ownerWallet": {
+    "address": "0x2d4e68cAF597d1e980b5e8684164460161f8C29b",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "signerWallet": {
+    "address": "0x13a2032Ec8E6f8Def8338bBF86588aA5df4Ad2e6",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "USDT": {
+    "address": "0xF2ED382e6A3439Be124813842200cf6702fD6ecA",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "Burger": {
+    "address": "0x06bF890dfF5b422c35c9683f47d2d7663f6E1c24",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "Clothing721": {
+    "address": "0xd8751d9c11f9de9278f978B88b3b39cb70259fC8",
+    "constructorArgs": [],
+    "upgradeArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  },
+  "ClothingManage": {
+    "address": "0x3198D0e1B6D572265c6d0677e87441422F9201A0",
+    "constructorArgs": [
+      "${Clothing721.address}"
+    ],
+    "upgradeArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  },
+  "BurgerCityConfig": {
+    "address": "0x35c9b3C1487c02A2D8Afe7DEF9cE0642804bDB3a",
+    "constructorArgs": [],
+    "upgradeArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  },
+  "Hero721": {
+    "address": "0xB7254A62A65AadF4885F01937aa27c9Acccb0dCf",
+    "constructorArgs": [],
+    "upgradeArgs": [],
+    "upgradedAddress": "0xB7254A62A65AadF4885F01937aa27c9Acccb0dCf",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "HeroBox": {
+    "address": "0x3D6de8A964Eef946B4B8128320147f17BA976B54",
+    "constructorArgs": [
+      "${Hero721.address}",
+      "${USDT.address}"
+    ],
+    "upgradeArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  },
+  "HeroManage": {
+    "address": "0xc57C9a334a8A20DfC7ef5EcbEd58d43D2683ce83",
+    "constructorArgs": [
+      "${Hero721.address}",
+      "${Burger.address}"
+    ],
+    "upgradeArgs": [],
+    "upgradedAddress": "0xc57C9a334a8A20DfC7ef5EcbEd58d43D2683ce83",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "NFTLease": {
+    "address": "0xc548829921E689A8D4c03fe529192F66da6C9798",
+    "constructorArgs": [
+      "${Burger.address}",
+      "${HeroManage.address}",
+      "${Hero721.address}"
+    ],
+    "upgradeArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  },
+  "NFTSwap": {
+    "address": "0x2DAf0bA2e6309b05D039A4F36dA9d897A841abDE",
+    "constructorArgs": [],
+    "upgradeArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  },
+  "Pay": {
+    "address": "0x80b9d7Fa933Df2f712A1f326502aFbd9Bf1E4f54",
+    "constructorArgs": [
+      "${Burger.address}"
+    ],
+    "upgradeArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  }
+}

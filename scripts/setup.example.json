@@ -1,0 +1,134 @@
+[
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setManageContract",
+        "contractName": "Clothing721",
+        "contractAddr": "",
+        "args": [
+			"${ClothingManage.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setBaseTokenURI",
+        "contractName": "Clothing721",
+        "contractAddr": "",
+        "args": [
+			"https://testmeta.burgercities.org/clothing/",
+            ".json"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setHeroManage",
+        "contractName": "Hero721",
+        "contractAddr": "",
+        "args": [
+			"${HeroManage.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setHeroBox",
+        "contractName": "Hero721",
+        "contractAddr": "",
+        "args": [
+			"${HeroBox.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setBaseTokenURI",
+        "contractName": "Hero721",
+        "contractAddr": "",
+        "args": [
+			"https://testmeta.burgercities.org/hero/",
+            ".json"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setupConfig",
+        "contractName": "HeroBox",
+        "contractAddr": "",
+        "args": [
+			"${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setupConfig",
+        "contractName": "HeroManage",
+        "contractAddr": "",
+        "args": [
+			"${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setNFTLease",
+        "contractName": "HeroManage",
+        "contractAddr": "",
+        "args": [
+			"${NFTLease.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setupConfig",
+        "contractName": "NFTLease",
+        "contractAddr": "",
+        "args": [
+			"${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setupConfig",
+        "contractName": "NFTSwap",
+        "contractAddr": "",
+        "args": [
+			"${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "addWhitelistNFT",
+        "contractName": "NFTSwap",
+        "contractAddr": "",
+        "args": [
+            ["${Hero721.address}"]
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "addWhitelistErc20",
+        "contractName": "NFTSwap",
+        "contractAddr": "",
+        "args": [
+            ["${Burger.address}"]
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setupConfig",
+        "contractName": "Pay",
+        "contractAddr": "",
+        "args": [
+            "${BurgerCityConfig.address}"
+        ]
+    }
+]

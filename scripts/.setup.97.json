@@ -1,0 +1,190 @@
+[
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setManageContract",
+        "contractName": "Clothing721",
+        "contractAddr": "",
+        "args": [
+            "${ClothingManage.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setBaseTokenURI",
+        "contractName": "Clothing721",
+        "contractAddr": "",
+        "args": [
+            "https://testmeta.burgercities.org/clothing/",
+            ".json"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setHeroManage",
+        "contractName": "Hero721",
+        "contractAddr": "",
+        "args": [
+            "${HeroManage.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setHeroBox",
+        "contractName": "Hero721",
+        "contractAddr": "",
+        "args": [
+            "${HeroBox.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setBaseTokenURI",
+        "contractName": "Hero721",
+        "contractAddr": "",
+        "args": [
+            "https://testmeta.burgercities.org/hero/",
+            ".json"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setupConfig",
+        "contractName": "HeroBox",
+        "contractAddr": "",
+        "args": [
+            "${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setupConfig",
+        "contractName": "HeroManage",
+        "contractAddr": "",
+        "args": [
+            "${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setNFTLease",
+        "contractName": "HeroManage",
+        "contractAddr": "",
+        "args": [
+            "${NFTLease.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setupConfig",
+        "contractName": "NFTLease",
+        "contractAddr": "",
+        "args": [
+            "${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setupConfig",
+        "contractName": "NFTSwap",
+        "contractAddr": "",
+        "args": [
+            "${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "addWhitelistNFT",
+        "contractName": "NFTSwap",
+        "contractAddr": "",
+        "args": [
+            [
+                "${Hero721.address}"
+            ]
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "addWhitelistErc20",
+        "contractName": "NFTSwap",
+        "contractAddr": "",
+        "args": [
+            [
+                "${Burger.address}"
+            ]
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "removeWhitelistErc20",
+        "contractName": "NFTSwap",
+        "contractAddr": "",
+        "args": [
+            [
+                "${USDT.address}"
+            ]
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setupConfig",
+        "contractName": "Pay",
+        "contractAddr": "",
+        "args": [
+            "${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setHero721",
+        "contractName": "HeroBox",
+        "contractAddr": "",
+        "args": [
+            "${Hero721.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setHero721",
+        "contractName": "HeroManage",
+        "contractAddr": "",
+        "args": [
+            "${Hero721.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setHero721",
+        "contractName": "NFTLease",
+        "contractAddr": "",
+        "args": [
+            "${Hero721.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setHeroManage",
+        "contractName": "NFTLease",
+        "contractAddr": "",
+        "args": [
+            "${HeroManage.address}"
+        ]
+    }
+]

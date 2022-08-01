@@ -1,0 +1,23 @@
+[
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setManageContract",
+        "contractName": "Clothing721",
+        "contractAddr": "",
+        "args": [
+            "${ClothingManage.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setBaseTokenURI",
+        "contractName": "Clothing721",
+        "contractAddr": "",
+        "args": [
+            "https://testmeta.burgercities.org/clothing/",
+            ".json"
+        ]
+    }
+]

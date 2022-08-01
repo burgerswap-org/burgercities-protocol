@@ -1,0 +1,38 @@
+{
+  "ownerWallet": {
+    "address": "0x2d4e68cAF597d1e980b5e8684164460161f8C29b",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "signerWallet": {
+    "address": "0x13a2032Ec8E6f8Def8338bBF86588aA5df4Ad2e6",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "Clothing721": {
+    "address": "0xa1f7a5208f78b02ea4ECceC3Da663b5CD9a9e912",
+    "constructorArgs": [],
+    "upgradeArgs": [],
+    "upgradedAddress": "0xa1f7a5208f78b02ea4ECceC3Da663b5CD9a9e912",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "ClothingManage": {
+    "address": "0x28f5bC2B7B7001f065C58fFe965081CbC9430e4b",
+    "constructorArgs": [
+      "${Clothing721.address}"
+    ],
+    "upgradeArgs": [],
+    "upgradedAddress": "0x28f5bC2B7B7001f065C58fFe965081CbC9430e4b",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  }
+}
