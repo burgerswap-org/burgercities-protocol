@@ -94,7 +94,7 @@
     "verified": true
   },
   "NFTLease": {
-    "address": "0xc548829921E689A8D4c03fe529192F66da6C9798",
+    "address": "0x29338fB66D438CDA722C9791C0A87E73db1dA7d2",
     "constructorArgs": [
       "${Burger.address}",
       "${HeroManage.address}",
