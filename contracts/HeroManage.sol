@@ -15,9 +15,9 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
     address public nftlease;
 
     uint private rand_seed;
-    uint public summon_price = 0.001 ether;
+    uint public summon_price = 1 ether;
 
-    uint16 public cd = 1; //28800
+    uint16 public cd = 43200;
 
     event OpenBox(address owner, uint32 token_id);
     event Summon(address owner, uint price);
@@ -48,7 +48,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
 
         meta.opened = true;
         meta.gen = 0;
-        meta.summon_cd = uint64(block.timestamp + 6 * cd);
+        meta.summon_cd = uint64(block.timestamp + 2 * cd);
         meta.summon_cnt = 0;
         meta.maxsummon_cnt = 0;
 
@@ -80,7 +80,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
 
     function summon(uint32 _token_id1, uint32 _token_id2) external nonReentrant
     {
-        require(_token_id1 != _token_id2, "same token id");
+        require(_token_id1 != _token_id2, "same token_id");
 
         require(hero721.ownerOf(_token_id1) == msg.sender, "only the owner can summon");
         require(hero721.ownerOf(_token_id2) == msg.sender, "only the owner can summon");
@@ -95,7 +95,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
     {
         require(msg.sender == nftlease);
 
-        require(_token_id1 != _token_id2, "same token id");
+        require(_token_id1 != _token_id2, "same token_id");
 
         require(hero721.ownerOf(_token_id1) == _account, "only the owner can summon");
 
@@ -346,7 +346,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         //gen
         newmeta.gen = uint8(max(_meta1.gen, _meta2.gen) + 1);
         //summon_cd
-        newmeta.summon_cd = curtime + 6 * cd; //172800
+        newmeta.summon_cd = curtime + 6 * cd;
         //summon_cnt
         newmeta.summon_cnt = 0;
         //maxsummon_cnt
@@ -384,22 +384,25 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
             _meta1.summon_cnt += 1;            
         }
 
-        if (_meta1.gen == 0) {
-            _meta1.summon_cd = curtime + cd;
-        } else {
-            _meta1.summon_cd = curtime + (_meta1.gen + _meta1.summon_cnt) * cd;
+        uint8 summon_cnt1 = _meta1.summon_cnt;
+        if (summon_cnt1 > 13) {
+            summon_cnt1 = 13;
         }
+
+        _meta1.summon_cd = curtime + (_meta1.gen + summon_cnt1) * cd + cd;
         hero721.setMeta(_token_id1, _meta1);
+
         //change token2
         if (_meta2.summon_cnt < 100) {
             _meta2.summon_cnt += 1;            
         }
 
-        if (_meta2.gen == 0) {
-            _meta2.summon_cd = curtime + cd;
-        } else {
-            _meta2.summon_cd = curtime + (_meta2.gen + _meta2.summon_cnt) * cd;
+        uint8 summon_cnt2 = _meta2.summon_cnt;
+        if (summon_cnt2 > 13) {
+            summon_cnt2 = 13;
         }
+
+        _meta2.summon_cd = curtime + (_meta2.gen + summon_cnt2) * cd + cd;
         hero721.setMeta(_token_id2, _meta2);
     }
 
