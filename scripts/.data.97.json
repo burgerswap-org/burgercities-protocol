@@ -61,13 +61,13 @@
     "verified": true
   },
   "Hero721": {
-    "address": "0xB7254A62A65AadF4885F01937aa27c9Acccb0dCf",
+    "address": "0xFA78f4bD702D88783510087cF4AB9791a9a892F2",
     "constructorArgs": [],
     "upgradeArgs": [],
-    "upgradedAddress": "0xB7254A62A65AadF4885F01937aa27c9Acccb0dCf",
+    "upgradedAddress": "",
     "deployed": true,
     "upgraded": true,
-    "verified": true
+    "verified": false
   },
   "HeroBox": {
     "address": "0x3D6de8A964Eef946B4B8128320147f17BA976B54",
@@ -82,19 +82,19 @@
     "verified": false
   },
   "HeroManage": {
-    "address": "0x0065C919a6260d8c9af10A13c42488e2EAE51086",
+    "address": "0xd74ff1088A3322401AAbc801a50b8298E27Ca156",
     "constructorArgs": [
       "${Hero721.address}",
       "${Burger.address}"
     ],
     "upgradeArgs": [],
-    "upgradedAddress": "0x0065C919a6260d8c9af10A13c42488e2EAE51086",
+    "upgradedAddress": "",
     "deployed": true,
     "upgraded": true,
-    "verified": true
+    "verified": false
   },
   "NFTLease": {
-    "address": "0x29338fB66D438CDA722C9791C0A87E73db1dA7d2",
+    "address": "0xB98A8f46CB34c0c689728525CAbF82f201ab8397",
     "constructorArgs": [
       "${Burger.address}",
       "${HeroManage.address}",
@@ -107,7 +107,7 @@
     "verified": false
   },
   "NFTSwap": {
-    "address": "0x2DAf0bA2e6309b05D039A4F36dA9d897A841abDE",
+    "address": "0x3645BB1a556488DA92cA4b066721D717777790e7",
     "constructorArgs": [],
     "upgradeArgs": [],
     "upgradedAddress": "",
