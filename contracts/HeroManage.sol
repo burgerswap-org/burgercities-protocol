@@ -2,12 +2,15 @@
 
 pragma solidity ^0.8.0;
 
+import "./lib/openzeppelin/contracts/utils/math/SafeCast.sol";
 import "./lib/openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./lib/openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "./Common.sol";
 import "./Configable.sol";
 
 contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
+
+    using SafeCast for uint;
 
     IHero721 public hero721;
     IERC20 public burger20;
@@ -17,7 +20,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
     uint private rand_seed;
     uint public summon_price = 1 ether;
 
-    uint16 public cd = 43200;
+    uint32 public cd = 43200;
 
     event OpenBox(address owner, uint32 token_id);
     event Summon(address owner, uint price);
@@ -48,11 +51,14 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
 
         meta.opened = true;
         meta.gen = 0;
-        meta.summon_cd = uint64(block.timestamp + 2 * cd);
+
+        uint cdtime = block.timestamp + 2 * uint(cd);
+        meta.summon_cd = cdtime.toUint64();
+
         meta.summon_cnt = 0;
         meta.maxsummon_cnt = 0;
 
-        uint16 rand = uint16(randMod(10000000));       
+        uint rand = randMod(10000000);
         uint8 rate;
 
         rate = uint8(rand % 8);
@@ -145,7 +151,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
     {
         uint summon_cnt = min(_meta.summon_cnt, 13);
 
-        uint burger = (_meta.gen * 10 + 6 + summon_cnt * 2) * summon_price;
+        uint burger = (uint(_meta.gen) * 10 + 6 + summon_cnt * 2) * summon_price;
         return burger;
     }
 
@@ -314,7 +320,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
 
     function makeNew(address _to, uint32 _token_id1, HeroMetaData memory _meta1, uint32 _token_id2, HeroMetaData memory _meta2) internal
     {
-        uint64 curtime = uint64(block.timestamp);
+        uint64 curtime = block.timestamp.toUint64();
         require(_meta1.opened, "token1 not open");
         require(_meta2.opened, "token2 not open");
         require(_meta1.summon_cd < curtime, "token1 cd");
@@ -345,8 +351,11 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         newmeta.opened = true;
         //gen
         newmeta.gen = uint8(max(_meta1.gen, _meta2.gen) + 1);
+
         //summon_cd
-        newmeta.summon_cd = curtime + 6 * cd;
+        uint cdtime = uint(curtime) + 6 * uint(cd);
+        newmeta.summon_cd = cdtime.toUint64();
+
         //summon_cnt
         newmeta.summon_cnt = 0;
         //maxsummon_cnt
@@ -384,12 +393,10 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
             _meta1.summon_cnt += 1;            
         }
 
-        uint8 summon_cnt1 = _meta1.summon_cnt;
-        if (summon_cnt1 > 13) {
-            summon_cnt1 = 13;
-        }
+        uint summon_cnt1 = min(_meta1.summon_cnt, 13);
 
-        _meta1.summon_cd = curtime + (_meta1.gen + summon_cnt1) * cd + cd;
+        cdtime = uint(curtime) + (uint(_meta1.gen) + summon_cnt1) * uint(cd) + uint(cd);
+        _meta1.summon_cd = cdtime.toUint64();
         hero721.setMeta(_token_id1, _meta1);
 
         //change token2
@@ -397,12 +404,10 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
             _meta2.summon_cnt += 1;            
         }
 
-        uint8 summon_cnt2 = _meta2.summon_cnt;
-        if (summon_cnt2 > 13) {
-            summon_cnt2 = 13;
-        }
+        uint summon_cnt2 = min(_meta2.summon_cnt, 13);
 
-        _meta2.summon_cd = curtime + (_meta2.gen + summon_cnt2) * cd + cd;
+        cdtime = uint(curtime) + (uint(_meta2.gen) + summon_cnt2) * uint(cd) + uint(cd);
+        _meta2.summon_cd = cdtime.toUint64();
         hero721.setMeta(_token_id2, _meta2);
     }
 
@@ -437,7 +442,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         summon_price = _price;
     }
 
-    function setSummonCD(uint16 _cd) external onlyAdmin
+    function setSummonCD(uint32 _cd) external onlyAdmin
     {
         require(_cd > 0, "summon cd should > 0");
 

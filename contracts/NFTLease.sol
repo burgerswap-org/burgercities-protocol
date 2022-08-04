@@ -87,7 +87,7 @@ contract NFTLease is Configable, IERC721Receiver {
         require(pool.owner != address(0), "Invalid id");
         require(pool.owner != msg.sender, "creator can't lease the pool created by self");
 
-        uint fee = pool.price * tx_fee / 1000;
+        uint fee = pool.price * uint(tx_fee) / 1000;
         uint after_fee = pool.price - fee;
 
         if (after_fee > 0) {

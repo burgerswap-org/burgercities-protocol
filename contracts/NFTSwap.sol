@@ -85,7 +85,7 @@ contract NFTSwap is Configable, IERC721Receiver {
             require(pool.price == msg.value, "invalid ETH amount");
         }
 
-        uint fee = pool.price * tx_fee / 1000;
+        uint fee = pool.price * uint(tx_fee) / 1000;
         uint after_fee = pool.price - fee;
 
         if (after_fee > 0) {

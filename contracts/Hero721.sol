@@ -2,6 +2,7 @@
 
 pragma solidity ^0.8.0;
 
+import "./lib/openzeppelin/contracts/utils/math/SafeCast.sol";
 import "./lib/openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "./lib/openzeppelin/contracts/access/Ownable.sol";
 import "./lib/openzeppelin/contracts/security/ReentrancyGuard.sol";
@@ -11,6 +12,8 @@ import "./Common.sol";
 
 contract Hero721 is IHero721, ERC721Enumerable, Ownable, ReentrancyGuard
 {
+    using SafeCast for uint;
+
     address public heromanage;
     address public herobox;
     string base_token_uri;
@@ -103,8 +106,9 @@ contract Hero721 is IHero721, ERC721Enumerable, Ownable, ReentrancyGuard
     {
         require(msg.sender == heromanage);
 
-        uint32 descendants_token_count = uint32(totalSupply() - creation_token_count + max_creation);
-        uint32 new_token_id = ++descendants_token_count;
+        uint descendants_token_count = totalSupply() - uint(creation_token_count) + uint(max_creation);
+        ++descendants_token_count;
+        uint32 new_token_id = descendants_token_count.toUint32(); 
         _safeMint(_to, new_token_id);
 
         metadata_map[new_token_id] = _meta;
