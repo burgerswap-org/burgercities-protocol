@@ -128,18 +128,6 @@
     {
         "call": true,
         "called": true,
-        "functionName": "removeWhitelistErc20",
-        "contractName": "NFTSwap",
-        "contractAddr": "",
-        "args": [
-            [
-                "${USDT.address}"
-            ]
-        ]
-    },
-    {
-        "call": true,
-        "called": true,
         "functionName": "setupConfig",
         "contractName": "Pay",
         "contractAddr": "",
