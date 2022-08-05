@@ -22,6 +22,9 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
 
     uint32 public cd = 43200;
 
+    uint32 public mutation_rate1 = 20;
+    uint32 public mutation_rate2 = 10;
+
     event OpenBox(address owner, uint32 token_id);
     event Summon(address owner, uint price);
 
@@ -225,60 +228,63 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         }
 
         //make new dna
+        uint32 p1_rate1 = (100 - mutation_rate1) / 2 + mutation_rate1;
+        uint32 p1_rate2 = (100 - mutation_rate2) / 2 + mutation_rate2;
+
         rate = rand % 100;
         rand = rand / 100;
         if ((dna1[0] == 1 && dna2[0] == 2) || (dna1[0] == 2 && dna2[0] == 1)) {
-            if (rate < 20) {
+            if (rate < mutation_rate1) {
                 newdna[0] = 9;
-            } else if (rate < 60) {
+            } else if (rate < p1_rate1) {
                 newdna[0] = dna1[0];
             } else {
                 newdna[0] = dna2[0];
             }
         } else if ((dna1[0] == 3 && dna2[0] == 4) || (dna1[0] == 4 && dna2[0] == 3)) {
-            if (rate < 20) {
+            if (rate < mutation_rate1) {
                 newdna[0] = 10;
-            } else if (rate < 60) {
+            } else if (rate < p1_rate1) {
                 newdna[0] = dna1[0];
             } else {
                 newdna[0] = dna2[0];
             }
         } else if ((dna1[0] == 5 && dna2[0] == 6) || (dna1[0] == 6 && dna2[0] == 5)) {
-            if (rate < 20) {
+            if (rate < mutation_rate1) {
                 newdna[0] = 11;
-            } else if (rate < 60) {
+            } else if (rate < p1_rate1) {
                 newdna[0] = dna1[0];
             } else {
                 newdna[0] = dna2[0];
             }
         } else if ((dna1[0] == 7 && dna2[0] == 8) || (dna1[0] == 8 && dna2[0] == 7)) {
-            if (rate < 20) {
+            if (rate < mutation_rate1) {
                 newdna[0] = 12;
-            } else if (rate < 60) {
+            } else if (rate < p1_rate1) {
                 newdna[0] = dna1[0];
             } else {
                 newdna[0] = dna2[0];
             }
         } else if ((dna1[0] == 9 && dna2[0] == 10) || (dna1[0] == 10 && dna2[0] == 9)) {
-            if (rate < 20) {
+            if (rate < mutation_rate1) {
                 newdna[0] = 13;
-            } else if (rate < 60) {
+            } else if (rate < p1_rate1) {
                 newdna[0] = dna1[0];
             } else {
                 newdna[0] = dna2[0];
             }
         } else if ((dna1[0] == 11 && dna2[0] == 12) || (dna1[0] == 12 && dna2[0] == 11)) {
-            if (rate < 20) {
+            if (rate < mutation_rate1) {
                 newdna[0] = 14;
-            } else if (rate < 60) {
+            } else if (rate < p1_rate1) {
                 newdna[0] = dna1[0];
             } else {
                 newdna[0] = dna2[0];
             }
         } else if ((dna1[0] == 13 && dna2[0] == 14) || (dna1[0] == 14 && dna2[0] == 13)) {
-            if (rate < 10) {
+            if (rate < mutation_rate2) {
                 newdna[0] = 15;
-            } else if (rate < 55) {
+            } else if (rate < p1_rate2) {
                 newdna[0] = dna1[0];
             } else {
                 newdna[0] = dna2[0];
@@ -351,11 +357,11 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         newmeta.opened = true;
         //gen
         newmeta.gen = uint8(max(_meta1.gen, _meta2.gen) + 1);
-
+        //summon dna
+        (newmeta.d, newmeta.r1, newmeta.r2, newmeta.r3) = mixDNA(_meta1, _meta2);
         //summon_cd
         uint cdtime = uint(curtime) + 6 * uint(cd);
         newmeta.summon_cd = cdtime.toUint64();
-
         //summon_cnt
         newmeta.summon_cnt = 0;
         //maxsummon_cnt
@@ -379,8 +385,6 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
 
             newmeta.maxsummon_cnt = uint8(min(min1, min2));
         }
-        //summon dna
-        (newmeta.d, newmeta.r1, newmeta.r2, newmeta.r3) = mixDNA(_meta1, _meta2);
         //p1
         newmeta.p1 = _token_id1;
         //p2
@@ -447,6 +451,18 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         require(_cd > 0, "summon cd should > 0");
 
         cd = _cd;
+    }
+
+    function setMutationRate(uint32 _mutation_rate1, uint32 _mutation_rate2) external onlyAdmin
+    {
+        require(_mutation_rate1 <= 100, "_mutation_rate1 should <= 100");
+        require(_mutation_rate2 <= 100, "_mutation_rate2 should <= 100");
+
+        require(_mutation_rate1 % 2 == 0, "_mutation_rate1 must be an even number");
+        require(_mutation_rate2 % 2 == 0, "_mutation_rate2 must be an even number");
+
+        mutation_rate1 = _mutation_rate1;
+        mutation_rate2 = _mutation_rate2;
     }
 
     function setHero721(address _hero721) external onlyDev
