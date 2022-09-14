@@ -17,6 +17,7 @@ contract Reward is Configable {
     }
 
     constructor() {
+        owner = msg.sender;
         SIGNER = msg.sender;
     }
 
