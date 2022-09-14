@@ -125,5 +125,14 @@
     "deployed": true,
     "upgraded": true,
     "verified": false
+  },
+  "Reward": {
+    "address": "0x204564d2b701e4Cb782b5C8155aff2c9F98f7FF0",
+    "constructorArgs": [],
+    "upgradeArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
   }
 }
