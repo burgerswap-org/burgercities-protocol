@@ -47,44 +47,13 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
 
     function openBox(uint32 _token_id) external nonReentrant
     {
-        require(hero721.ownerOf(_token_id) == msg.sender, "only the owner can open box");
+        _openBox(_token_id);
+    }
 
-        HeroMetaData memory meta = hero721.getMeta(_token_id);
-        require(!meta.opened, "box opened");
-
-        meta.opened = true;
-        meta.gen = 0;
-
-        uint cdtime = block.timestamp + 2 * uint(cd);
-        meta.summon_cd = cdtime.toUint64();
-
-        meta.summon_cnt = 0;
-        meta.maxsummon_cnt = 0;
-
-        uint rand = randMod(10000000);
-        uint8 rate;
-
-        rate = uint8(rand % 8);
-        rand = rand / 8;
-        meta.d = uint8(rate + 1);
-
-        rate = uint8(rand % 8);
-        rand = rand / 8;
-        meta.r1 = uint8(rate + 1);
-
-        rate = uint8(rand % 8);
-        rand = rand / 8;
-        meta.r2 = uint8(rate + 1);
-
-        rate = uint8(rand % 8);
-        rand = rand / 8;
-        meta.r3 = uint8(rate + 1);
-
-        meta.p1 = 0;
-        meta.p2 = 0;
-
-        hero721.setMeta(_token_id, meta);
-        emit OpenBox(msg.sender, _token_id);
+    function batchOpenBox(uint32[] memory _token_ids) external nonReentrant {
+        for (uint i = 0; i < _token_ids.length; i++) {
+            _openBox(_token_ids[i]);
+        }
     }
 
     function summon(uint32 _token_id1, uint32 _token_id2) external nonReentrant
@@ -415,6 +384,47 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         hero721.setMeta(_token_id2, _meta2);
     }
 
+    function _openBox(uint32 _token_id) internal
+    {
+        require(hero721.ownerOf(_token_id) == msg.sender, "only the owner can open box");
+
+        HeroMetaData memory meta = hero721.getMeta(_token_id);
+        require(!meta.opened, "box opened");
+
+        meta.opened = true;
+        meta.gen = 0;
+
+        uint cdtime = block.timestamp + 2 * uint(cd);
+        meta.summon_cd = cdtime.toUint64();
+
+        meta.summon_cnt = 0;
+        meta.maxsummon_cnt = 0;
+
+        uint rand = randMod(10000000);
+        uint8 rate;
+
+        rate = uint8(rand % 8);
+        rand = rand / 8;
+        meta.d = uint8(rate + 1);
+
+        rate = uint8(rand % 8);
+        rand = rand / 8;
+        meta.r1 = uint8(rate + 1);
+
+        rate = uint8(rand % 8);
+        rand = rand / 8;
+        meta.r2 = uint8(rate + 1);
+
+        rate = uint8(rand % 8);
+        rand = rand / 8;
+        meta.r3 = uint8(rate + 1);
+
+        meta.p1 = 0;
+        meta.p2 = 0;
+
+        hero721.setMeta(_token_id, meta);
+        emit OpenBox(msg.sender, _token_id);
+    }
 
     //*****************************************************************************
     //* manage
