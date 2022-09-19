@@ -34,5 +34,76 @@
     "deployed": true,
     "upgraded": true,
     "verified": true
-  }
+  },
+	"BurgerCityConfig": {
+		"address": "",
+		"constructorArgs": [],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"Hero721": {
+		"address": "",
+		"constructorArgs": [],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"HeroBox": {
+		"address": "",
+		"constructorArgs": [
+			"${Hero721.address}","${USDT.address}"
+		],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"HeroManage": {
+		"address": "",
+		"constructorArgs": [
+			"${Hero721.address}","${Burger.address}"
+		],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"NFTLease": {
+		"address": "",
+		"constructorArgs": [
+			"${Burger.address}","${HeroManage.address}","${Hero721.address}"
+		],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"NFTSwap": {
+		"address": "",
+		"constructorArgs": [],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"Pay": {
+		"address": "",
+		"constructorArgs": [
+			"${Burger.address}"
+		],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	}
 }

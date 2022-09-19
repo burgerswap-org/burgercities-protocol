@@ -82,7 +82,7 @@
     "verified": false
   },
   "HeroManage": {
-    "address": "0x7d6453390e99BCbcb50acA082969DB6F6C382e6C",
+    "address": "0xE81cA93717f83B2C92541fD93081E06Da9092977",
     "constructorArgs": [
       "${Hero721.address}",
       "${Burger.address}"
