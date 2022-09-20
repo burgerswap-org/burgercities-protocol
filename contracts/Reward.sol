@@ -9,7 +9,7 @@ contract Reward is Configable {
     address public SIGNER;
     mapping(uint => mapping(uint => address)) public records;
 
-    event Claimed(address indexed _user, uint indexed _group, uint indexed _rank, address _token, uint _amount);
+    event Claimed(address indexed _user, uint indexed _group, uint indexed _rank, address _token, uint _amount, string _tx_id);
     event Withdrawed(address indexed _user, address _token, uint _amount);
     event SignerChanged(address indexed _old, address indexed _new);
 
@@ -21,24 +21,24 @@ contract Reward is Configable {
         SIGNER = msg.sender;
     }
 
-    function _claim(uint _group, uint _rank, address _token, uint _amount, bytes memory _signatures) internal {
+    function _claim(uint _group, uint _rank, address _token, uint _amount, bytes memory _signatures, string memory _tx_id) internal {
         require(records[_group][_rank] == address(0), 'claimed');
         require(verify(msg.sender, _group, _rank, _token, _amount, _signatures), 'invalid signatures');
         records[_group][_rank] = msg.sender;
-        emit Claimed(msg.sender, _group, _rank, _token, _amount);
+        emit Claimed(msg.sender, _group, _rank, _token, _amount, _tx_id);
     }
 
-    function claim(uint _group, uint _rank, address _token, uint _amount, bytes memory _signatures) external {
-        _claim(_group, _rank, _token, _amount, _signatures);
+    function claim(uint _group, uint _rank, address _token, uint _amount, bytes memory _signatures, string memory _tx_id) external {
+        _claim(_group, _rank, _token, _amount, _signatures, _tx_id);
         _withdraw(msg.sender, _token, _amount);
     }
 
-    function batchClaim(address _token, uint[] calldata _groups, uint[] calldata _ranks, uint[] calldata _amounts, bytes[] calldata _signatures) external {
+    function batchClaim(address _token, uint[] calldata _groups, uint[] calldata _ranks, uint[] calldata _amounts, bytes[] calldata _signatures, string[] calldata _tx_ids) external {
         require(_groups.length == _ranks.length && _groups.length == _amounts.length && _groups.length == _signatures.length, 'invalid parameters');
         uint _amount = 0;
         for(uint i=0; i<_amounts.length; i++) {
             _amount += _amounts[i];
-            _claim(_groups[i], _ranks[i], _token, _amounts[i], _signatures[i]);
+            _claim(_groups[i], _ranks[i], _token, _amounts[i], _signatures[i], _tx_ids[i]);
         }
         _withdraw(msg.sender, _token, _amount);
     }
