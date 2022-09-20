@@ -76,22 +76,22 @@
       "${USDT.address}"
     ],
     "upgradeArgs": [],
-    "upgradedAddress": "",
+    "upgradedAddress": "0x3D6de8A964Eef946B4B8128320147f17BA976B54",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   },
   "HeroManage": {
-    "address": "0x7d6453390e99BCbcb50acA082969DB6F6C382e6C",
+    "address": "0xE81cA93717f83B2C92541fD93081E06Da9092977",
     "constructorArgs": [
       "${Hero721.address}",
       "${Burger.address}"
     ],
     "upgradeArgs": [],
-    "upgradedAddress": "",
+    "upgradedAddress": "0xE81cA93717f83B2C92541fD93081E06Da9092977",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   },
   "NFTLease": {
     "address": "0xB98A8f46CB34c0c689728525CAbF82f201ab8397",
