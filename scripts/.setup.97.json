@@ -174,5 +174,25 @@
         "args": [
             "${HeroManage.address}"
         ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setupConfig",
+        "contractName": "Reward",
+        "contractAddr": "",
+        "args": [
+            "${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "updateSigner",
+        "contractName": "Reward",
+        "contractAddr": "",
+        "args": [
+            "${signerWallet.address}"
+        ]
     }
 ]

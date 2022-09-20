@@ -130,9 +130,9 @@
     "address": "0x0d320f703a788c6592961C22c446e14D754bcf2C",
     "constructorArgs": [],
     "upgradeArgs": [],
-    "upgradedAddress": "",
+    "upgradedAddress": "0x0d320f703a788c6592961C22c446e14D754bcf2C",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   }
 }
