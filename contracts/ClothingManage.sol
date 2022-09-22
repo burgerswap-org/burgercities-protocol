@@ -22,7 +22,7 @@ contract ClothingManage is ReentrancyGuard, Ownable {
         clothing721 = IClothing721(_clothing_address);
     }
 
-    function airdrop(address[] memory _to, uint32[] memory _clothes_id) external
+    function airdrop(address[] memory _to, uint32[] memory _clothes_id) external onlyOwner
     {
         require(_to.length == _clothes_id.length, "airdrop to.length != clothes_id.length");
 

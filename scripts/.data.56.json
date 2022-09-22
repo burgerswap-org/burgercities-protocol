@@ -41,12 +41,12 @@
     "verified": true
   },
   "ClothingManage": {
-    "address": "0x28f5bC2B7B7001f065C58fFe965081CbC9430e4b",
+    "address": "0x5AEF3B4F815cf6313412dc3624C8CBBC03da02B9",
     "constructorArgs": [
       "${Clothing721.address}"
     ],
     "upgradeArgs": [],
-    "upgradedAddress": "0x28f5bC2B7B7001f065C58fFe965081CbC9430e4b",
+    "upgradedAddress": "0x5AEF3B4F815cf6313412dc3624C8CBBC03da02B9",
     "deployed": true,
     "upgraded": true,
     "verified": true

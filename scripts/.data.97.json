@@ -41,15 +41,15 @@
     "verified": false
   },
   "ClothingManage": {
-    "address": "0x3198D0e1B6D572265c6d0677e87441422F9201A0",
+    "address": "0xc6b6aEe18C04eA8f8C73C20D3Ef15Cc34737bcdB",
     "constructorArgs": [
       "${Clothing721.address}"
     ],
     "upgradeArgs": [],
-    "upgradedAddress": "",
+    "upgradedAddress": "0xc6b6aEe18C04eA8f8C73C20D3Ef15Cc34737bcdB",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   },
   "BurgerCityConfig": {
     "address": "0x35c9b3C1487c02A2D8Afe7DEF9cE0642804bDB3a",

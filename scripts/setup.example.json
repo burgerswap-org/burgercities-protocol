@@ -150,5 +150,15 @@
         "args": [
             "${signerWallet.address}"
         ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setClothing721",
+        "contractName": "ClothingManage",
+        "contractAddr": "",
+        "args": [
+            "${Clothing721.address}"
+        ]
     }
 ]
