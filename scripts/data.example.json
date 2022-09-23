@@ -135,8 +135,8 @@
 		"address": "",
 		"constructorArgs": [
 			"0xFc4C562e3271aD997A4330ae73F9af13b877aA8A",
-			"${Hero721.address}",
 			"0x5DA38dEF924Ba7393f15fD0750Cd298206bfD150",
+			"${Hero721.address}",
 			"${signerWallet.address}"
 		],
 		"upgradeArgs": [],

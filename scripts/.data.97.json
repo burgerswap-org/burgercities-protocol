@@ -41,15 +41,15 @@
     "verified": false
   },
   "ClothingManage": {
-    "address": "0xc6b6aEe18C04eA8f8C73C20D3Ef15Cc34737bcdB",
+    "address": "0x3198D0e1B6D572265c6d0677e87441422F9201A0",
     "constructorArgs": [
       "${Clothing721.address}"
     ],
     "upgradeArgs": [],
-    "upgradedAddress": "0xc6b6aEe18C04eA8f8C73C20D3Ef15Cc34737bcdB",
+    "upgradedAddress": "",
     "deployed": true,
     "upgraded": true,
-    "verified": true
+    "verified": false
   },
   "BurgerCityConfig": {
     "address": "0x35c9b3C1487c02A2D8Afe7DEF9cE0642804bDB3a",
@@ -134,5 +134,39 @@
     "deployed": true,
     "upgraded": true,
     "verified": true
+  },
+  "TestHeroBox": {
+    "address": "0x9c9019F21A9D49c3E9e89f8Bd55359c666A7E381",
+    "constructorArgs": [
+      "0x84B83D7B57B7b2E3EE22e6802A532231432B28D1"
+    ],
+    "upgradeArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  },
+  "TestERC721": {
+    "address": "0x2B2465c25F8b65f201C78Bc2c66081E2D9d15B78",
+    "constructorArgs": [],
+    "upgradeArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  },
+  "HeroExchange": {
+    "address": "0x46F32d10FD08191D3f2F3BD3c4121fCc89066F69",
+    "constructorArgs": [
+      "0x07fF0ed51ABAf0ebeF2dDdabB463A0E17235de46",
+      "${TestERC721.address}",
+      "0x84B83D7B57B7b2E3EE22e6802A532231432B28D1",
+      "0x07fF0ed51ABAf0ebeF2dDdabB463A0E17235de46"
+    ],
+    "upgradeArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
   }
 }

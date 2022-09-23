@@ -1,4 +1,4 @@
-import { Wallet } from 'ethers'
+import { BigNumber, Wallet } from 'ethers'
 import { ethers, network } from 'hardhat'
 import { TestERC721 } from '../../typechain/TestERC721'
 import { TestHeroBox } from '../../typechain/TestHeroBox'
@@ -34,12 +34,34 @@ interface HeroExchangeFixture {
     heroExchange: HeroExchange
 }
 
-export const heroExchangeFixture: Fixture<HeroExchangeFixture> = async function ([wallet]: Wallet[]): Promise<HeroExchangeFixture> {
+export const heroExchangeFixture: Fixture<HeroExchangeFixture> = async function ([wallet, other]: Wallet[]): Promise<HeroExchangeFixture> {
     let nft0 = await testERC721()
     let { hero721: nft1, heroBox } = await hero()
-
     let factory = await ethers.getContractFactory('HeroExchange')
     let heroExchange = (await factory.deploy(wallet.address, nft0.address, nft1.address, wallet.address)) as HeroExchange
+    let blueTokenIds = []
+    for (let i = 1; i <= 700; i++) {
+        blueTokenIds.push(i)
+    }
+    let tx = await heroExchange.setTokenIds(BigNumber.from(0), blueTokenIds)
+    let receipt = await tx.wait()
+    console.log("gas used: ", receipt.gasUsed.toString())
+    let purpleTokenIds = []
+    for (let i = 701; i <= 900; i++) {
+        purpleTokenIds.push(i)
+    }
+    await heroExchange.setTokenIds(BigNumber.from(1), purpleTokenIds)
+    let orangeTokenIds = []
+    for (let i = 901; i <= 1000; i++) {
+        orangeTokenIds.push(i)
+    }
+    await heroExchange.setTokenIds(BigNumber.from(2), orangeTokenIds)
+
+    await nft0.mint(BigNumber.from(10), other.address)
+    for (let i = 0; i < 5; i++) {
+      await heroBox.buyCreationBox(BigNumber.from(200), wallet.address)
+    }
+    await nft1.setApprovalForAll(heroExchange.address, true)
 
     return { nft0, nft1, heroBox, heroExchange }
 }
@@ -47,14 +69,27 @@ export const heroExchangeFixture: Fixture<HeroExchangeFixture> = async function 
 async function signHeroExchange(
     wallet: Wallet,
     tokenId0: string,
-    tokenId1: string,
+    quality: string,
     addr: string
 ): Promise<string> {
-    let types = ['uint256', 'uint256', 'address']
-    let values = [tokenId0, tokenId1, addr]
+    let types = ['uint256', 'uint8', 'address']
+    let values = [tokenId0, quality, addr]
     let message = ethers.utils.solidityKeccak256(types, values)
     let s = await network.provider.send('eth_sign', [wallet.address, message])
     return s;
 }
 
-export { signHeroExchange }
+async function signHeroBatchExchange(
+    wallet: Wallet,
+    tokenId0s: any,
+    qualities: any,
+    addr: string
+): Promise<string> {
+    let types = ['uint256[]', 'uint8[]', 'address']
+    let values = [tokenId0s, qualities, addr]
+    let message = ethers.utils.solidityKeccak256(types, values)
+    let s = await network.provider.send('eth_sign', [wallet.address, message])
+    return s;
+}
+
+export { signHeroExchange, signHeroBatchExchange }
