@@ -8,10 +8,13 @@ import "./lib/Signature.sol";
 import "./Configable.sol";
 
 contract HeroExchange is ReentrancyGuard, Configable {
-    address immutable b_treasury; // burgercities 0xFc4C562e3271aD997A4330ae73F9af13b877aA8A;
-    address immutable b_nft0; // binance nft 0x5DA38dEF924Ba7393f15fD0750Cd298206bfD150;
-    address immutable b_nft1; // burgercities nft 0x20F8b9a461CAB48C065974ceb74e059f72EeD700;
+    enum Quality { Blue, Purple, Orange }
+    address immutable b_treasury;
+    address immutable b_nft0;
+    address immutable b_nft1;
     address public s_signer;
+    mapping(Quality => uint16[]) private s_quality2tokenIds;
+    mapping(Quality => uint16) private s_quality2index;
 
     event Exchange(address caller, uint tokenId0, uint tokenId1);
 
@@ -24,11 +27,15 @@ contract HeroExchange is ReentrancyGuard, Configable {
         owner = msg.sender;
     }
 
-    function exchange(uint tokenId0, uint tokenId1, bytes memory signature) external nonReentrant {
-        require(verify(tokenId0, tokenId1, signature), "invalid signatures");
-        IERC721(b_nft0).transferFrom(msg.sender, address(this), tokenId0);
-        IERC721(b_nft1).transferFrom(b_treasury, msg.sender, tokenId1);
-        emit Exchange(msg.sender, tokenId0, tokenId1);
+    function setTokenIds(Quality quality, uint16[] memory tokenIds) external onlyOwner {
+        uint length = 700;
+        if (quality == Quality.Purple) {
+            length = 200;
+        } else if (quality == Quality.Orange) {
+            length = 100;
+        }
+        require(tokenIds.length == length, "wrong tokenIds length");
+        s_quality2tokenIds[quality] = tokenIds;
     }
 
     function setSigner(address signer) external onlyOwner {
@@ -36,12 +43,48 @@ contract HeroExchange is ReentrancyGuard, Configable {
         s_signer = signer;
     }
 
-    function verify(
+    function exchange(uint tokenId0, Quality quality, bytes memory signature) external nonReentrant {
+        require(_verifySingle(tokenId0 , quality, signature), "invalid signatures");
+        _exchange(tokenId0, quality);
+    }
+
+    function batchExchange(uint[] memory tokenIds0, Quality[] memory qualities, bytes memory signature) external nonReentrant {
+        require(tokenIds0.length == qualities.length, "invalid params length");
+        require(_verifyBatch(tokenIds0, qualities, signature), "invalid signatures");
+        for (uint i = 0; i < tokenIds0.length; i++) {
+            _exchange(tokenIds0[i], qualities[i]);
+        }
+    }
+
+    function qualityIndex(Quality quality) external view returns(uint16) {
+        return s_quality2index[quality];
+    }
+
+    function _exchange(uint tokenId0, Quality quality) internal {
+        uint tokenId1 = s_quality2tokenIds[quality][s_quality2index[quality]];
+        IERC721(b_nft0).transferFrom(msg.sender, address(this), tokenId0);
+        IERC721(b_nft1).transferFrom(b_treasury, msg.sender, tokenId1);
+        s_quality2index[quality] = s_quality2index[quality] + 1;
+        emit Exchange(msg.sender, tokenId0, tokenId1);
+    }
+
+    function _verifySingle(
         uint tokenId0,
-        uint tokenId1,
+        Quality quality,
         bytes memory signature
     ) internal view returns (bool) {
-        bytes32 message = keccak256(abi.encodePacked(tokenId0, tokenId1, address(this)));
+        bytes32 message = keccak256(abi.encodePacked(tokenId0, quality, address(this)));
+        bytes32 hash = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", message));
+        address[] memory signList = Signature.recoverAddresses(hash, signature);
+        return signList[0] == s_signer;
+    }
+
+    function _verifyBatch(
+        uint[] memory tokenIds0,
+        Quality[] memory qualities,
+        bytes memory signature
+    ) internal view returns (bool) {
+        bytes32 message = keccak256(abi.encodePacked(tokenIds0, qualities, address(this)));
         bytes32 hash = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", message));
         address[] memory signList = Signature.recoverAddresses(hash, signature);
         return signList[0] == s_signer;
