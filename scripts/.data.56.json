@@ -135,9 +135,9 @@
       "0x18d2fa9c7eaF88fD5a1c712E3300707E31fA959D"
     ],
     "upgradeArgs": [],
-    "upgradedAddress": "",
+    "upgradedAddress": "0x57c7Ab9e1aCBFba440BBCC6Ca83Ab8c9663ac6a9",
     "deployed": false,
     "upgraded": false,
-    "verified": false
+    "verified": true
   }
 }
