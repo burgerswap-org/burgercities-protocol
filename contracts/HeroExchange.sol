@@ -72,7 +72,7 @@ contract HeroExchange is ReentrancyGuard, Configable {
         uint tokenId0,
         Quality quality,
         bytes memory signature
-    ) internal view returns (bool) {
+    ) public view returns (bool) {
         bytes32 message = keccak256(abi.encodePacked(tokenId0, quality, address(this)));
         bytes32 hash = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", message));
         address[] memory signList = Signature.recoverAddresses(hash, signature);
@@ -83,7 +83,18 @@ contract HeroExchange is ReentrancyGuard, Configable {
         uint[] memory tokenIds0,
         Quality[] memory qualities,
         bytes memory signature
-    ) internal view returns (bool) {
+    ) public view returns (bool) {
+        bytes32 message = keccak256(abi.encodePacked(tokenIds0, qualities, address(this)));
+        bytes32 hash = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", message));
+        address[] memory signList = Signature.recoverAddresses(hash, signature);
+        return signList[0] == s_signer;
+    }
+
+    function _verifyBatch2(
+        uint[] memory tokenIds0,
+        uint[] memory qualities,
+        bytes memory signature
+    ) public view returns (bool) {
         bytes32 message = keccak256(abi.encodePacked(tokenIds0, qualities, address(this)));
         bytes32 hash = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", message));
         address[] memory signList = Signature.recoverAddresses(hash, signature);

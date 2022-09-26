@@ -1,6 +1,6 @@
 {
   "ownerWallet": {
-    "address": "0x2d4e68cAF597d1e980b5e8684164460161f8C29b",
+    "address": "0xFc4C562e3271aD997A4330ae73F9af13b877aA8A",
     "constructorArgs": [],
     "upgradedAddress": "",
     "deployed": true,
@@ -125,5 +125,19 @@
     "deployed": true,
     "upgraded": true,
     "verified": true
+  },
+  "HeroExchange": {
+    "address": "0x57c7Ab9e1aCBFba440BBCC6Ca83Ab8c9663ac6a9",
+    "constructorArgs": [
+      "${ownerWallet.address}",
+      "0x5DA38dEF924Ba7393f15fD0750Cd298206bfD150",
+      "${Hero721.address}",
+      "0x18d2fa9c7eaF88fD5a1c712E3300707E31fA959D"
+    ],
+    "upgradeArgs": [],
+    "upgradedAddress": "",
+    "deployed": false,
+    "upgraded": false,
+    "verified": false
   }
 }
