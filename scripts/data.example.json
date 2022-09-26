@@ -137,7 +137,7 @@
 			"0xFc4C562e3271aD997A4330ae73F9af13b877aA8A",
 			"0x5DA38dEF924Ba7393f15fD0750Cd298206bfD150",
 			"${Hero721.address}",
-			"${signerWallet.address}"
+			"0x18d2fa9c7eaF88fD5a1c712E3300707E31fA959D"
 		],
 		"upgradeArgs": [],
 		"upgradedAddress": "",
