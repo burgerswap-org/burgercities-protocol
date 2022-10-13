@@ -1,9 +1,11 @@
 import { BigNumber, Wallet } from 'ethers'
 import { ethers, network } from 'hardhat'
+import { MerkleTree } from 'merkletreejs'
 import { TestERC721 } from '../../typechain/TestERC721'
 import { TestHeroBox } from '../../typechain/TestHeroBox'
 import { Hero721 } from '../../typechain/Hero721'
 import { HeroExchange } from '../../typechain/HeroExchange'
+import { HeroAirdrop } from '../../typechain/HeroAirdrop'
 import { Fixture } from 'ethereum-waffle'
 
 async function testERC721(): Promise<TestERC721> {
@@ -59,14 +61,48 @@ export const heroExchangeFixture: Fixture<HeroExchangeFixture> = async function 
 
     await nft0.mint(BigNumber.from(10), other.address)
     for (let i = 0; i < 5; i++) {
-      await heroBox.buyCreationBox(BigNumber.from(200), wallet.address)
+        await heroBox.buyCreationBox(BigNumber.from(200), wallet.address)
     }
     await nft1.setApprovalForAll(heroExchange.address, true)
 
     return { nft0, nft1, heroBox, heroExchange }
 }
 
-async function signHeroExchange(
+interface HeroAirdropFixture {
+    nft0: TestERC721
+    heroAirdrop: HeroAirdrop
+    tokenIds: Array<number>
+    whitelist: Array<string>
+}
+
+export const heroAirdropFixture: Fixture<HeroAirdropFixture> = async function ([wallet, other]: Wallet[]): Promise<HeroAirdropFixture> {
+    let nft0 = await testERC721()
+    let amount = 10
+    await nft0.mint(amount, wallet.address)
+    let tokenIds = []
+    for (let i = 1; i <= amount; i++) {
+        tokenIds.push(i)
+    }
+    let whitelist = [
+        wallet.address,
+        other.address,
+        "0x3beBB78b729E1683649A58eb30ad000Ee2bD2bE4",
+        "0x7Fcb25CbbA952acC9eCF661A36A9EAd7251F33c2",
+        "0x1D7523dC020A3f68985151AeAD21b39c94D54ad0",
+        "0x447eC497E2cB07DC8E349bfbD7ef86379e58fD50",
+        "0x0191ebb6374663cA1C7eEAF09054c2773c5B4D9B",
+        "0x4a60b3c4705c0818e8C5363a52b4bFd92DBA65d2",
+        "0xb584659516a2b660F989e825319e027816bD13cf",
+        "0x0D0BF9f41437c114078E7EB787A2ce29286a19Ae"
+    ]
+    let mt = await makeMerkleTree(whitelist)
+    let heroAirdropFactory = await ethers.getContractFactory("HeroAirdrop")
+    let heroAirdrop = (await heroAirdropFactory.deploy(nft0.address, wallet.address, mt.rootHash, tokenIds)) as HeroAirdrop
+    await nft0.connect(wallet).setApprovalForAll(heroAirdrop.address, true)
+    return { nft0, heroAirdrop, tokenIds, whitelist }
+}
+
+export const signHeroExchange = async function (
     wallet: Wallet,
     tokenId0: string,
     quality: string,
@@ -79,7 +115,7 @@ async function signHeroExchange(
     return s;
 }
 
-async function signHeroBatchExchange(
+export const signHeroBatchExchange = async function (
     wallet: Wallet,
     tokenId0s: any,
     qualities: any,
@@ -92,4 +128,13 @@ async function signHeroBatchExchange(
     return s;
 }
 
-export { signHeroExchange, signHeroBatchExchange }
+export const makeMerkleTree = async function (whitelist: Array<string>): Promise<{ tree: MerkleTree, rootHash: string }> {
+    let leafs = []
+    for (let i = 0; i < whitelist.length; i++) {
+        let leafHash = ethers.utils.solidityKeccak256(['address'], [whitelist[i]])
+        leafs.push(leafHash)
+    }
+    let tree = new MerkleTree(leafs, ethers.utils.keccak256, { sortPairs: true })
+    let rootHash = tree.getHexRoot()
+    return { tree: tree, rootHash: rootHash }
+}
