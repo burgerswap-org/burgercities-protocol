@@ -39,7 +39,7 @@ contract HeroAirdrop is Ownable{
         s_index += 1;
     }
 
-    function checkWhiteList(address user, bytes32[] memory proof) external view returns (bool) {
+    function checkWhitelist(address user, bytes32[] memory proof) external view returns (bool) {
         return _check(user, proof);
     }
 
