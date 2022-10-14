@@ -99,6 +99,7 @@ export const heroAirdropFixture: Fixture<HeroAirdropFixture> = async function ([
     let heroAirdropFactory = await ethers.getContractFactory("HeroAirdrop")
     let heroAirdrop = (await heroAirdropFactory.deploy(nft0.address, wallet.address, mt.rootHash, tokenIds)) as HeroAirdrop
     await nft0.connect(wallet).setApprovalForAll(heroAirdrop.address, true)
+
     return { nft0, heroAirdrop, tokenIds, whitelist }
 }
 

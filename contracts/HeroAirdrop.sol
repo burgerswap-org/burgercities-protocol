@@ -7,7 +7,7 @@ import "./lib/openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 import "./lib/openzeppelin/contracts/token/ERC721/IERC721.sol";
 
 contract HeroAirdrop is Ownable{
-    uint8 constant s_index_max = 10;
+    uint8 constant s_index_max = 100;
     address immutable s_nft;
     address immutable s_treasury;
     
@@ -39,8 +39,8 @@ contract HeroAirdrop is Ownable{
         s_index += 1;
     }
 
-    function checkWhiteList(bytes32[] memory proof) external view returns (bool) {
-        return _check(msg.sender, proof);
+    function checkWhiteList(address user, bytes32[] memory proof) external view returns (bool) {
+        return _check(user, proof);
     }
 
     function _check(address user, bytes32[] memory proof) internal view returns (bool) {

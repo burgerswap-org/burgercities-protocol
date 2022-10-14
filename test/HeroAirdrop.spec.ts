@@ -56,5 +56,20 @@ describe('HeroAirdrop', async () => {
       expect(await nft0.balanceOf(other.address)).to.eq(1)
       expect(await nft0.ownerOf(1)).to.eq(other.address)
     })
+
+    it("fails for other claim again",async () => {
+      let mt = await makeMerkleTree(whitelist)
+      let leaf = ethers.utils.solidityKeccak256(['address'], [other.address])
+      let proof = mt.tree.getHexProof(leaf)
+      await heroAirdrop.connect(other).claim(proof)
+      expect(heroAirdrop.connect(other).claim(proof)).to.revertedWith("Already claimed")
+    })
+
+    it("fails for other1 not in whitelist claim",async () => {
+      let mt = await makeMerkleTree(whitelist)
+      let leaf = ethers.utils.solidityKeccak256(['address'], [other1.address])
+      let proof = mt.tree.getHexProof(leaf)
+      expect(heroAirdrop.connect(other1).claim(proof)).to.revertedWith("Not in whitelist")
+    })
   })
 })

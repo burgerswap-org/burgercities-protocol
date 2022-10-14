@@ -144,5 +144,19 @@
 		"deployed": false,
 		"upgraded": false,
 		"verified": false
+	},
+	"HereAirdop": {
+		"address": "",
+		"constructorArgs": [
+			"${Hero721.address}",
+			"${ownerWallet.address}",
+			"",
+			[]
+		],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
 	}
 }
