@@ -145,7 +145,7 @@
 		"upgraded": false,
 		"verified": false
 	},
-	"HereAirdop": {
+	"HeroAirdrop": {
 		"address": "",
 		"constructorArgs": [
 			"${Hero721.address}",
