@@ -253,6 +253,6 @@
     "upgradedAddress": "0x057E7409aE681bF10CDa384052b693311F6B29e9",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   }
 }
