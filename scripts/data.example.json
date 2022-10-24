@@ -158,5 +158,16 @@
 		"deployed": false,
 		"upgraded": false,
 		"verified": false
+	},
+	"Recharge": {
+		"address": "",
+		"constructorArgs": [
+			"${Burger.address}"
+		],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
 	}
 }

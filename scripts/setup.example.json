@@ -1196,5 +1196,25 @@
                 993
             ]
         ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setupConfig",
+        "contractName": "Recharge",
+        "contractAddr": "",
+        "args": [
+            "${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setSigner",
+        "contractName": "Recharge",
+        "contractAddr": "",
+        "args": [
+            "${signerWallet.address}"
+        ]
     }
 ]
