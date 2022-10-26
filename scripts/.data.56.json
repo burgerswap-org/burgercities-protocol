@@ -263,5 +263,16 @@
     "deployed": true,
     "upgraded": true,
     "verified": true
+  },
+  "Recharge": {
+    "address": "0x890ca72b5b9e3A406816004f32FAD9324C7aac0B",
+    "constructorArgs": [
+      "${Burger.address}"
+    ],
+    "upgradeArgs": [],
+    "upgradedAddress": "0x890ca72b5b9e3A406816004f32FAD9324C7aac0B",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
   }
 }
