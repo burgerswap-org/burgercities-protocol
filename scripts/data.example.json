@@ -131,6 +131,16 @@
 		"upgraded": false,
 		"verified": false
 	},
+	"Reward2": {
+		"address": "",
+		"contractName": "Reward",
+		"constructorArgs": [],
+		"upgradeArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
 	"HeroExchange": {
 		"address": "",
 		"constructorArgs": [

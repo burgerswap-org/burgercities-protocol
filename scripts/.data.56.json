@@ -8,7 +8,7 @@
     "verified": true
   },
   "signerWallet": {
-    "address": "0x13a2032Ec8E6f8Def8338bBF86588aA5df4Ad2e6",
+    "address": "0x5720Cc167FeC35A89EF016bA8Aa4eb26Ef1d46A6",
     "constructorArgs": [],
     "upgradedAddress": "",
     "deployed": true,
@@ -134,6 +134,16 @@
     "deployed": true,
     "upgraded": true,
     "verified": true
+  },
+  "Reward2": {
+    "address": "0x89f801757f3a9549da3Cc0Ed5a2AAFAa0ebDC471",
+    "contractName": "Reward",
+    "constructorArgs": [],
+    "upgradeArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
   },
   "HeroExchange": {
     "address": "0xcf46073e4EfF7053126cF7d7e28c426Cc6441822",

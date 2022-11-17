@@ -1250,5 +1250,27 @@
         "args": [
             "${signerWallet.address}"
         ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "name": "Reward2",
+        "functionName": "setupConfig",
+        "contractName": "Reward",
+        "contractAddr": "",
+        "args": [
+            "${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "name": "Reward2",
+        "functionName": "updateSigner",
+        "contractName": "Reward",
+        "contractAddr": "",
+        "args": [
+            "${signerWallet.address}"
+        ]
     }
 ]

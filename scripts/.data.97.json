@@ -135,6 +135,16 @@
     "upgraded": true,
     "verified": true
   },
+  "Reward2": {
+    "address": "0xB3eD56BA3799e0BD8EDC719981D131893BD21994",
+    "contractName": "Reward",
+    "constructorArgs": [],
+    "upgradeArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  },
   "TestHeroBox": {
     "address": "0x9c9019F21A9D49c3E9e89f8Bd55359c666A7E381",
     "constructorArgs": [
