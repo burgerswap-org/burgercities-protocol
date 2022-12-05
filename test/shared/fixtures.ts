@@ -1,12 +1,20 @@
 import { BigNumber, Wallet } from 'ethers'
 import { ethers, network } from 'hardhat'
 import { MerkleTree } from 'merkletreejs'
+import { TestERC20 } from '../../typechain/TestERC20'
 import { TestERC721 } from '../../typechain/TestERC721'
 import { TestHeroBox } from '../../typechain/TestHeroBox'
 import { Hero721 } from '../../typechain/Hero721'
 import { HeroExchange } from '../../typechain/HeroExchange'
 import { HeroAirdrop } from '../../typechain/HeroAirdrop'
+import { PunchIn } from '../../typechain/PunchIn'
 import { Fixture } from 'ethereum-waffle'
+
+async function testERC20(): Promise<TestERC20> {
+    let factory = await ethers.getContractFactory('TestERC20')
+    let token = (await factory.deploy()) as TestERC20
+    return token
+}
 
 async function testERC721(): Promise<TestERC721> {
     let factory = await ethers.getContractFactory('TestERC721')
@@ -138,4 +146,22 @@ export const makeMerkleTree = async function (whitelist: Array<string>): Promise
     let tree = new MerkleTree(leafs, ethers.utils.keccak256, { sortPairs: true })
     let rootHash = tree.getHexRoot()
     return { tree: tree, rootHash: rootHash }
+}
+
+interface PunchInFixture {
+    rewardToken: TestERC20
+    punchIn: PunchIn
+}
+
+export const punchInFixture: Fixture<PunchInFixture> = async function ([wallet]: Wallet[]): Promise<PunchInFixture> {
+    let rewardToken = await testERC20()
+    await rewardToken.mint(wallet.address, BigNumber.from(10000))
+
+    let factory = await ethers.getContractFactory('PunchIn')
+    let punchIn = (await factory.deploy()) as PunchIn
+    await punchIn.initialize(wallet.address)
+
+    await rewardToken.approve(punchIn.address, BigNumber.from(10000))
+
+    return { rewardToken, punchIn }
 }
