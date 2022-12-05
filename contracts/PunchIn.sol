@@ -70,7 +70,7 @@ contract PunchIn is Initializable, Ownable {
         Activity storage activity = _activities[activityId];
         require(activity.endTimestamp > block.timestamp, "Activity has finished");
         require(rewardToken != address(0), "Invalid parameter rewardToken");
-        require(activity.rewardAmount != rewardAmount && activity.rewardToken != rewardToken, "Invalid parameter reward");
+        require(activity.rewardAmount != rewardAmount, "No changed in rewardAmount");
 
         activity.rewardAmount = rewardAmount;
         activity.rewardToken = rewardToken;
@@ -118,6 +118,11 @@ contract PunchIn is Initializable, Ownable {
 
     function activityLength() external view returns(uint256) {
         return _activities.length;
+    }
+
+    function activitySuccessAmount(uint256 activityId) external view returns(uint256) {
+        require(activityId < _activities.length, "Invalid parameter activityId");
+        return _activity2SuccessAmount[activityId];
     }
 
     function activityInfo(uint256 activityId) external view returns (Activity memory activity) {
