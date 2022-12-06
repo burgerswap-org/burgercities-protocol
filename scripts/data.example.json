@@ -179,5 +179,14 @@
 		"deployed": false,
 		"upgraded": false,
 		"verified": false
+	},
+	"PunchIn": {
+		"address": "",
+		"constructorArgs": [],
+		"upgradeArgs": [""],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
 	}
 }

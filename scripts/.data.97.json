@@ -304,5 +304,16 @@
     "deployed": true,
     "upgraded": true,
     "verified": true
+  },
+  "PunchIn": {
+    "address": "0x56A36310609874092b5778d7935e0C8d05D0D7FF",
+    "constructorArgs": [],
+    "upgradeArgs": [
+      "0x07fF0ed51ABAf0ebeF2dDdabB463A0E17235de46"
+    ],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
   }
 }
