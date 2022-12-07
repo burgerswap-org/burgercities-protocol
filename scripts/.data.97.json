@@ -34,7 +34,6 @@
   "Clothing721": {
     "address": "0xd8751d9c11f9de9278f978B88b3b39cb70259fC8",
     "constructorArgs": [],
-    "upgradeArgs": [],
     "upgradedAddress": "",
     "deployed": true,
     "upgraded": true,
@@ -45,7 +44,6 @@
     "constructorArgs": [
       "${Clothing721.address}"
     ],
-    "upgradeArgs": [],
     "upgradedAddress": "",
     "deployed": true,
     "upgraded": true,
@@ -54,7 +52,6 @@
   "BurgerCityConfig": {
     "address": "0x35c9b3C1487c02A2D8Afe7DEF9cE0642804bDB3a",
     "constructorArgs": [],
-    "upgradeArgs": [],
     "upgradedAddress": "0x35c9b3C1487c02A2D8Afe7DEF9cE0642804bDB3a",
     "deployed": true,
     "upgraded": true,
@@ -63,7 +60,6 @@
   "Hero721": {
     "address": "0xFA78f4bD702D88783510087cF4AB9791a9a892F2",
     "constructorArgs": [],
-    "upgradeArgs": [],
     "upgradedAddress": "",
     "deployed": true,
     "upgraded": true,
@@ -75,7 +71,6 @@
       "${Hero721.address}",
       "${USDT.address}"
     ],
-    "upgradeArgs": [],
     "upgradedAddress": "0x3D6de8A964Eef946B4B8128320147f17BA976B54",
     "deployed": true,
     "upgraded": true,
@@ -87,7 +82,6 @@
       "${Hero721.address}",
       "${Burger.address}"
     ],
-    "upgradeArgs": [],
     "upgradedAddress": "0xE81cA93717f83B2C92541fD93081E06Da9092977",
     "deployed": true,
     "upgraded": true,
@@ -100,7 +94,6 @@
       "${HeroManage.address}",
       "${Hero721.address}"
     ],
-    "upgradeArgs": [],
     "upgradedAddress": "",
     "deployed": true,
     "upgraded": true,
@@ -139,7 +132,6 @@
     "address": "0xB3eD56BA3799e0BD8EDC719981D131893BD21994",
     "contractName": "Reward",
     "constructorArgs": [],
-    "upgradeArgs": [],
     "upgradedAddress": "",
     "deployed": true,
     "upgraded": true,
@@ -150,7 +142,6 @@
     "constructorArgs": [
       "0x84B83D7B57B7b2E3EE22e6802A532231432B28D1"
     ],
-    "upgradeArgs": [],
     "upgradedAddress": "",
     "deployed": true,
     "upgraded": true,
@@ -159,7 +150,6 @@
   "TestERC721": {
     "address": "0x2B2465c25F8b65f201C78Bc2c66081E2D9d15B78",
     "constructorArgs": [],
-    "upgradeArgs": [],
     "upgradedAddress": "",
     "deployed": true,
     "upgraded": true,
@@ -173,7 +163,6 @@
       "0x84B83D7B57B7b2E3EE22e6802A532231432B28D1",
       "0x07fF0ed51ABAf0ebeF2dDdabB463A0E17235de46"
     ],
-    "upgradeArgs": [],
     "upgradedAddress": "",
     "deployed": true,
     "upgraded": true,
@@ -299,16 +288,23 @@
     "constructorArgs": [
       "${Burger.address}"
     ],
-    "upgradeArgs": [],
     "upgradedAddress": "0x1D7DDF5eEe2A3A4B849A8193fE04BA0691Ea24DF",
     "deployed": true,
     "upgraded": true,
     "verified": true
   },
-  "PunchIn": {
-    "address": "0x56A36310609874092b5778d7935e0C8d05D0D7FF",
+  "DailyPunchIn": {
+    "address": "0x7E991060244734EdC0acCEB57d676a7C25725bd1",
     "constructorArgs": [],
-    "upgradeArgs": [
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  },
+  "ActivityPunchIn": {
+    "proxy": true,
+    "address": "0xD4ce4cf2c4264479862200a254643a4141917904",
+    "constructorArgs": [
       "0x07fF0ed51ABAf0ebeF2dDdabB463A0E17235de46"
     ],
     "upgradedAddress": "",

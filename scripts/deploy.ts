@@ -74,7 +74,7 @@ async function deployContract(name: string, value: any) {
 async function deployProxyContract(name: string, value: any) {
   // Deploying
   if (data[name].deployed) {
-    console.log(`Deploy contract ${name} exits: "${data[name].address}",`);
+    console.log(`Deploy proxy contract ${name} exits: "${data[name].address}",`);
     return;
   }
   // console.log('deploy...')
@@ -90,7 +90,7 @@ async function deployProxyContract(name: string, value: any) {
   origdata[name].deployed = true;
   origdata[name].upgraded = true;
   origdata[name].verified = false;
-  console.log(`Deploy contract ${name} new: "${ins.address}",`)
+  console.log(`Deploy proxy contract ${name} new: "${ins.address}",`)
   updateConstructorArgs(name, ins.address);
 }
 

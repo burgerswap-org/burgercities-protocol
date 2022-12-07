@@ -2,12 +2,12 @@
 
 pragma solidity ^0.8.0;
 
-import "./lib/openzeppelin/contracts/proxy/utils/Initializable.sol";
-import "./lib/openzeppelin/contracts/access/Ownable.sol";
 import "./lib/openzeppelin/contracts/utils/math/SafeMath.sol";
 import "./lib/openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "./lib/openzeppelin/contracts/proxy/utils/Initializable.sol";
+import "./lib/openzeppelin/contracts/access/OwnableUpgradeable.sol";
 
-contract PunchIn is Initializable, Ownable {
+contract ActivityPunchIn is Initializable, OwnableUpgradeable {
     using SafeMath for uint256;
 
     struct Activity {
@@ -24,7 +24,7 @@ contract PunchIn is Initializable, Ownable {
         bool isClaimed;
     }
 
-    address private _treasury;
+    address public _treasury;
     Activity[] _activities;
     mapping(uint256 => mapping(address => UserInfo)) _activity2UserInfoes;
     mapping(uint256 => uint256) _activity2SuccessAmount;
@@ -35,6 +35,20 @@ contract PunchIn is Initializable, Ownable {
     event Claim(uint256 activityId, address user, uint256 amount, address token);
 
     function initialize(address treasury) external initializer {
+       __ActivityPunchIn_init(treasury);
+    }
+
+    function __ActivityPunchIn_init(address treasury) internal onlyInitializing {
+        __Ownable_init_unchained();
+        __ActivityPunchIn_init_unchained(treasury);
+    }
+
+    function __ActivityPunchIn_init_unchained(address treasury) internal onlyInitializing {
+         _treasury = treasury;
+    }
+
+    function updateTreasury(address treasury) external onlyOwner {
+        require(treasury != _treasury , "No changed in treasury");
         _treasury = treasury;
     }
 

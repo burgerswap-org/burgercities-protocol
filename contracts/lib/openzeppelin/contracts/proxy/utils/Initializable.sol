@@ -3,7 +3,7 @@
 
 pragma solidity ^0.8.0;
 
-import "../../utils/Address.sol";
+import "../../utils/AddressUpgradeable.sol";
 
 /**
  * @dev This is a base contract to aid in writing upgradeable contracts, or any kind of contract that will be deployed
@@ -75,6 +75,6 @@ abstract contract Initializable {
     }
 
     function _isConstructor() private view returns (bool) {
-        return !Address.isContract(address(this));
+        return !AddressUpgradeable.isContract(address(this));
     }
 }
