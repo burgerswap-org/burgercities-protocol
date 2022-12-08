@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.0;
 
-import "./lib/openzeppelin/contracts/proxy/utils/Initializable.sol";
-import "./lib/openzeppelin/contracts/utils/math/SafeMath.sol";
+import "../lib/openzeppelin/contracts/proxy/utils/Initializable.sol";
+import "../lib/openzeppelin/contracts/utils/math/SafeMath.sol";
 
 contract DailyPunchIn is Initializable {
     using SafeMath for uint256;

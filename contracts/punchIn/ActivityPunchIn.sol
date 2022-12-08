@@ -2,10 +2,10 @@
 
 pragma solidity ^0.8.0;
 
-import "./lib/openzeppelin/contracts/utils/math/SafeMath.sol";
-import "./lib/openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "./lib/openzeppelin/contracts/proxy/utils/Initializable.sol";
-import "./lib/openzeppelin/contracts/access/OwnableUpgradeable.sol";
+import "../lib/openzeppelin/contracts/utils/math/SafeMath.sol";
+import "../lib/openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "../lib/openzeppelin/contracts/proxy/utils/Initializable.sol";
+import "../lib/openzeppelin/contracts/access/OwnableUpgradeable.sol";
 
 contract ActivityPunchIn is Initializable, OwnableUpgradeable {
     using SafeMath for uint256;
