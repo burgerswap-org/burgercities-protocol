@@ -58,4 +58,12 @@ contract ChristmasPunchIn is Initializable, OwnableUpgradeable {
         address[] memory signList = Signature.recoverAddresses(hash, signature);
         return signList[0] == _signer;
     }
+
+    function userTimestamps(address user) external view returns(uint64[] memory) {
+        return _userTimestamps[user];
+    }
+
+    function isUserClaimed(address user) external view returns(bool) {
+        return _userIsClaimed[user];
+    }
 }
