@@ -1,17 +1,17 @@
 import { Wallet, BigNumber } from 'ethers'
 import { ethers, network, waffle } from 'hardhat'
 import { TestERC20 } from '../typechain/TestERC20'
-import { PunchIn } from '../typechain/PunchIn'
+import { ActivityPunchIn } from '../typechain/ActivityPunchIn'
 import { expect } from './shared/expect'
-import { punchInFixture } from './shared/fixtures'
+import { activityPunchInFixture } from './shared/fixtures'
 
 const createFixtureLoader = waffle.createFixtureLoader
 
-describe('PunchIn', async () => {
+describe('ActivityPunchIn', async () => {
   let wallet: Wallet, otherA: Wallet, otherB: Wallet;
 
   let rewardToken: TestERC20
-  let punchIn: PunchIn
+  let punchIn: ActivityPunchIn
   let startTimestamp = BigNumber.from(Date.now()).div(1000)
   let totalAmount = BigNumber.from(3)
   let limitAmount = BigNumber.from(2)
@@ -25,7 +25,7 @@ describe('PunchIn', async () => {
   })
 
   beforeEach('deploy PunchIn', async () => {
-    ; ({ rewardToken, punchIn } = await loadFixTure(punchInFixture));
+    ; ({ rewardToken, punchIn } = await loadFixTure(activityPunchInFixture));
   })
 
   it('check state', async () => {

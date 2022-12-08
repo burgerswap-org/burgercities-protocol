@@ -188,5 +188,19 @@
 		"deployed": false,
 		"upgraded": false,
 		"verified": false
+	},
+	"ChristmasPunchIn": {
+		"proxy": true,
+		"address": "",
+		"constructorArgs": [
+			"${ownerWallet.address}",
+			"${signerWallet.address}",
+			"${USDT.address}",
+			"2000000000000000000"
+		],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
 	}
 }

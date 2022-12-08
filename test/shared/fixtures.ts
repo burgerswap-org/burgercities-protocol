@@ -7,7 +7,8 @@ import { TestHeroBox } from '../../typechain/TestHeroBox'
 import { Hero721 } from '../../typechain/Hero721'
 import { HeroExchange } from '../../typechain/HeroExchange'
 import { HeroAirdrop } from '../../typechain/HeroAirdrop'
-import { PunchIn } from '../../typechain/PunchIn'
+import { ActivityPunchIn } from '../../typechain/ActivityPunchIn'
+import { ChristmasPunchIn } from '../../typechain/ChristmasPunchIn'
 import { Fixture } from 'ethereum-waffle'
 
 async function testERC20(): Promise<TestERC20> {
@@ -148,20 +149,50 @@ export const makeMerkleTree = async function (whitelist: Array<string>): Promise
     return { tree: tree, rootHash: rootHash }
 }
 
-interface PunchInFixture {
+interface ActivityPunchInFixture {
     rewardToken: TestERC20
-    punchIn: PunchIn
+    punchIn: ActivityPunchIn
 }
 
-export const punchInFixture: Fixture<PunchInFixture> = async function ([wallet]: Wallet[]): Promise<PunchInFixture> {
+export const activityPunchInFixture: Fixture<ActivityPunchInFixture> = async function ([wallet]: Wallet[]): Promise<ActivityPunchInFixture> {
     let rewardToken = await testERC20()
     await rewardToken.mint(wallet.address, BigNumber.from(10000))
 
-    let factory = await ethers.getContractFactory('PunchIn')
-    let punchIn = (await factory.deploy()) as PunchIn
+    let factory = await ethers.getContractFactory('ActivityPunchIn')
+    let punchIn = (await factory.deploy()) as ActivityPunchIn
     await punchIn.initialize(wallet.address)
 
     await rewardToken.approve(punchIn.address, BigNumber.from(10000))
 
     return { rewardToken, punchIn }
+}
+
+interface ChristmasPunchInFixture {
+    rewardToken: TestERC20
+    punchIn: ChristmasPunchIn
+}
+
+export const christmasPunchInFixture: Fixture<ChristmasPunchInFixture> = async function ([wallet]: Wallet[]): Promise<ChristmasPunchInFixture> {
+    let rewardToken = await testERC20()
+    await rewardToken.mint(wallet.address, BigNumber.from(10000))
+
+    let factory = await ethers.getContractFactory('ChristmasPunchIn')
+    let punchIn = (await factory.deploy()) as ChristmasPunchIn
+    await punchIn.initialize(wallet.address, wallet.address, rewardToken.address, BigNumber.from(100))
+
+    await rewardToken.approve(punchIn.address, BigNumber.from(10000))
+
+    return { rewardToken, punchIn }
+}
+
+export const signChristmasPunchIn = async function (
+    wallet: Wallet,
+    user: string,
+    addr: string
+): Promise<string> {
+    let types = ['address', 'address']
+    let values = [user, addr]
+    let message = ethers.utils.solidityKeccak256(types, values)
+    let s = await network.provider.send('eth_sign', [wallet.address, message])
+    return s;
 }

@@ -311,5 +311,19 @@
     "deployed": true,
     "upgraded": true,
     "verified": false
+  },
+  "ChristmasPunchIn": {
+    "proxy": true,
+    "address": "0xE68A98A1CC21E6B7eC30A4ad7100Aadb1143cB4b",
+    "constructorArgs": [
+      "0x07fF0ed51ABAf0ebeF2dDdabB463A0E17235de46",
+      "0x5720Cc167FeC35A89EF016bA8Aa4eb26Ef1d46A6",
+      "0xF2ED382e6A3439Be124813842200cf6702fD6ecA",
+      "2000000000000000000"
+    ],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
   }
 }
