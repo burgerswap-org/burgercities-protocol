@@ -13,6 +13,7 @@ describe('ChristmasPunchIn', async () => {
   let rewardToken: TestERC20
   let punchIn: ChristmasPunchIn
   let rewardAmount = BigNumber.from(100)
+  let txId = "test"
 
   let loadFixTure: ReturnType<typeof createFixtureLoader>;
 
@@ -51,14 +52,14 @@ describe('ChristmasPunchIn', async () => {
   describe('#claim', async () => {
     it('success', async () => {
       let signature = await signChristmasPunchIn(wallet, otherA.address, punchIn.address)
-      await punchIn.connect(otherA).claim(otherA.address, signature)
+      await punchIn.connect(otherA).claim(otherA.address, signature, txId)
       expect(await punchIn.isUserClaimed(otherA.address)).to.eq(true)
       expect(await rewardToken.balanceOf(otherA.address)).to.eq(rewardAmount)
     })
 
     it('gas used for claim', async () => {
       let signature = await signChristmasPunchIn(wallet, otherA.address, punchIn.address)
-      let tx = await punchIn.connect(otherA).claim(otherA.address, signature)
+      let tx = await punchIn.connect(otherA).claim(otherA.address, signature, txId)
       let receipt = await tx.wait()
       console.log("====gas used:", receipt.gasUsed)
     })

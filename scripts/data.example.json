@@ -195,8 +195,7 @@
 		"constructorArgs": [
 			"${ownerWallet.address}",
 			"${signerWallet.address}",
-			"${USDT.address}",
-			"2000000000000000000"
+			"${USDT.address}"
 		],
 		"upgradedAddress": "",
 		"deployed": false,

@@ -8,8 +8,8 @@ import "../lib/Signature.sol";
 import "../Configable.sol";
 
 contract ChristmasPunchIn is Initializable, Configable {
-    event PunchInEvent(address user, uint256 timestamp);
-    event Claim(address user, uint256 timestamp);
+    event PunchInEvent(address indexed user, uint256 timestamp);
+    event Claim(address indexed user, uint256 timestamp, string txId);
 
     address private _treasury;
     address private _signer;
@@ -19,15 +19,18 @@ contract ChristmasPunchIn is Initializable, Configable {
     mapping(address => uint64[]) _userTimestamps;
     mapping(address => bool) _userIsClaimed;
 
-    function initialize(address treasury, address signer, address rewardToken, uint256 rewardAmount) external initializer {
+    function initialize(address treasury, address signer, address rewardToken) external initializer {
         owner = msg.sender;
-        setConf(treasury, signer, rewardToken, rewardAmount);
+        setConf(treasury, signer, rewardToken);
     }
 
-    function setConf(address treasury, address signer, address rewardToken, uint256 rewardAmount) public onlyDev {
+    function setConf(address treasury, address signer, address rewardToken) public onlyDev {
         _treasury = treasury;
         _signer = signer;
         _rewardToken = rewardToken;
+    }
+
+    function setRewardAmount(uint256 rewardAmount) external onlyDev {
         _rewardAmount = rewardAmount;
     }
 
@@ -36,13 +39,13 @@ contract ChristmasPunchIn is Initializable, Configable {
         emit PunchInEvent(msg.sender, block.timestamp);
     }
 
-    function claim(address to, bytes memory signature) external {
+    function claim(address to, bytes memory signature, string memory txId) external {
         require(verify(msg.sender, signature), "Invalid parameter signature");
         require(!_userIsClaimed[msg.sender], "User has already claimed");
         _userIsClaimed[msg.sender] = true;
         IERC20(_rewardToken).transferFrom(_treasury, to, _rewardAmount);
 
-        emit Claim(msg.sender, block.timestamp);
+        emit Claim(msg.sender, block.timestamp, txId);
     }
 
     function verify(

@@ -14,6 +14,11 @@
       "address": "0xE68A98A1CC21E6B7eC30A4ad7100Aadb1143cB4b",
       "txHash": "0xea50506adbb50cdd9614de5c453aaf6b34b184cc431b67dd412fda5f9d09abb1",
       "kind": "transparent"
+    },
+    {
+      "address": "0xcB91F4C74193D96a3618809603E739C77f753b5D",
+      "txHash": "0x8850c0936c3474918a38b9a60ea609e448af27113da04f85f4357aa8ed3efc8d",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -186,6 +191,124 @@
     "4c543f97a36c123dc7e3246b62da3be90f22f52259fd9159abe7df81dce5359a": {
       "address": "0x41cBb946892DbcdA8757699b61c3d691445e0df2",
       "txHash": "0xc66c16973eb80bd4489fa032f8ed5ad2cdbd16b1c3e6e0cf913b78de4566ff14",
+      "layout": {
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "contracts/lib/openzeppelin/contracts/proxy/utils/Initializable.sol:39"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "contracts/lib/openzeppelin/contracts/proxy/utils/Initializable.sol:44"
+          },
+          {
+            "label": "config",
+            "offset": 2,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Configable",
+            "src": "contracts/Configable.sol:10"
+          },
+          {
+            "label": "owner",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Configable",
+            "src": "contracts/Configable.sol:11"
+          },
+          {
+            "label": "_treasury",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_address",
+            "contract": "ChristmasPunchIn",
+            "src": "contracts/punchIn/ChristmasPunchIn.sol:14"
+          },
+          {
+            "label": "_signer",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_address",
+            "contract": "ChristmasPunchIn",
+            "src": "contracts/punchIn/ChristmasPunchIn.sol:15"
+          },
+          {
+            "label": "_rewardToken",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_address",
+            "contract": "ChristmasPunchIn",
+            "src": "contracts/punchIn/ChristmasPunchIn.sol:16"
+          },
+          {
+            "label": "_rewardAmount",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256",
+            "contract": "ChristmasPunchIn",
+            "src": "contracts/punchIn/ChristmasPunchIn.sol:17"
+          },
+          {
+            "label": "_userTimestamps",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_address,t_array(t_uint64)dyn_storage)",
+            "contract": "ChristmasPunchIn",
+            "src": "contracts/punchIn/ChristmasPunchIn.sol:19"
+          },
+          {
+            "label": "_userIsClaimed",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "ChristmasPunchIn",
+            "src": "contracts/punchIn/ChristmasPunchIn.sol:20"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint64)dyn_storage": {
+            "label": "uint64[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_array(t_uint64)dyn_storage)": {
+            "label": "mapping(address => uint64[])",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          }
+        }
+      }
+    },
+    "8f029e45a521f9033f584783ee04e45915a979aefdc447bf657fb946596e0fb9": {
+      "address": "0x36C5755C867503e6752725151E6e853b41926DC6",
+      "txHash": "0x3cab0b4d4c36e93444407aca597a57766e12cfa98eb45e25d9bd78bfa8f78653",
       "layout": {
         "storage": [
           {

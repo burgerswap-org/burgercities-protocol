@@ -178,10 +178,9 @@ export const christmasPunchInFixture: Fixture<ChristmasPunchInFixture> = async f
 
     let factory = await ethers.getContractFactory('ChristmasPunchIn')
     let punchIn = (await factory.deploy()) as ChristmasPunchIn
-    await punchIn.initialize(wallet.address, wallet.address, rewardToken.address, BigNumber.from(100))
-
+    await punchIn.initialize(wallet.address, wallet.address, rewardToken.address)
     await rewardToken.approve(punchIn.address, BigNumber.from(10000))
-
+    await punchIn.setRewardAmount(BigNumber.from(100))
     return { rewardToken, punchIn }
 }
 
