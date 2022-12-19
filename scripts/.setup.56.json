@@ -1222,5 +1222,16 @@
         "args": [
             "${signerWallet.address}"
         ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "name": "ChristmasPunchIn",
+        "functionName": "setupConfig",
+        "contractName": "ChristmasPunchIn",
+        "contractAddr": "",
+        "args": [
+            "${BurgerCityConfig.address}"
+        ]
     }
 ]

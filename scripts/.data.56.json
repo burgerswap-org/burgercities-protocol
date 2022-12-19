@@ -284,5 +284,26 @@
     "deployed": true,
     "upgraded": true,
     "verified": true
-  }
+  },
+  "DailyPunchIn": {
+		"address": "",
+		"constructorArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"ChristmasPunchIn": {
+		"proxy": true,
+		"address": "",
+		"constructorArgs": [
+			"0xec2E0F9140bC7f08E421952687f363DA7BAC0862",
+			"${signerWallet.address}",
+			"${Burger.address}"
+		],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	}
 }
