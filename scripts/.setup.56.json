@@ -1225,7 +1225,7 @@
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "name": "ChristmasPunchIn",
         "functionName": "setupConfig",
         "contractName": "ChristmasPunchIn",

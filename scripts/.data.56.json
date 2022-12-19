@@ -286,24 +286,24 @@
     "verified": true
   },
   "DailyPunchIn": {
-		"address": "",
-		"constructorArgs": [],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"ChristmasPunchIn": {
-		"proxy": true,
-		"address": "",
-		"constructorArgs": [
-			"0xec2E0F9140bC7f08E421952687f363DA7BAC0862",
-			"${signerWallet.address}",
-			"${Burger.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	}
+    "address": "0x7521e13F7365236CEc7FdC99e7C4DB8FbADEEA0B",
+    "constructorArgs": [],
+    "upgradedAddress": "0x7521e13F7365236CEc7FdC99e7C4DB8FbADEEA0B",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "ChristmasPunchIn": {
+    "proxy": true,
+    "address": "0x6FFB703653FeC0d340406e8acC69a2e01d2D09B4",
+    "constructorArgs": [
+      "0xec2E0F9140bC7f08E421952687f363DA7BAC0862",
+      "${signerWallet.address}",
+      "${Burger.address}"
+    ],
+    "upgradedAddress": "0x201bd52D073E5630dc904FD0FD1cF5aA11b28FA9",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  }
 }
