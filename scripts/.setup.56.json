@@ -1233,5 +1233,16 @@
         "args": [
             "${BurgerCityConfig.address}"
         ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "name": "ChristmasPunchIn",
+        "functionName": "setRewardAmount",
+        "contractName": "ChristmasPunchIn",
+        "contractAddr": "",
+        "args": [
+            "25000000000000000000"
+        ]
     }
 ]
