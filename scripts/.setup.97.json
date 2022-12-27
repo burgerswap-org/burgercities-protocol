@@ -84,6 +84,16 @@
     {
         "call": true,
         "called": true,
+        "functionName": "setSummonCD",
+        "contractName": "HeroManage",
+        "contractAddr": "",
+        "args": [
+            1
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
         "functionName": "setupConfig",
         "contractName": "NFTLease",
         "contractAddr": "",

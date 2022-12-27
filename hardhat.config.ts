@@ -89,7 +89,7 @@
        accounts: [data.PrivateKey]
      },
      bsctestnet: {
-       url: `https://data-seed-prebsc-1-s1.binance.org:8545/`,
+       url: `https://rpc.ankr.com/bsc_testnet_chapel`,
        accounts: [data.PrivateKey]
      },
      bscmainnet: {

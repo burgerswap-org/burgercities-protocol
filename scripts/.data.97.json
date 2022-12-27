@@ -8,7 +8,7 @@
     "verified": true
   },
   "signerWallet": {
-    "address": "0x13a2032Ec8E6f8Def8338bBF86588aA5df4Ad2e6",
+    "address": "0x5720Cc167FeC35A89EF016bA8Aa4eb26Ef1d46A6",
     "constructorArgs": [],
     "upgradedAddress": "",
     "deployed": true,
@@ -77,27 +77,28 @@
     "verified": true
   },
   "HeroManage": {
-    "address": "0xE81cA93717f83B2C92541fD93081E06Da9092977",
+    "address": "0xa02aF6Befa501A54C3D80377FA0f8E8709A6D99B",
     "constructorArgs": [
       "${Hero721.address}",
-      "${Burger.address}"
+      "${Burger.address}",
+      "${signerWallet.address}"
     ],
-    "upgradedAddress": "0xE81cA93717f83B2C92541fD93081E06Da9092977",
+    "upgradedAddress": "0xa02aF6Befa501A54C3D80377FA0f8E8709A6D99B",
     "deployed": true,
     "upgraded": true,
     "verified": true
   },
   "NFTLease": {
-    "address": "0xB98A8f46CB34c0c689728525CAbF82f201ab8397",
+    "address": "0x99099e591dd3eA0C2b3B4b4E18D8B3e304a30Cb8",
     "constructorArgs": [
       "${Burger.address}",
       "${HeroManage.address}",
       "${Hero721.address}"
     ],
-    "upgradedAddress": "",
+    "upgradedAddress": "0x99099e591dd3eA0C2b3B4b4E18D8B3e304a30Cb8",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   },
   "NFTSwap": {
     "address": "0x3645BB1a556488DA92cA4b066721D717777790e7",
