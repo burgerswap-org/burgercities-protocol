@@ -81,7 +81,7 @@ contract NFTLease is Configable, IERC721Receiver {
         emit Created(id, msg.sender, _token_id, _price, timestamp);
     }
 
-    function leaseForSummon(uint64 _id, uint32 my_token_id) external {
+    function leaseForSummon(uint64 _id, uint32 my_token_id, uint _seed, uint _expiry_time, bytes memory _signatures) external {
         Pool memory pool = pools[_id];
 
         require(pool.owner != address(0), "Invalid id");
@@ -103,7 +103,7 @@ contract NFTLease is Configable, IERC721Receiver {
         uint64 timestamp = uint64(block.timestamp);
         emit Leased(_id, msg.sender, timestamp);
 
-        heromanage.summonLease(msg.sender, my_token_id, pool.token_id);
+        heromanage.summonLease(msg.sender, my_token_id, pool.token_id, _seed, _expiry_time, _signatures);
 
         my_created[pool.owner].remove(_id);
         all_created.remove(_id);

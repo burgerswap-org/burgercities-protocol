@@ -12,6 +12,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
 
     using SafeCast for uint;
 
+    address public SIGNER;
     IHero721 public hero721;
     IERC20 public burger20;
 
@@ -28,12 +29,12 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
     event OpenBox(address owner, uint32 token_id);
     event Summon(address owner, uint price);
 
-    constructor(address _hero721, address _burger20)
+    constructor(address _hero721, address _burger20, address _signer)
     {
         owner = msg.sender;
         hero721 = IHero721(_hero721);
         burger20 = IERC20(_burger20);
-
+        SIGNER = _signer;
         rand_seed = 0;
     }
 
@@ -45,53 +46,59 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         return calcSummonBurgerInner(meta1) + calcSummonBurgerInner(meta2);
     }
 
-    function openBox(uint32 _token_id) external nonReentrant
+    function openBox(uint32 _token_id, address _account, uint _seed, uint _expiry_time, bytes memory _signatures) external nonReentrant
     {
-        _openBox(_token_id);
+        require(verify(_account, _seed, _expiry_time, _signatures), "this sign is not valid");
+        require(_expiry_time > block.timestamp, "_seed expired");
+        require(_account == msg.sender, "only the account signatures can open");
+        _openBox(_token_id, _seed);
     }
 
-    function batchOpenBox(uint32[] memory _token_ids) external nonReentrant {
+    function batchOpenBox(uint32[] memory _token_ids) external onlyDev nonReentrant {
         for (uint i = 0; i < _token_ids.length; i++) {
-            _openBox(_token_ids[i]);
+            _openBox(_token_ids[i], block.timestamp);
         }
     }
 
-    function summon(uint32 _token_id1, uint32 _token_id2) external nonReentrant
+    function summon(uint32 _token_id1, uint32 _token_id2, address _account, uint _seed, uint _expiry_time, bytes memory _signatures) external nonReentrant
     {
         require(_token_id1 != _token_id2, "same token_id");
 
         require(hero721.ownerOf(_token_id1) == msg.sender, "only the owner can summon");
         require(hero721.ownerOf(_token_id2) == msg.sender, "only the owner can summon");
+        require(verify(_account, _seed, _expiry_time, _signatures), "this sign is not valid");
+        require(_expiry_time > block.timestamp, "_seed expired");
+        require(_account == msg.sender, "only the account signatures can summon");
 
         HeroMetaData memory meta1 = hero721.getMeta(_token_id1);
         HeroMetaData memory meta2 = hero721.getMeta(_token_id2);
 
-        makeNew(msg.sender, _token_id1, meta1, _token_id2, meta2);
+        makeNew(msg.sender, _token_id1, meta1, _token_id2, meta2, _seed);
     }
 
-    function summonLease(address _account, uint32 _token_id1, uint32 _token_id2) external nonReentrant
+    function summonLease(address _account, uint32 _token_id1, uint32 _token_id2, uint _seed, uint _expiry_time, bytes memory _signatures) external nonReentrant
     {
         require(msg.sender == nftlease);
-
         require(_token_id1 != _token_id2, "same token_id");
-
         require(hero721.ownerOf(_token_id1) == _account, "only the owner can summon");
-
+        require(verify(_account, _seed, _expiry_time, _signatures), "this sign is not valid");
+        require(_expiry_time > block.timestamp, "_seed expired");
+        
         HeroMetaData memory meta1 = hero721.getMeta(_token_id1);
         HeroMetaData memory meta2 = hero721.getMeta(_token_id2);
 
-        makeNew(_account, _token_id1, meta1, _token_id2, meta2);
+        makeNew(_account, _token_id1, meta1, _token_id2, meta2, _seed);
     }
 
     //*****************************************************************************
     //* inner
     //*****************************************************************************
-    function randMod(uint _mod) internal returns(uint) {
-        uint base = uint(keccak256(abi.encodePacked(block.timestamp, msg.sender, rand_seed)));  
+    function randMod(uint _seed) internal returns(uint) {
+        uint base = uint(keccak256(abi.encodePacked(block.timestamp, msg.sender, rand_seed, _seed)));  
         unchecked {
             rand_seed += base;
         }     
-        return base % _mod;
+        return base;
     }
 
     function max(uint _a, uint _b) internal pure returns(uint) {
@@ -127,7 +134,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         return burger;
     }
 
-    function mixDNA(HeroMetaData memory _meta1, HeroMetaData memory _meta2) internal returns (uint8, uint8, uint8, uint8)
+    function mixDNA(HeroMetaData memory _meta1, HeroMetaData memory _meta2, uint _seed) internal returns (uint8, uint8, uint8, uint8)
     {
         uint8[4] memory newdna;
         uint8[4] memory dna1;
@@ -143,7 +150,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         dna2[2] = _meta2.r2;
         dna2[3] = _meta2.r3;
 
-        uint rand = randMod(10000000000000000000000000000);        
+        uint rand = randMod(_seed);      
         uint rate;
         
         //dna1
@@ -293,7 +300,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         return (newdna[0], newdna[1], newdna[2], newdna[3]);
     }
 
-    function makeNew(address _to, uint32 _token_id1, HeroMetaData memory _meta1, uint32 _token_id2, HeroMetaData memory _meta2) internal
+    function makeNew(address _to, uint32 _token_id1, HeroMetaData memory _meta1, uint32 _token_id2, HeroMetaData memory _meta2, uint _seed) internal
     {
         uint64 curtime = block.timestamp.toUint64();
         require(_meta1.opened, "token1 not open");
@@ -327,7 +334,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         //gen
         newmeta.gen = uint8(max(_meta1.gen, _meta2.gen) + 1);
         //summon dna
-        (newmeta.d, newmeta.r1, newmeta.r2, newmeta.r3) = mixDNA(_meta1, _meta2);
+        (newmeta.d, newmeta.r1, newmeta.r2, newmeta.r3) = mixDNA(_meta1, _meta2, _seed);
         //summon_cd
         uint cdtime = uint(curtime) + 6 * uint(cd);
         newmeta.summon_cd = cdtime.toUint64();
@@ -384,7 +391,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         hero721.setMeta(_token_id2, _meta2);
     }
 
-    function _openBox(uint32 _token_id) internal
+    function _openBox(uint32 _token_id, uint _seed) internal
     {
         require(hero721.ownerOf(_token_id) == msg.sender, "only the owner can open box");
 
@@ -400,7 +407,7 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         meta.summon_cnt = 0;
         meta.maxsummon_cnt = 0;
 
-        uint rand = randMod(10000000);
+        uint rand = randMod(_seed);
         uint8 rate;
 
         rate = uint8(rand % 8);
@@ -424,6 +431,44 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
 
         hero721.setMeta(_token_id, meta);
         emit OpenBox(msg.sender, _token_id);
+    }
+
+
+    function verify(address _account, uint _seed, uint _expiry_time, bytes memory _signatures) public view returns (bool) {
+
+        bytes32 message = keccak256(abi.encodePacked(_account, _seed, _expiry_time));
+        bytes32 hash = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", message));
+        address[] memory sign_list = recoverAddresses(hash, _signatures);
+        return sign_list[0] == SIGNER;
+    }
+
+    function recoverAddresses(bytes32 _hash, bytes memory _signatures) internal pure returns (address[] memory addresses) {
+        uint8 v;
+        bytes32 r;
+        bytes32 s;
+        uint count = _countSignatures(_signatures);
+        addresses = new address[](count);
+        for (uint i = 0; i < count; i++) {
+            (v, r, s) = _parseSignature(_signatures, i);
+            addresses[i] = ecrecover(_hash, v, r, s);
+        }
+    }
+
+    function _countSignatures(bytes memory _signatures) internal pure returns (uint) {
+        return _signatures.length % 65 == 0 ? _signatures.length / 65 : 0;
+    }
+
+    function _parseSignature(bytes memory _signatures, uint _pos) internal pure returns (uint8 v, bytes32 r, bytes32 s) {
+        uint offset = _pos * 65;
+        assembly {
+            r := mload(add(_signatures, add(32, offset)))
+            s := mload(add(_signatures, add(64, offset)))
+            v := and(mload(add(_signatures, add(65, offset))), 0xff)
+        }
+
+        if (v < 27) v += 27;
+
+        require(v == 27 || v == 28);
     }
 
     //*****************************************************************************
@@ -492,7 +537,12 @@ contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
         require(_nftlease != address(0), "address should not 0");
         nftlease = _nftlease;
     }
-    
+
+    function setSigner(address _signer) external onlyAdmin
+    {
+        SIGNER = _signer;
+    }
+
     function kill() external onlyOwner
     {
         uint balance = burger20.balanceOf(address(this));

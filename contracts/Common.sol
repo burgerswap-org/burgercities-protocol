@@ -39,6 +39,6 @@ interface IClothing721 {
 }
 
 interface IHeroManage {
-    function summonLease(address account, uint32 token_id1, uint32 token_id2) external;
+    function summonLease(address _account, uint32 _token_id1, uint32 _token_id2, uint _seed, uint _expiry_time, bytes memory _signatures) external;
 }
 
