@@ -82,26 +82,27 @@
     "verified": true
   },
   "HeroManage": {
-    "address": "0x13131D98815a8DfED99Bfff4965b53Ef2AB03F5E",
+    "address": "0xaa4F4f095a8f3007A5f4bdD1f95ABfA6fC3D3a9A",
     "constructorArgs": [
       "${Hero721.address}",
-      "${Burger.address}"
+      "${Burger.address}",
+      "${signerWallet.address}"
     ],
     "upgradeArgs": [],
-    "upgradedAddress": "0x13131D98815a8DfED99Bfff4965b53Ef2AB03F5E",
+    "upgradedAddress": "0xaa4F4f095a8f3007A5f4bdD1f95ABfA6fC3D3a9A",
     "deployed": true,
     "upgraded": true,
     "verified": true
   },
   "NFTLease": {
-    "address": "0xce80E4f901D3226e69CC86B4D579f08b33884478",
+    "address": "0x957f9acc56A17611C2b44a1b4f6f45936555d3cB",
     "constructorArgs": [
       "${Burger.address}",
       "${HeroManage.address}",
       "${Hero721.address}"
     ],
     "upgradeArgs": [],
-    "upgradedAddress": "0xce80E4f901D3226e69CC86B4D579f08b33884478",
+    "upgradedAddress": "0x957f9acc56A17611C2b44a1b4f6f45936555d3cB",
     "deployed": true,
     "upgraded": true,
     "verified": true
