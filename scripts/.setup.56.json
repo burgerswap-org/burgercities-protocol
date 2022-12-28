@@ -1244,5 +1244,61 @@
         "args": [
             "25000000000000000000"
         ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "name": "ActivityPunchIn",
+        "functionName": "setupConfig",
+        "contractName": "ActivityPunchIn",
+        "contractAddr": "",
+        "args": [
+            "${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "name": "createActivity-1",
+        "functionName": "createActivity",
+        "contractName": "ActivityPunchIn",
+        "contractAddr": "",
+        "args": [
+            "1672531200",
+            31,
+            31,
+            "10000000000000000000000",
+            "${Burger.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "name": "createActivity-2",
+        "functionName": "createActivity",
+        "contractName": "ActivityPunchIn",
+        "contractAddr": "",
+        "args": [
+            "1675209600",
+            28,
+            28,
+            "10000000000000000000000",
+            "${Burger.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "name": "createActivity-3",
+        "functionName": "createActivity",
+        "contractName": "ActivityPunchIn",
+        "contractAddr": "",
+        "args": [
+            "1677628800",
+            31,
+            31,
+            "10000000000000000000000",
+            "${Burger.address}"
+        ]
     }
 ]
