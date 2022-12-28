@@ -1258,8 +1258,7 @@
     },
     {
         "call": true,
-        "called": false,
-        "name": "createActivity-1",
+        "called": true,
         "functionName": "createActivity",
         "contractName": "ActivityPunchIn",
         "contractAddr": "",
@@ -1273,8 +1272,7 @@
     },
     {
         "call": true,
-        "called": false,
-        "name": "createActivity-2",
+        "called": true,
         "functionName": "createActivity",
         "contractName": "ActivityPunchIn",
         "contractAddr": "",
@@ -1288,8 +1286,7 @@
     },
     {
         "call": true,
-        "called": false,
-        "name": "createActivity-3",
+        "called": true,
         "functionName": "createActivity",
         "contractName": "ActivityPunchIn",
         "contractAddr": "",

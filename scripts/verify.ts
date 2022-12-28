@@ -64,7 +64,7 @@ async function verify() {
         if(data[ele].proxy) {
           data[ele].constructorArgs = [];
         }
-        console.log('verify:addr',ele, addr, data);
+        // console.log('verify:addr',ele, addr, data);
         await hre.run("verify:verify", {
             address: addr,
             constructorArguments: data[ele].constructorArgs,

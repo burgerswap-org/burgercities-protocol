@@ -312,9 +312,9 @@
     "constructorArgs": [
       "0xec2E0F9140bC7f08E421952687f363DA7BAC0862"
     ],
-    "upgradedAddress": "",
+    "upgradedAddress": "0x514ed35bE0D1E88d37aF85bf29a03F84b94eDa9A",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   }
 }
