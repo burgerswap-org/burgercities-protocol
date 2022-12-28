@@ -1247,7 +1247,7 @@
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "name": "ActivityPunchIn",
         "functionName": "setupConfig",
         "contractName": "ActivityPunchIn",

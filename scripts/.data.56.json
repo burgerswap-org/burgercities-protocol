@@ -306,15 +306,15 @@
     "upgraded": true,
     "verified": true
   },
-	"ActivityPunchIn": {
-		"proxy": true,
-		"address": "",
-		"constructorArgs": [
-			"0xec2E0F9140bC7f08E421952687f363DA7BAC0862"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
+  "ActivityPunchIn": {
+    "proxy": true,
+    "address": "0x86EeaA6EeCfE41d2CB532cFd2D5BbF602C397d08",
+    "constructorArgs": [
+      "0xec2E0F9140bC7f08E421952687f363DA7BAC0862"
+    ],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  }
 }

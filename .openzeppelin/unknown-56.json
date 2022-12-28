@@ -9,6 +9,11 @@
       "address": "0x6FFB703653FeC0d340406e8acC69a2e01d2D09B4",
       "txHash": "0xc3105a930f15a18d4f054527ed1bb0991ec4f331764442a0c0e423e86c39d3de",
       "kind": "transparent"
+    },
+    {
+      "address": "0x86EeaA6EeCfE41d2CB532cFd2D5BbF602C397d08",
+      "txHash": "0x71ff3e002fe87e4481243795e3b0a542ecd97daa233bd8db089774e1895483f5",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -126,6 +131,168 @@
           "t_uint64": {
             "label": "uint64",
             "numberOfBytes": "8"
+          }
+        }
+      }
+    },
+    "122386242db5cd4eb22299d25306f3271546f1cfa3d39d818ebfce2c10ddcab7": {
+      "address": "0x514ed35bE0D1E88d37aF85bf29a03F84b94eDa9A",
+      "txHash": "0xbc21d7139221e356c8739f70be72a85eb766e239949a1a7c50c4abf85c256433",
+      "layout": {
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "contracts/lib/openzeppelin/contracts/proxy/utils/Initializable.sol:39"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "contracts/lib/openzeppelin/contracts/proxy/utils/Initializable.sol:44"
+          },
+          {
+            "label": "config",
+            "offset": 2,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Configable",
+            "src": "contracts/Configable.sol:10"
+          },
+          {
+            "label": "owner",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Configable",
+            "src": "contracts/Configable.sol:11"
+          },
+          {
+            "label": "_treasury",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_address",
+            "contract": "ActivityPunchIn",
+            "src": "contracts/punchIn/ActivityPunchIn.sol:27"
+          },
+          {
+            "label": "_activities",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_struct(Activity)27487_storage)dyn_storage",
+            "contract": "ActivityPunchIn",
+            "src": "contracts/punchIn/ActivityPunchIn.sol:28"
+          },
+          {
+            "label": "_activity2UserInfoes",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_uint256,t_mapping(t_address,t_struct(UserInfo)27494_storage))",
+            "contract": "ActivityPunchIn",
+            "src": "contracts/punchIn/ActivityPunchIn.sol:29"
+          },
+          {
+            "label": "_activity2SuccessAmount",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "ActivityPunchIn",
+            "src": "contracts/punchIn/ActivityPunchIn.sol:30"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_struct(Activity)27487_storage)dyn_storage": {
+            "label": "struct ActivityPunchIn.Activity[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_struct(UserInfo)27494_storage)": {
+            "label": "mapping(address => struct ActivityPunchIn.UserInfo)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_address,t_struct(UserInfo)27494_storage))": {
+            "label": "mapping(uint256 => mapping(address => struct ActivityPunchIn.UserInfo))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Activity)27487_storage": {
+            "label": "struct ActivityPunchIn.Activity",
+            "members": [
+              {
+                "label": "startTimestamp",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "endTimestamp",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "limitAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "rewardAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "rewardToken",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "4"
+              }
+            ],
+            "numberOfBytes": "160"
+          },
+          "t_struct(UserInfo)27494_storage": {
+            "label": "struct ActivityPunchIn.UserInfo",
+            "members": [
+              {
+                "label": "lastTimestamp",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "amount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "isClaimed",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
           }
         }
       }
