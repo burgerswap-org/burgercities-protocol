@@ -93,7 +93,7 @@
        accounts: [data.PrivateKey]
      },
      bscmainnet: {
-       url: `https://bsc-dataseed.binance.org/`,
+       url: `https://rpc.ankr.com/bsc`,
        accounts: [data.PrivateKey]
      },
      hecotestnet: {
