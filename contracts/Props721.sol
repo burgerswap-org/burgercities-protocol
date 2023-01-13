@@ -34,17 +34,17 @@ contract Props721 is ERC721, Configable {
         s_suffix = suffix;
     }
 
-    function setBaseURI(string memory baseURI, string memory suffix) external onlyOwner {
+    function setBaseURI(string memory baseURI, string memory suffix) external onlyDev {
         s_baseURI = baseURI;
         s_suffix = suffix;
     }
 
-    function setConsumeAmount(uint256 consumeMintAmount, uint256 consumeBurnAmount) external onlyOwner {
+    function setConsumeAmount(uint256 consumeMintAmount, uint256 consumeBurnAmount) external onlyDev {
         s_consumeMintAmount = consumeMintAmount;
         s_consumeBurnAmount = consumeBurnAmount;
     }
 
-    function setSigner(address signer) external onlyOwner {
+    function setSigner(address signer) external onlyDev {
         require(s_signer != signer, 'Invalid arg no change');
         s_signer = signer;
     }
