@@ -7,7 +7,7 @@ import "./lib/openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./lib/openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "./lib/Signature.sol";
 
-contract Prop721 is ERC721, Ownable {
+contract Props721 is ERC721, Ownable {
     address immutable b_consumeToken;
 
     address public s_signer;
@@ -27,7 +27,7 @@ contract Prop721 is ERC721, Ownable {
         address consumeToken, 
         uint256 consumeAmount
     ) ERC721(name, symbol) {
-        require(consumeToken != address(0), 'Invalid arg zero address');
+        require(consumeToken != address(0) && signer != address(0), 'Invalid arg zero address');
         b_consumeToken = consumeToken;
         s_signer = signer;
         s_baseURI = baseURI;
