@@ -1,36 +1,43 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./lib/openzeppelin/contracts/access/Ownable.sol";
 import "./lib/openzeppelin/contracts/utils/Strings.sol";
-import "./lib/openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "./lib/openzeppelin/contracts/access/Ownable.sol";
 import "./lib/openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "./lib/openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "./lib/openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "./lib/Signature.sol";
 
-contract Prop721 is ERC721Enumerable, Ownable, ReentrancyGuard {
-    using Strings for uint256;
-
+contract Prop721 is ERC721, Ownable {
     address immutable b_consumeToken;
+
+    address public s_signer;
+    uint256 public s_currentTokenId;
     uint256 public s_consumeAmount;
     string public s_baseURI;
+    string public s_suffix;
 
-    mapping(uint256 => string) private s_tokenURIs;
+    event Create(address indexed user, uint256 indexed tokenId, uint256 seed);
 
     constructor(
         string memory name,
         string memory symbol,
         string memory baseURI,
+        string memory suffix,
+        address signer,
         address consumeToken, 
         uint256 consumeAmount
     ) ERC721(name, symbol) {
         require(consumeToken != address(0), 'Invalid arg zero address');
         b_consumeToken = consumeToken;
+        s_signer = signer;
         s_baseURI = baseURI;
+        s_suffix = suffix;
         s_consumeAmount = consumeAmount;
     }
 
-    function setBaseURI(string memory baseURI) external onlyOwner {
+    function setBaseURI(string memory baseURI, string memory suffix) external onlyOwner {
         s_baseURI = baseURI;
+        s_suffix = suffix;
     }
 
     function setConsumeAmount(uint256 consumeAmount) external onlyOwner {
@@ -38,16 +45,28 @@ contract Prop721 is ERC721Enumerable, Ownable, ReentrancyGuard {
         s_consumeAmount = consumeAmount;
     }
 
+    function setSigner(address signer) external onlyOwner {
+        require(s_signer != signer, 'Invalid arg no change');
+        s_signer = signer;
+    }
+
     function withdraw(address token, address to, uint256 amount) external onlyOwner {
         require(IERC20(token).balanceOf(address(this))  >= amount, 'Insufficient balance');
         IERC20(token).transfer(to, amount);
     }
 
-    function mint(address to, string memory _tokenURI) external {
+    function mint(address account, uint256 expiryTime, uint256 seed, bytes memory signature) external {
+        require(expiryTime > block.timestamp, "Invalid arg seed");
+        require(account == msg.sender, "Invalid caller address");
+        require(verify(msg.sender, expiryTime, seed, signature), "Invalid signature");
+        
         IERC20(b_consumeToken).transferFrom(msg.sender, address(this), s_consumeAmount);
-        uint256 tokenId = totalSupply();
-        _mint(to, tokenId);
-        _setTokenURI(tokenId, _tokenURI);
+        uint256 tokenId = s_currentTokenId;
+        _mint(msg.sender, tokenId);
+
+        s_currentTokenId += 1;
+
+        emit Create(msg.sender, tokenId, seed);
     }
 
     function burn(uint256 tokenId) external {
@@ -55,34 +74,16 @@ contract Prop721 is ERC721Enumerable, Ownable, ReentrancyGuard {
         _burn(tokenId);
     }
 
-    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
-        require(_exists(tokenId), "Invalid tokenId");
-
-        string memory _tokenURI = s_tokenURIs[tokenId];
-        string memory base = _baseURI();
-
-        if (bytes(base).length == 0) {
-            return _tokenURI;
-        }
-
-        if (bytes(_tokenURI).length > 0) {
-            return string(abi.encodePacked(base, _tokenURI));
-        }
-
-        return super.tokenURI(tokenId);
+    function verify(address account, uint256 expiryTime, uint256 seed, bytes memory signatures) public view returns (bool) {
+        bytes32 message = keccak256(abi.encodePacked(account, expiryTime, address(this), seed));
+        bytes32 hash = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", message));
+        address[] memory sign_list = Signature.recoverAddresses(hash, signatures);
+        return sign_list[0] == s_signer;
     }
 
-    function _setTokenURI(uint256 tokenId, string memory _tokenURI) internal virtual {
+    function tokenURI(uint256 tokenId) public view override returns(string memory) {
         require(_exists(tokenId), "Invalid tokenId");
-        s_tokenURIs[tokenId] = _tokenURI;
-    }
-
-    function _burn(uint256 tokenId) internal virtual override {
-        super._burn(tokenId);
-
-        if (bytes(s_tokenURIs[tokenId]).length != 0) {
-            delete s_tokenURIs[tokenId];
-        }
+        return string(abi.encodePacked(s_baseURI, Strings.toString(tokenId), s_suffix));
     }
 
     function _baseURI() internal view override returns (string memory) {
