@@ -12,7 +12,8 @@ contract Props721 is ERC721, Ownable {
 
     address public s_signer;
     uint256 public s_currentTokenId;
-    uint256 public s_consumeAmount;
+    uint256 public s_consumeMintAmount;
+    uint256 public s_consumeBurnAmount;
     string public s_baseURI;
     string public s_suffix;
 
@@ -24,15 +25,13 @@ contract Props721 is ERC721, Ownable {
         string memory baseURI,
         string memory suffix,
         address signer,
-        address consumeToken, 
-        uint256 consumeAmount
+        address consumeToken
     ) ERC721(name, symbol) {
         require(consumeToken != address(0) && signer != address(0), 'Invalid arg zero address');
         b_consumeToken = consumeToken;
         s_signer = signer;
         s_baseURI = baseURI;
         s_suffix = suffix;
-        s_consumeAmount = consumeAmount;
     }
 
     function setBaseURI(string memory baseURI, string memory suffix) external onlyOwner {
@@ -40,9 +39,9 @@ contract Props721 is ERC721, Ownable {
         s_suffix = suffix;
     }
 
-    function setConsumeAmount(uint256 consumeAmount) external onlyOwner {
-        require(s_consumeAmount != consumeAmount, 'Invalid arg no change');
-        s_consumeAmount = consumeAmount;
+    function setConsumeAmount(uint256 consumeMintAmount, uint256 consumeBurnAmount) external onlyOwner {
+        s_consumeMintAmount = consumeMintAmount;
+        s_consumeBurnAmount = consumeBurnAmount;
     }
 
     function setSigner(address signer) external onlyOwner {
@@ -60,7 +59,9 @@ contract Props721 is ERC721, Ownable {
         require(account == msg.sender, "Invalid caller address");
         require(verify(msg.sender, expiryTime, seed, signature), "Invalid signature");
         
-        IERC20(b_consumeToken).transferFrom(msg.sender, address(this), s_consumeAmount);
+        if (s_consumeMintAmount > 0) {
+            IERC20(b_consumeToken).transferFrom(msg.sender, address(this), s_consumeMintAmount);
+        }
         uint256 tokenId = s_currentTokenId;
         _mint(msg.sender, tokenId);
 
@@ -70,7 +71,9 @@ contract Props721 is ERC721, Ownable {
     }
 
     function burn(uint256 tokenId) external {
-        IERC20(b_consumeToken).transferFrom(msg.sender, address(this), s_consumeAmount);
+        if (s_consumeBurnAmount > 0) {
+            IERC20(b_consumeToken).transferFrom(msg.sender, address(this), s_consumeBurnAmount);
+        }
         _burn(tokenId);
     }
 
