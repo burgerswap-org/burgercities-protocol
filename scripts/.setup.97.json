@@ -1296,5 +1296,28 @@
             "100000000000000000000",
             "0xF2ED382e6A3439Be124813842200cf6702fD6ecA"
         ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "name": "Props721",
+        "functionName": "setupConfig",
+        "contractName": "Props721",
+        "contractAddr": "",
+        "args": [
+            "${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "name": "Props721",
+        "functionName": "setConsumeAmount",
+        "contractName": "Props721",
+        "contractAddr": "",
+        "args": [
+            "1000000000000000000",
+            "1000000000000000000"
+        ]
     }
 ]

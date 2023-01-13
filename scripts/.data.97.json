@@ -325,5 +325,21 @@
     "deployed": true,
     "upgraded": true,
     "verified": false
-  }
+  },
+  "Props721": {
+		"proxy": false,
+		"address": "",
+		"constructorArgs": [
+			"TestProps721",
+			"TPP721",
+			"https://test/",
+			".json",
+			"${signerWallet.address}",
+			"${Burger.address}"
+		],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	}
 }
