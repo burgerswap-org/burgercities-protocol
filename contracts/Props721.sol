@@ -2,16 +2,16 @@
 pragma solidity ^0.8.0;
 
 import "./lib/openzeppelin/contracts/utils/Strings.sol";
-import "./lib/openzeppelin/contracts/access/Ownable.sol";
 import "./lib/openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./lib/openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "./lib/Signature.sol";
+import "./Configable.sol";
 
-contract Props721 is ERC721, Ownable {
+contract Props721 is ERC721, Configable {
     address immutable b_consumeToken;
 
     address public s_signer;
-    uint256 public s_currentTokenId;
+    uint256 public s_currentTokenId = 1;
     uint256 public s_consumeMintAmount;
     uint256 public s_consumeBurnAmount;
     string public s_baseURI;
