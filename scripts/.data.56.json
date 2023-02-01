@@ -318,7 +318,8 @@
     "upgraded": true,
     "verified": true
   },
-  "Hero721_v2": {
+	"Hero721_v2": {
+		"contractName": "Hero721V2",
 		"address": "",
 		"constructorArgs": [],
 		"upgradedAddress": "",
@@ -327,6 +328,7 @@
 		"verified": false
 	},
 	"HeroBox_v2": {
+		"contractName": "HeroBoxV2",
 		"address": "",
 		"constructorArgs": [
 			"${Hero721_v2.address}",
@@ -338,6 +340,7 @@
 		"verified": false
 	},
 	"HeroManage_v2": {
+		"contractName": "HeroManageV2",
 		"address": "",
 		"constructorArgs": [
 			"${Hero721_v2.address}",
@@ -350,6 +353,7 @@
 		"verified": false
 	},
 	"NFTLease_v2": {
+		"contractName": "NFTLeaseV2",
 		"address": "",
 		"constructorArgs": [
 			"${Burger.address}",

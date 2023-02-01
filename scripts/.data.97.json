@@ -327,22 +327,23 @@
     "verified": false
   },
   "Props721": {
-		"proxy": false,
-		"address": "",
-		"constructorArgs": [
-			"TestProps721",
-			"TPP721",
-			"https://test/",
-			".json",
-			"${signerWallet.address}",
-			"${Burger.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-  "Hero721_v2": {
+    "proxy": false,
+    "address": "0xf8E544939a1C521A64D69A3458c74D708CB0C53d",
+    "constructorArgs": [
+      "TestProps721",
+      "TPP721",
+      "https://test/",
+      ".json",
+      "${signerWallet.address}",
+      "${Burger.address}"
+    ],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  },
+	"Hero721_v2": {
+		"contractName": "Hero721V2",
 		"address": "",
 		"constructorArgs": [],
 		"upgradedAddress": "",
@@ -351,6 +352,7 @@
 		"verified": false
 	},
 	"HeroBox_v2": {
+		"contractName": "HeroBoxV2",
 		"address": "",
 		"constructorArgs": [
 			"${Hero721_v2.address}",
@@ -362,6 +364,7 @@
 		"verified": false
 	},
 	"HeroManage_v2": {
+		"contractName": "HeroManageV2",
 		"address": "",
 		"constructorArgs": [
 			"${Hero721_v2.address}",
@@ -374,6 +377,7 @@
 		"verified": false
 	},
 	"NFTLease_v2": {
+		"contractName": "NFTLeaseV2",
 		"address": "",
 		"constructorArgs": [
 			"${Burger.address}",

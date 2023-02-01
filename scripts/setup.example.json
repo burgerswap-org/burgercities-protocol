@@ -1276,13 +1276,13 @@
             "1000000000000000000"
         ]
     },
-    
 
     {
         "call": true,
         "called": false,
+        "name": "Hero721_v2",
         "functionName": "setWhiteLists",
-        "contractName": "Hero721_v2",
+        "contractName": "Hero721V2",
         "contractAddr": "",
         "args": [
 			["${HeroBox_v2.address}", "${HeroManage_v2.address}", "${HeroMigration.address}"],
@@ -1292,8 +1292,9 @@
     {
         "call": true,
         "called": false,
+        "name": "Hero721_v2",
         "functionName": "setBaseTokenURI",
-        "contractName": "Hero721_v2",
+        "contractName": "Hero721V2",
         "contractAddr": "",
         "args": [
 			"https://testmeta.burgercities.org/hero/",
@@ -1303,8 +1304,9 @@
     {
         "call": true,
         "called": false,
+        "name": "HeroBox_v2",
         "functionName": "setupConfig",
-        "contractName": "HeroBox_v2",
+        "contractName": "HeroBoxV2",
         "contractAddr": "",
         "args": [
 			"${BurgerCityConfig.address}"
@@ -1313,8 +1315,9 @@
     {
         "call": true,
         "called": false,
+        "name": "HeroManage_v2",
         "functionName": "setupConfig",
-        "contractName": "HeroManage_v2",
+        "contractName": "HeroManageV2",
         "contractAddr": "",
         "args": [
 			"${BurgerCityConfig.address}"
@@ -1323,8 +1326,9 @@
     {
         "call": true,
         "called": false,
+        "name": "NFTLease_v2",
         "functionName": "setupConfig",
-        "contractName": "NFTLease_v2",
+        "contractName": "NFTLeaseV2",
         "contractAddr": "",
         "args": [
 			"${BurgerCityConfig.address}"
@@ -1343,8 +1347,9 @@
     {
         "call": true,
         "called": false,
+        "name": "HeroBox_v2",
         "functionName": "setCreationTokenCount",
-        "contractName": "HeroBox_v2",
+        "contractName": "HeroBoxV2",
         "contractAddr": "",
         "args": [
 			"1"
@@ -1353,8 +1358,9 @@
     {
         "call": true,
         "called": false,
+        "name": "HeroBox_v2",
         "functionName": "setCreationLimit",
-        "contractName": "HeroBox_v2",
+        "contractName": "HeroBoxV2",
         "contractAddr": "",
         "args": [
 			"1000"
@@ -1363,8 +1369,9 @@
     {
         "call": true,
         "called": false,
+        "name": "HeroManage_v2",
         "functionName": "setNFTLease",
-        "contractName": "HeroManage_v2",
+        "contractName": "HeroManageV2",
         "contractAddr": "",
         "args": [
 			"${NFTLease_v2.address}"
@@ -1373,8 +1380,9 @@
     {
         "call": true,
         "called": false,
+        "name": "HeroManage_v2",
         "functionName": "setDescendantsTokenCount",
-        "contractName": "HeroManage_v2",
+        "contractName": "HeroManageV2",
         "contractAddr": "",
         "args": [
 			"1"
@@ -1383,11 +1391,22 @@
     {
         "call": true,
         "called": false,
+        "name": "NFTLease_v2",
         "functionName": "setPublishCount",
-        "contractName": "NFTLease_v2",
+        "contractName": "NFTLeaseV2",
         "contractAddr": "",
         "args": [
 			"100000"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "addWhitelistNFT",
+        "contractName": "NFTSwap",
+        "contractAddr": "",
+        "args": [
+			["${Hero721_v2.address}"]
         ]
     }
 ]
