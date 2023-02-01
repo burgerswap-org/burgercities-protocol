@@ -28,6 +28,7 @@ contract Props721 is ERC721, Configable {
         address consumeToken
     ) ERC721(name, symbol) {
         require(consumeToken != address(0) && signer != address(0), 'Invalid arg zero address');
+        owner = msg.sender;
         b_consumeToken = consumeToken;
         s_signer = signer;
         s_baseURI = baseURI;

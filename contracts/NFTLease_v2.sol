@@ -15,7 +15,7 @@ import "./Common.sol";
 import "./Configable.sol";
 
 
-contract NFTLease is Configable, IERC721Receiver {
+contract NFTLeaseV2 is Configable, IERC721Receiver {
 
     using EnumerableSet for EnumerableSet.UintSet;
 

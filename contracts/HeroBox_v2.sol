@@ -7,7 +7,7 @@ import "./lib/openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "./Common.sol";
 import "./Configable.sol";
 
-contract HeroBox is ReentrancyGuard, Configable {
+contract HeroBoxV2 is ReentrancyGuard, Configable {
 
     IHero721V2 public hero721;
     IERC20 public usdt20;

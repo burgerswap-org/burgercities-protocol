@@ -9,7 +9,7 @@ import "./Common.sol";
 import "./Configable.sol";
 import "./lib/Signature.sol";
 
-contract HeroManage is IHeroManage, ReentrancyGuard, Configable {
+contract HeroManageV2 is IHeroManage, ReentrancyGuard, Configable {
 
     using SafeCast for uint;
 
