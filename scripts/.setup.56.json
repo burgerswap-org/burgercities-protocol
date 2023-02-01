@@ -1297,5 +1297,119 @@
             "10000000000000000000000",
             "${Burger.address}"
         ]
+    },
+
+
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setWhiteLists",
+        "contractName": "Hero721_v2",
+        "contractAddr": "",
+        "args": [
+			["${HeroBox_v2.address}", "${HeroManage_v2.address}", "${HeroMigration.address}"],
+            [true, true, true]
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setBaseTokenURI",
+        "contractName": "Hero721_v2",
+        "contractAddr": "",
+        "args": [
+			"https://testmeta.burgercities.org/hero/",
+            ".json"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setupConfig",
+        "contractName": "HeroBox_v2",
+        "contractAddr": "",
+        "args": [
+			"${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setupConfig",
+        "contractName": "HeroManage_v2",
+        "contractAddr": "",
+        "args": [
+			"${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setupConfig",
+        "contractName": "NFTLease_v2",
+        "contractAddr": "",
+        "args": [
+			"${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setupConfig",
+        "contractName": "HeroMigration",
+        "contractAddr": "",
+        "args": [
+			"${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setCreationTokenCount",
+        "contractName": "HeroBox_v2",
+        "contractAddr": "",
+        "args": [
+			"1400"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setCreationLimit",
+        "contractName": "HeroBox_v2",
+        "contractAddr": "",
+        "args": [
+			"1000"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setNFTLease",
+        "contractName": "HeroManage_v2",
+        "contractAddr": "",
+        "args": [
+			"${NFTLease_v2.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setDescendantsTokenCount",
+        "contractName": "HeroManage_v2",
+        "contractAddr": "",
+        "args": [
+			"13426"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setPublishCount",
+        "contractName": "NFTLease_v2",
+        "contractAddr": "",
+        "args": [
+			"100000"
+        ]
     }
 ]

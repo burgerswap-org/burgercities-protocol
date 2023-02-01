@@ -341,5 +341,61 @@
 		"deployed": false,
 		"upgraded": false,
 		"verified": false
+	},
+  "Hero721_v2": {
+		"address": "",
+		"constructorArgs": [],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"HeroBox_v2": {
+		"address": "",
+		"constructorArgs": [
+			"${Hero721_v2.address}",
+			"${USDT.address}"
+		],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"HeroManage_v2": {
+		"address": "",
+		"constructorArgs": [
+			"${Hero721_v2.address}",
+			"${Burger.address}",
+			"${signerWallet.address}"
+		],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"NFTLease_v2": {
+		"address": "",
+		"constructorArgs": [
+			"${Burger.address}",
+			"${HeroManage_v2.address}",
+			"${Hero721_v2.address}"
+		],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"HeroMigration": {
+		"address": "",
+		"constructorArgs": [
+			"${Hero721.address}",
+			"${Hero721_v2.address}",
+			"${Burger.address}",
+			"${signerWallet.address}"
+		],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
 	}
 }
