@@ -1453,6 +1453,17 @@
     {
         "call": true,
         "called": true,
+        "name": "NFTLease_v2",
+        "functionName": "setHeroManage",
+        "contractName": "NFTLeaseV2",
+        "contractAddr": "",
+        "args": [
+            "${HeroManage_v2.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
         "functionName": "addWhitelistNFT",
         "contractName": "NFTSwap",
         "contractAddr": "",

@@ -365,7 +365,7 @@
   },
   "HeroManage_v2": {
     "contractName": "HeroManageV2",
-    "address": "0xCfC625D8B20CFd0430b59fd9e6Fec022905c4B9e",
+    "address": "0x4F8A0d310b09752E44D92F3fCa0DFFdb25f81Ca7",
     "constructorArgs": [
       "${Hero721_v2.address}",
       "${Burger.address}",
