@@ -437,7 +437,7 @@ contract HeroManageV2 is IHeroManage, ReentrancyGuard, Configable {
         meta.p1 = 0;
         meta.p2 = 0;
 
-        // meta.morale = randMorale(meta.d, _seed);
+        meta.morale = randMorale(meta.d, _seed);
 
         HeroMetaDataExt[] memory _exts;
 
