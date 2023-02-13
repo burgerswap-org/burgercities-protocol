@@ -360,7 +360,7 @@ contract BurgerCityToken is ERC20Token, Initializable {
     function _mint(address to, uint value) internal returns (bool) {
         balanceOf[to] = balanceOf[to].add(value);
         totalSupply = totalSupply.add(value);
-        emit Transfer(address(this), to, value);
+        emit Transfer(address(0), to, value);
         emit Mint(msg.sender, to, value);
         return true;
     }
