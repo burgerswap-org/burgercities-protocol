@@ -1298,137 +1298,146 @@
             "${Burger.address}"
         ]
     },
-
     {
         "call": true,
-        "called": false,
+        "called": true,
         "name": "Hero721_v2",
         "functionName": "setWhiteLists",
         "contractName": "Hero721V2",
         "contractAddr": "",
         "args": [
-			["${HeroBox_v2.address}", "${HeroManage_v2.address}", "${HeroMigration.address}"],
-            [true, true, true]
+            [
+                "${HeroBox_v2.address}",
+                "${HeroManage_v2.address}",
+                "${HeroMigration.address}"
+            ],
+            [
+                true,
+                true,
+                true
+            ]
         ]
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "name": "Hero721_v2",
         "functionName": "setBaseTokenURI",
         "contractName": "Hero721V2",
         "contractAddr": "",
         "args": [
-			"https://testmeta.burgercities.org/hero/",
+            "https://meta.burgercities.org/hero/",
             ".json"
         ]
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "name": "HeroBox_v2",
         "functionName": "setupConfig",
         "contractName": "HeroBoxV2",
         "contractAddr": "",
         "args": [
-			"${BurgerCityConfig.address}"
+            "${BurgerCityConfig.address}"
         ]
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "name": "HeroManage_v2",
         "functionName": "setupConfig",
         "contractName": "HeroManageV2",
         "contractAddr": "",
         "args": [
-			"${BurgerCityConfig.address}"
+            "${BurgerCityConfig.address}"
         ]
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "name": "NFTLease_v2",
         "functionName": "setupConfig",
         "contractName": "NFTLeaseV2",
         "contractAddr": "",
         "args": [
-			"${BurgerCityConfig.address}"
+            "${BurgerCityConfig.address}"
         ]
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "functionName": "setupConfig",
         "contractName": "HeroMigration",
         "contractAddr": "",
         "args": [
-			"${BurgerCityConfig.address}"
+            "${BurgerCityConfig.address}"
         ]
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "name": "HeroBox_v2",
         "functionName": "setCreationTokenCount",
         "contractName": "HeroBoxV2",
         "contractAddr": "",
         "args": [
-			"1400"
+            "1400"
         ]
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "name": "HeroBox_v2",
         "functionName": "setCreationLimit",
         "contractName": "HeroBoxV2",
         "contractAddr": "",
         "args": [
-			"1000"
+            "1000"
         ]
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "name": "HeroManage_v2",
         "functionName": "setNFTLease",
         "contractName": "HeroManageV2",
         "contractAddr": "",
         "args": [
-			"${NFTLease_v2.address}"
+            "${NFTLease_v2.address}"
         ]
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "name": "HeroManage_v2",
         "functionName": "setDescendantsTokenCount",
         "contractName": "HeroManageV2",
         "contractAddr": "",
         "args": [
-			"13426"
+            "13426"
         ]
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "name": "NFTLease_v2",
         "functionName": "setPublishCount",
         "contractName": "NFTLeaseV2",
         "contractAddr": "",
         "args": [
-			"100000"
+            "100000"
         ]
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "functionName": "addWhitelistNFT",
         "contractName": "NFTSwap",
         "contractAddr": "",
         "args": [
-			["${Hero721_v2.address}"]
+            [
+                "${Hero721_v2.address}"
+            ]
         ]
     }
 ]

@@ -346,7 +346,7 @@
     "contractName": "Hero721V2",
     "address": "0x71DA06f0527956BEDFaED398bB00Cf2916CA2b71",
     "constructorArgs": [],
-    "upgradedAddress": "",
+    "upgradedAddress": "0x71DA06f0527956BEDFaED398bB00Cf2916CA2b71",
     "deployed": true,
     "upgraded": true,
     "verified": false
@@ -358,7 +358,7 @@
       "${Hero721_v2.address}",
       "${USDT.address}"
     ],
-    "upgradedAddress": "",
+    "upgradedAddress": "0xd504e9c8350dD1f670f46171EdfFf33a1344c044",
     "deployed": true,
     "upgraded": true,
     "verified": false
@@ -371,7 +371,7 @@
       "${Burger.address}",
       "${signerWallet.address}"
     ],
-    "upgradedAddress": "",
+    "upgradedAddress": "0x4F8A0d310b09752E44D92F3fCa0DFFdb25f81Ca7",
     "deployed": true,
     "upgraded": true,
     "verified": false
@@ -384,7 +384,7 @@
       "${HeroManage_v2.address}",
       "${Hero721_v2.address}"
     ],
-    "upgradedAddress": "",
+    "upgradedAddress": "0xf6AA4c92b7ea1bdd72809E52F1A568DA6e22fe04",
     "deployed": true,
     "upgraded": true,
     "verified": false
@@ -397,7 +397,7 @@
       "${Burger.address}",
       "${signerWallet.address}"
     ],
-    "upgradedAddress": "",
+    "upgradedAddress": "0x490ECE4DF1A5532e063c6106dc4fA4136D7D4383",
     "deployed": true,
     "upgraded": true,
     "verified": false
