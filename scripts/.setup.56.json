@@ -1439,5 +1439,47 @@
                 "${Hero721_v2.address}"
             ]
         ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "createActivity",
+        "contractName": "ActivityPunchIn",
+        "contractAddr": "",
+        "args": [
+            "1680307200",
+            30,
+            30,
+            "10000000000000000000000",
+            "${Burger.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "createActivity",
+        "contractName": "ActivityPunchIn",
+        "contractAddr": "",
+        "args": [
+            "1682899200",
+            31,
+            31,
+            "10000000000000000000000",
+            "${Burger.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "createActivity",
+        "contractName": "ActivityPunchIn",
+        "contractAddr": "",
+        "args": [
+            "1685577600",
+            3,
+            3,
+            "10000000000000000000000",
+            "${Burger.address}"
+        ]
     }
 ]
