@@ -1442,7 +1442,7 @@
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "functionName": "createActivity",
         "contractName": "ActivityPunchIn",
         "contractAddr": "",
@@ -1456,7 +1456,7 @@
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "functionName": "createActivity",
         "contractName": "ActivityPunchIn",
         "contractAddr": "",
@@ -1470,14 +1470,14 @@
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "functionName": "createActivity",
         "contractName": "ActivityPunchIn",
         "contractAddr": "",
         "args": [
             "1685577600",
-            3,
-            3,
+            30,
+            30,
             "10000000000000000000000",
             "${Burger.address}"
         ]
