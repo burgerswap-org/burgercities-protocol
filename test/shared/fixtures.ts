@@ -9,6 +9,7 @@ import { HeroExchange } from '../../typechain/HeroExchange'
 import { HeroAirdrop } from '../../typechain/HeroAirdrop'
 import { ActivityPunchIn } from '../../typechain/ActivityPunchIn'
 import { ChristmasPunchIn } from '../../typechain/ChristmasPunchIn'
+import { Props721 } from '../../typechain/Props721'
 import { Fixture } from 'ethereum-waffle'
 
 async function testERC20(): Promise<TestERC20> {
@@ -191,6 +192,55 @@ export const signChristmasPunchIn = async function (
 ): Promise<string> {
     let types = ['address', 'address']
     let values = [user, addr]
+    let message = ethers.utils.solidityKeccak256(types, values)
+    let s = await network.provider.send('eth_sign', [wallet.address, message])
+    return s;
+}
+
+interface Props721Fixture {
+    consumeToken: TestERC20,
+    props721: Props721
+}
+
+export const props721Fixture: Fixture<Props721Fixture> = async function ([wallet]: Wallet[]): Promise<Props721Fixture> {
+    let consumeToken = await testERC20()
+
+    let factory = await ethers.getContractFactory('Props721')
+    let props721 = (await factory.deploy(
+        "Props721 NFT",
+        "PNFT",
+        "https://test/",
+        ".json",
+        wallet.address,
+        consumeToken.address
+    )) as Props721
+
+    return { consumeToken, props721 }
+}
+
+export const signPropsMint = async function (
+    wallet: Wallet,
+    user: string,
+    expiryTime: string,
+    seed: string,
+    consumeAmount: string,
+    addr: string
+): Promise<string> {
+    let types = ['address', 'uint256', "uint256", "uint256", "address"]
+    let values = [user, expiryTime, seed, consumeAmount, addr]
+    let message = ethers.utils.solidityKeccak256(types, values)
+    let s = await network.provider.send('eth_sign', [wallet.address, message])
+    return s;
+}
+
+export const signPropsBurn = async function (
+    wallet: Wallet,
+    tokenId: string,
+    consumeAmount: string,
+    addr: string
+): Promise<string> {
+    let types = ['uint256', "uint256", 'address']
+    let values = [tokenId, consumeAmount, addr]
     let message = ethers.utils.solidityKeccak256(types, values)
     let s = await network.provider.send('eth_sign', [wallet.address, message])
     return s;
