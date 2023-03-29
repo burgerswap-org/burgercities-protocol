@@ -212,7 +212,7 @@
 			"https://test/",
 			".json",
 			"${signerWallet.address}",
-			"${Burger.address}"
+			"${USDT.address}"
 		],
 		"upgradedAddress": "",
 		"deployed": false,

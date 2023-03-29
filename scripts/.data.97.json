@@ -328,14 +328,14 @@
   },
   "Props721": {
     "proxy": false,
-    "address": "0x86800ccF3518d6109ef35b05014E892a092815AD",
+    "address": "0x182EC90A660c0Ec1AB7415256202473660DB9d6a",
     "constructorArgs": [
       "TestProps721",
       "TPP721",
       "https://test/",
       ".json",
       "${signerWallet.address}",
-      "${Burger.address}"
+      "${USDT.address}"
     ],
     "upgradedAddress": "",
     "deployed": true,
