@@ -36,37 +36,58 @@ describe('Props721', async () => {
   describe('#mint', async () => {
     it('success', async () => {
       let expiryTime = nowTime.add(86400)
-      let seed = BigNumber.from(111)
+      let orderId = BigNumber.from(111)
+      let propId = BigNumber.from(222)
       let signature = await signPropsMint(
         wallet,
         otherA.address,
         expiryTime.toString(),
-        seed.toString(),
+        orderId.toString(),
+        propId.toString(),
         mintConsumeAmount.toString(),
         props721.address
       )
       let balanceBefore = await consumeToken.balanceOf(otherA.address)
-      await props721.connect(otherA).mint(expiryTime, seed, mintConsumeAmount, signature)
+      await props721.connect(otherA).mint(expiryTime, orderId, propId, mintConsumeAmount, signature)
       let balanceAfter = await consumeToken.balanceOf(otherA.address)
 
       expect(await props721.ownerOf(1)).to.eq(otherA.address)
       expect(balanceBefore.sub(balanceAfter)).to.eq(mintConsumeAmount)
+    })
+
+    it('fialed for reusing orderId', async () => {
+      let expiryTime = nowTime.add(86400)
+      let orderId = BigNumber.from(111)
+      let propId = BigNumber.from(222)
+      let signature = await signPropsMint(
+        wallet,
+        otherA.address,
+        expiryTime.toString(),
+        orderId.toString(),
+        propId.toString(),
+        mintConsumeAmount.toString(),
+        props721.address
+      )
+      await props721.connect(otherA).mint(expiryTime, orderId, propId, mintConsumeAmount, signature)
+      await expect(props721.connect(otherA).mint(expiryTime, orderId, propId, mintConsumeAmount, signature)).to.revertedWith("OrderId already exists")
     })
   })
 
   describe('#burn', async () => {
     it('success', async () => {
       let expiryTime = nowTime.add(86400)
-      let seed = BigNumber.from(111)
+      let orderId = BigNumber.from(111)
+      let propId = BigNumber.from(222)
       let signature = await signPropsMint(
         wallet,
         otherA.address,
         expiryTime.toString(),
-        seed.toString(),
+        orderId.toString(),
+        propId.toString(),
         mintConsumeAmount.toString(),
         props721.address
       )
-      await props721.connect(otherA).mint(expiryTime, seed, mintConsumeAmount, signature)
+      await props721.connect(otherA).mint(expiryTime, orderId, propId, mintConsumeAmount, signature)
       let tokenId = BigNumber.from(1)
       signature = await signPropsBurn(
         wallet,

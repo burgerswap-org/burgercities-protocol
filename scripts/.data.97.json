@@ -328,7 +328,7 @@
   },
   "Props721": {
     "proxy": false,
-    "address": "0x182EC90A660c0Ec1AB7415256202473660DB9d6a",
+    "address": "0xa728ae79bAe825385B19d5ef444be96a98aEB840",
     "constructorArgs": [
       "TestProps721",
       "TPP721",

@@ -222,12 +222,13 @@ export const signPropsMint = async function (
     wallet: Wallet,
     user: string,
     expiryTime: string,
-    seed: string,
+    orderId: string,
+    propId: string,
     consumeAmount: string,
     addr: string
 ): Promise<string> {
-    let types = ['address', 'uint256', "uint256", "uint256", "address"]
-    let values = [user, expiryTime, seed, consumeAmount, addr]
+    let types = ['address', 'uint256', "uint256", "uint256", "uint256", "address"]
+    let values = [user, expiryTime, orderId, propId, consumeAmount, addr]
     let message = ethers.utils.solidityKeccak256(types, values)
     let s = await network.provider.send('eth_sign', [wallet.address, message])
     return s;
