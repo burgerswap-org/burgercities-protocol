@@ -1,282 +1,50 @@
 {
-	"ownerWallet": {
-		"address": "0x2d4e68cAF597d1e980b5e8684164460161f8C29b",
-		"constructorArgs": [],
-		"upgradedAddress": "",
-		"deployed": true,
-		"upgraded": true,
-		"verified": true
-	},
-	"signerWallet": {
-		"address": "0x13a2032Ec8E6f8Def8338bBF86588aA5df4Ad2e6",
-		"constructorArgs": [],
-		"upgradedAddress": "",
-		"deployed": true,
-		"upgraded": true,
-		"verified": true
-	},
-	"USDT": {
-		"address": "",
-		"constructorArgs": [],
-		"upgradedAddress": "",
-		"deployed": true,
-		"upgraded": true,
-		"verified": true
-	},
-	"Burger": {
-		"address": "",
-		"constructorArgs": [],
-		"upgradedAddress": "",
-		"deployed": true,
-		"upgraded": true,
-		"verified": true
-	},
-	"Clothing721": {
-		"address": "",
-		"constructorArgs": [],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"ClothingManage": {
-		"address": "",
-		"constructorArgs": [
-			"${Clothing721.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"BurgerCityConfig": {
-		"address": "",
-		"constructorArgs": [],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"Hero721": {
-		"address": "",
-		"constructorArgs": [],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"HeroBox": {
-		"address": "",
-		"constructorArgs": [
-			"${Hero721.address}",
-			"${USDT.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"HeroManage": {
-		"address": "",
-		"constructorArgs": [
-			"${Hero721.address}",
-			"${Burger.address}",
-			"${signerWallet.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"NFTLease": {
-		"address": "",
-		"constructorArgs": [
-			"${Burger.address}",
-			"${HeroManage.address}",
-			"${Hero721.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"NFTSwap": {
-		"address": "",
-		"constructorArgs": [],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"Pay": {
-		"address": "",
-		"constructorArgs": [
-			"${Burger.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"Reward": {
-		"address": "",
-		"constructorArgs": [],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"Reward2": {
-		"address": "",
-		"contractName": "Reward",
-		"constructorArgs": [],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"HeroExchange": {
-		"address": "",
-		"constructorArgs": [
-			"${ownerWallet.address}",
-			"0x5DA38dEF924Ba7393f15fD0750Cd298206bfD150",
-			"${Hero721.address}",
-			"0x18d2fa9c7eaF88fD5a1c712E3300707E31fA959D"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"HeroAirdrop": {
-		"address": "",
-		"constructorArgs": [
-			"${Hero721.address}",
-			"${ownerWallet.address}",
-			"",
-			[]
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"Recharge": {
-		"address": "",
-		"constructorArgs": [
-			"${Burger.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"DailyPunchIn": {
-		"address": "",
-		"constructorArgs": [],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"ActivityPunchIn": {
-		"proxy": true,
-		"address": "",
-		"constructorArgs": [
-			"${ownerWallet.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"ChristmasPunchIn": {
-		"proxy": true,
-		"address": "",
-		"constructorArgs": [
-			"${ownerWallet.address}",
-			"${signerWallet.address}",
-			"${USDT.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"Props721": {
-		"proxy": false,
-		"address": "",
-		"constructorArgs": [
-			"Test-Props721",
-			"TPP721",
-			"https://test/",
-			".json",
-			"${signerWallet.address}",
-			"${USDT.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"Hero721_v2": {
-		"contractName": "Hero721V2",
-		"address": "",
-		"constructorArgs": [],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"HeroBox_v2": {
-		"contractName": "HeroBoxV2",
-		"address": "",
-		"constructorArgs": [
-			"${Hero721_v2.address}",
-			"${USDT.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"HeroManage_v2": {
-		"contractName": "HeroManageV2",
-		"address": "",
-		"constructorArgs": [
-			"${Hero721_v2.address}",
-			"${Burger.address}",
-			"${signerWallet.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"NFTLease_v2": {
-		"contractName": "NFTLeaseV2",
-		"address": "",
-		"constructorArgs": [
-			"${Burger.address}",
-			"${HeroManage_v2.address}",
-			"${Hero721_v2.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	},
-	"HeroMigration": {
-		"address": "",
-		"constructorArgs": [
-			"${Hero721.address}",
-			"${Hero721_v2.address}",
-			"${Burger.address}",
-			"${signerWallet.address}"
-		],
-		"upgradedAddress": "",
-		"deployed": false,
-		"upgraded": false,
-		"verified": false
-	}
+  "ownerWallet": {
+    "address": "0x2d4e68cAF597d1e980b5e8684164460161f8C29b",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "signerWallet": {
+    "address": "0x13a2032Ec8E6f8Def8338bBF86588aA5df4Ad2e6",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "USDT": {
+    "address": "0x75432566b2ef86B20EC130000618063EDB1AbE16",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "BurgerCityConfig": {
+    "address": "0xbb5bE64be05eB41A7e95280640E329d771FCC381",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  },
+  "Props721": {
+    "proxy": false,
+    "address": "0x6Ef82Da10769f6BCb07F208d52C571185cE13B1c",
+    "constructorArgs": [
+      "Test-Props721",
+      "TPP721",
+      "https://test/",
+      ".json",
+      "${signerWallet.address}",
+      "${USDT.address}"
+    ],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  }
 }
