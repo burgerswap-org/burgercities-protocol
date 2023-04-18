@@ -80,12 +80,12 @@
        url: `https://mainnet.infura.io/v3/${data.InfuraApiKey}`,
        accounts: [data.PrivateKey]
      },
-     ropsten: {
-       url: `https://ropsten.infura.io/v3/${data.InfuraApiKey}`,
+     goerli: {
+       url: `https://goerli.infura.io/v3/${data.InfuraApiKey}`,
        accounts: [data.PrivateKey]
      },
-     rinkeby: {
-       url: `https://rinkeby.infura.io/v3/${data.InfuraApiKey}`,
+     sepolia: {
+       url: `https://sepolia.infura.io/v3/${data.InfuraApiKey}`,
        accounts: [data.PrivateKey]
      },
      bsctestnet: {
@@ -96,34 +96,13 @@
        url: `https://rpc.ankr.com/bsc`,
        accounts: [data.PrivateKey]
      },
-     hecotestnet: {
-       url: `https://http-testnet.hecochain.com`,
-       accounts: [data.PrivateKey]
-     },
-     hecomainnet: {
-       url: `https://http-mainnet.hecochain.com`,
-       accounts: [data.PrivateKey]
-     },
-     matictestnet: {
-       url: `https://matic-mumbai.chainstacklabs.com`,
+     arbitrum_goerli: {
+       url: `https://arbitrum-goerli.infura.io/v3/${data.InfuraApiKey}`,
        accounts: [data.PrivateKey],
        gas: "auto",
-       gasPrice: 1000000000
      },
-     maticmainnet: {
-       url: `https://polygon-mainnet.infura.io/v3/${data.InfuraApiKey}`,
-       accounts: [data.PrivateKey],
-       gas: 3000000,
-       gasPrice: 5000000000
-     },
-     arbitrumtestnet: {
-       url: `https://rinkeby.arbitrum.io/rpc`,
-       accounts: [data.PrivateKey],
-       gas: "auto",
-       gasPrice: 100000000
-     },
-     arbitrummainnet: {
-       url: `https://arb1.arbitrum.io/rpc`,
+     arbitrum_mainnet: {
+       url: `https://arbitrum-mainnet.infura.io/v3/${data.InfuraApiKey}`,
        accounts: [data.PrivateKey],
      },
    },
