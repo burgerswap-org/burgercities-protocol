@@ -16,7 +16,7 @@
     "verified": true
   },
   "USDT": {
-    "address": "0x75432566b2ef86B20EC130000618063EDB1AbE16",
+    "address": "0xbF7301b7704469A469015CE9365adB0C8FBcee5c",
     "constructorArgs": [],
     "upgradedAddress": "",
     "deployed": true,
@@ -24,7 +24,7 @@
     "verified": true
   },
   "BurgerCityConfig": {
-    "address": "0xbb5bE64be05eB41A7e95280640E329d771FCC381",
+    "address": "0x9cBe602964329907C2d3602CC84FD8662d62dd7b",
     "constructorArgs": [],
     "upgradedAddress": "",
     "deployed": true,
@@ -33,7 +33,7 @@
   },
   "Props721": {
     "proxy": false,
-    "address": "0x6Ef82Da10769f6BCb07F208d52C571185cE13B1c",
+    "address": "0x883ed1B4dE3c0a2e59F75B685F51E80B03D11e13",
     "constructorArgs": [
       "Test-Props721",
       "TPP721",

@@ -47,9 +47,6 @@
        enabled: true,
        runs: 10_000,
      },
-     metadata: {
-       bytecodeHash: 'none',
-     },
    },
  }
  
