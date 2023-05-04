@@ -1484,7 +1484,7 @@
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "functionName": "createActivity",
         "contractName": "ActivityPunchIn",
         "contractAddr": "",
@@ -1498,7 +1498,7 @@
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "functionName": "createActivity",
         "contractName": "ActivityPunchIn",
         "contractAddr": "",
@@ -1512,7 +1512,7 @@
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "functionName": "updateActivity",
         "contractName": "ActivityPunchIn",
         "contractAddr": "",
@@ -1524,7 +1524,7 @@
     },
     {
         "call": true,
-        "called": false,
+        "called": true,
         "functionName": "updateActivity",
         "contractName": "ActivityPunchIn",
         "contractAddr": "",
