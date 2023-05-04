@@ -1481,5 +1481,57 @@
             "10000000000000000000000",
             "${Burger.address}"
         ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "createActivity",
+        "contractName": "ActivityPunchIn",
+        "contractAddr": "",
+        "args": [
+            "1683158400",
+            25,
+            25,
+            "10000000000000000000000",
+            "${Burger.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "createActivity",
+        "contractName": "ActivityPunchIn",
+        "contractAddr": "",
+        "args": [
+            "1685577600",
+            30,
+            30,
+            "10000000000000000000000",
+            "${Burger.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "updateActivity",
+        "contractName": "ActivityPunchIn",
+        "contractAddr": "",
+        "args": [
+            4,
+            0,
+            "${Burger.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "updateActivity",
+        "contractName": "ActivityPunchIn",
+        "contractAddr": "",
+        "args": [
+            5,
+            0,
+            "${Burger.address}"
+        ]
     }
 ]
