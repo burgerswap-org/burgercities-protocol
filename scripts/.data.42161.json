@@ -1,0 +1,50 @@
+{
+  "ownerWallet": {
+    "address": "0xFc4C562e3271aD997A4330ae73F9af13b877aA8A",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "signerWallet": {
+    "address": "0x5720Cc167FeC35A89EF016bA8Aa4eb26Ef1d46A6",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "USDT": {
+    "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "BurgerCityConfig": {
+    "address": "0x54D3cCEE02cE4262012092Dd4FA6FE79FB7e26A5",
+    "constructorArgs": [],
+    "upgradedAddress": "0x54D3cCEE02cE4262012092Dd4FA6FE79FB7e26A5",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "Props721": {
+    "proxy": false,
+    "address": "0x5bFd1130000C3bF9950Ea39f4E9E27074781fd76",
+    "constructorArgs": [
+      "Burgercities Props",
+      "Burgercities Prop",
+      "https://ipfs.burgercities/arb/",
+      ".json",
+      "${signerWallet.address}",
+      "${USDT.address}"
+    ],
+    "upgradedAddress": "0x5bFd1130000C3bF9950Ea39f4E9E27074781fd76",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  }
+}

@@ -1,0 +1,12 @@
+[
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setupConfig",
+        "contractName": "Props721",
+        "contractAddr": "",
+        "args": [
+            "${BurgerCityConfig.address}"
+        ]
+    }
+]

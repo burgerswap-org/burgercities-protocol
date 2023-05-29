@@ -11,10 +11,13 @@
  import path from "path";
  const USER_HOME = process.env.HOME || process.env.USERPROFILE
  let data = {
-   "PrivateKey": "",
-   "InfuraApiKey": "",
-   "EtherscanApiKey": "",
- };
+  "PrivateKey": "",
+  "InfuraApiKey": "",
+  "EtherscanApiKey": "",
+  "ArbitrumscanApiKey": "",
+  "MaticscanApiKey": "",
+  "BscscanApiKey": "",
+};
  
  let filePath = path.join(USER_HOME+'/.hardhat.data.json');
  if (fs.existsSync(filePath)) {
@@ -95,13 +98,19 @@
        accounts: [data.PrivateKey],
        gas: "auto",
      },
-     arbitrum_mainnet: {
+     arbitrum: {
        url: `https://arbitrum-mainnet.infura.io/v3/${data.InfuraApiKey}`,
        accounts: [data.PrivateKey],
      },
    },
    etherscan: {
-     apiKey: data.EtherscanApiKey,
+      apiKey: {
+        mainnet: data.EtherscanApiKey,
+        goerli: data.EtherscanApiKey,
+        arbitrumOne: data.ArbitrumscanApiKey,
+        polygon: data.MaticscanApiKey,
+        bsc: data.BscscanApiKey,
+    }
    },
    paths: {
      sources: "./contracts",
