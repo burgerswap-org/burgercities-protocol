@@ -50,7 +50,7 @@ contract ActivityPunchIn is Initializable, Configable {
         uint256 limitAmount,
         uint256 rewardAmount,
         address rewardToken
-    ) external onlyOwner {
+    ) external onlyDev {
         require(startTimestamp > block.timestamp , "Invalid parameter startTimestamp");
         require(totalAmount > 0, "Invalid parameter totaAmount");
         require(limitAmount <= totalAmount, "Invalid parameter limitAmount");
@@ -71,15 +71,18 @@ contract ActivityPunchIn is Initializable, Configable {
         emit CreateActivity(activityId, startTimestamp, endTimestamp, limitAmount);
     }
 
-    function updateActivity(uint256 activityId, uint256 rewardAmount, address rewardToken) external onlyOwner {
+    function updateActivity(uint256 activityId, uint256 rewardAmount, address rewardToken, uint256 limitAmount) external onlyDev {
         require(activityId < _activities.length, "Invalid parameter activityId");
         Activity storage activity = _activities[activityId];
         require(activity.endTimestamp > block.timestamp, "Activity has finished");
         require(rewardToken != address(0), "Invalid parameter rewardToken");
-        require(activity.rewardAmount != rewardAmount, "No changed in rewardAmount");
+        if (limitAmount > activity.limitAmount) {
+            require(activity.startTimestamp.add(limitAmount.mul(1 days)) < activity.endTimestamp, "Limit amount greater than total amount");
+        }
 
         activity.rewardAmount = rewardAmount;
         activity.rewardToken = rewardToken;
+        activity.limitAmount = limitAmount;
 
         emit UpdateActivity(activityId, rewardAmount, rewardToken);
     }

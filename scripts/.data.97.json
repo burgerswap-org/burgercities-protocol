@@ -304,11 +304,11 @@
   },
   "ActivityPunchIn": {
     "proxy": true,
-    "address": "0xD4ce4cf2c4264479862200a254643a4141917904",
+    "address": "0x8779AA7D3Fd6f411B4F7f68b1A10f67FD25aFf25",
     "constructorArgs": [
-      "0x07fF0ed51ABAf0ebeF2dDdabB463A0E17235de46"
+      "${ownerWallet.address}"
     ],
-    "upgradedAddress": "",
+    "upgradedAddress": "0x8aa0D22E528436116fA034a0AD31e301303185F9",
     "deployed": true,
     "upgraded": true,
     "verified": false
@@ -324,7 +324,7 @@
     "upgradedAddress": "",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   },
   "Props721": {
     "proxy": false,
@@ -387,7 +387,7 @@
     "upgradedAddress": "0xf6AA4c92b7ea1bdd72809E52F1A568DA6e22fe04",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   },
   "HeroMigration": {
     "address": "0x490ECE4DF1A5532e063c6106dc4fA4136D7D4383",
@@ -400,6 +400,6 @@
     "upgradedAddress": "0x490ECE4DF1A5532e063c6106dc4fA4136D7D4383",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   }
 }
