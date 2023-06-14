@@ -2,10 +2,10 @@
 
 pragma solidity ^0.8.0;
 
-import "./lib/openzeppelin/contracts/utils/math/SafeCast.sol";
-import "./lib/openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "./lib/openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "./lib/openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
+import "@openzeppelin/contracts/utils/math/SafeCast.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "./Common.sol";
 import "./Configable.sol";
 import "./lib/Signature.sol";

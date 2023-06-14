@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./lib/openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "./lib/openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "./lib/openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
 import "./TransferHelper.sol";
 import "./Configable.sol";
 

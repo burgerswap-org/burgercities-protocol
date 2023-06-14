@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.0;
 
-import "./lib/openzeppelin/contracts/access/Ownable.sol";
-import "./lib/openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
-import "./lib/openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
 contract HeroAirdrop is Ownable{
     uint8 constant s_index_max = 100;

@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.0;
 
-import "./lib/openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "./lib/openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "./lib/Signature.sol";
 import "./Configable.sol";
 

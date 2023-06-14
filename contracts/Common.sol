@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.0;
 
-import "./lib/openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "./lib/openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
-import "./lib/openzeppelin/contracts/token/ERC1155/IERC1155.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
+import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 
 
 //Hero data structure

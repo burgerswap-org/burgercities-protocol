@@ -2,10 +2,10 @@
 
 pragma solidity ^0.8.0;
 
-import "./lib/openzeppelin/contracts/utils/math/SafeCast.sol";
-import "./lib/openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
-import "./lib/openzeppelin/contracts/access/Ownable.sol";
-import "./lib/openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/math/SafeCast.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 import "./Common.sol";
 

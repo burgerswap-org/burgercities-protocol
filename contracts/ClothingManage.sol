@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.0;
 
-import "./lib/openzeppelin/contracts/access/Ownable.sol";
-import "./lib/openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "./lib/openzeppelin/contracts/utils/Strings.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 import "./Common.sol";
 
 contract ClothingManage is ReentrancyGuard, Ownable {

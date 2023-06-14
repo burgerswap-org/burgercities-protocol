@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import "../lib/openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 contract DailyPunchIn {
     using SafeMath for uint256;

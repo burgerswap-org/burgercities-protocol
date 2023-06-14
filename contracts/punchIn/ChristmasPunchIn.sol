@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.0;
 
-import "../lib/openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "../lib/openzeppelin/contracts/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/proxy/utils/Initializable.sol";
 import "../lib/Signature.sol";
 import "../Configable.sol";
 

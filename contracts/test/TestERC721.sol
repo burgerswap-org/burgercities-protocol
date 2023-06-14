@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import "../lib/openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 contract TestERC721 is ERC721Enumerable {
     constructor() ERC721("TestERC721", "TERC721") {}
