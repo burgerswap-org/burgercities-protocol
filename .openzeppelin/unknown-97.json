@@ -1,30 +1,20 @@
 {
   "manifestVersion": "3.2",
   "admin": {
-    "address": "0xB7018aecE4f55f15F254f32FF9dBc255b9FFCC72",
-    "txHash": "0x2966305fb4b45c5989bc1d54376b84d739c11edd02c7cb9eff83cb3295337a13"
+    "address": "0x00606e32a5307C4951532e5D9458165B88F0F9FA",
+    "txHash": "0x807338ad2ab2de1de65e319fd69845dd70147af8f4d2f56618a50cd66e3ceb2d"
   },
   "proxies": [
     {
-      "address": "0xD4ce4cf2c4264479862200a254643a4141917904",
-      "txHash": "0x6f3bc5ce95aa0ba9a19da66626d552768bbf6b2c57d589701dab86e3f944ca93",
-      "kind": "transparent"
-    },
-    {
-      "address": "0xE68A98A1CC21E6B7eC30A4ad7100Aadb1143cB4b",
-      "txHash": "0xea50506adbb50cdd9614de5c453aaf6b34b184cc431b67dd412fda5f9d09abb1",
-      "kind": "transparent"
-    },
-    {
-      "address": "0xcB91F4C74193D96a3618809603E739C77f753b5D",
-      "txHash": "0x8850c0936c3474918a38b9a60ea609e448af27113da04f85f4357aa8ed3efc8d",
+      "address": "0x8779AA7D3Fd6f411B4F7f68b1A10f67FD25aFf25",
+      "txHash": "0x10610b1d2c94a9d4ccc7247ea3364e022522636bfd79dbefbd450653dd4b4121",
       "kind": "transparent"
     }
   ],
   "impls": {
-    "21337158f6271643ad5d7ed9c4ec036cd4998e6620cdbaa600e0449e9f546113": {
-      "address": "0x52d6F5e67293fbb9f420aEA26C139b56597b6b7c",
-      "txHash": "0x0baee4b30efda7f955bf1cb73985147d0858cb370d72cb0cd00ddd85f7e7f75d",
+    "cfaf2e27c2debf36fcbbca91d216236db3a3395da9a064d3ccdebf6805ec3f76": {
+      "address": "0x4B55E091CdAecB714055c9A9DD3fe7e1aEb8ac5f",
+      "txHash": "0x4ef9b5a20a399dc4d0a59bfe28d2a763802e1557270d39b9b5fc05e5463c241d",
       "layout": {
         "storage": [
           {
@@ -44,52 +34,52 @@
             "src": "contracts/lib/openzeppelin/contracts/proxy/utils/Initializable.sol:44"
           },
           {
-            "label": "_owner",
+            "label": "config",
             "offset": 2,
             "slot": "0",
             "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "contracts/lib/openzeppelin/contracts/access/OwnableUpgradeable.sol:22"
+            "contract": "Configable",
+            "src": "contracts/Configable.sol:10"
           },
           {
-            "label": "__gap",
+            "label": "owner",
             "offset": 0,
             "slot": "1",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "contracts/lib/openzeppelin/contracts/access/OwnableUpgradeable.sol:94"
+            "type": "t_address",
+            "contract": "Configable",
+            "src": "contracts/Configable.sol:11"
           },
           {
             "label": "_treasury",
             "offset": 0,
-            "slot": "50",
+            "slot": "2",
             "type": "t_address",
             "contract": "ActivityPunchIn",
-            "src": "contracts/ActivityPunchIn.sol:27"
+            "src": "contracts/punchIn/ActivityPunchIn.sol:27"
           },
           {
             "label": "_activities",
             "offset": 0,
-            "slot": "51",
-            "type": "t_array(t_struct(Activity)23_storage)dyn_storage",
+            "slot": "3",
+            "type": "t_array(t_struct(Activity)33558_storage)dyn_storage",
             "contract": "ActivityPunchIn",
-            "src": "contracts/ActivityPunchIn.sol:28"
+            "src": "contracts/punchIn/ActivityPunchIn.sol:28"
           },
           {
             "label": "_activity2UserInfoes",
             "offset": 0,
-            "slot": "52",
-            "type": "t_mapping(t_uint256,t_mapping(t_address,t_struct(UserInfo)30_storage))",
+            "slot": "4",
+            "type": "t_mapping(t_uint256,t_mapping(t_address,t_struct(UserInfo)33565_storage))",
             "contract": "ActivityPunchIn",
-            "src": "contracts/ActivityPunchIn.sol:29"
+            "src": "contracts/punchIn/ActivityPunchIn.sol:29"
           },
           {
             "label": "_activity2SuccessAmount",
             "offset": 0,
-            "slot": "53",
+            "slot": "5",
             "type": "t_mapping(t_uint256,t_uint256)",
             "contract": "ActivityPunchIn",
-            "src": "contracts/ActivityPunchIn.sol:30"
+            "src": "contracts/punchIn/ActivityPunchIn.sol:30"
           }
         ],
         "types": {
@@ -97,23 +87,19 @@
             "label": "address",
             "numberOfBytes": "20"
           },
-          "t_array(t_struct(Activity)23_storage)dyn_storage": {
+          "t_array(t_struct(Activity)33558_storage)dyn_storage": {
             "label": "struct ActivityPunchIn.Activity[]",
             "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
           },
           "t_bool": {
             "label": "bool",
             "numberOfBytes": "1"
           },
-          "t_mapping(t_address,t_struct(UserInfo)30_storage)": {
+          "t_mapping(t_address,t_struct(UserInfo)33565_storage)": {
             "label": "mapping(address => struct ActivityPunchIn.UserInfo)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_uint256,t_mapping(t_address,t_struct(UserInfo)30_storage))": {
+          "t_mapping(t_uint256,t_mapping(t_address,t_struct(UserInfo)33565_storage))": {
             "label": "mapping(uint256 => mapping(address => struct ActivityPunchIn.UserInfo))",
             "numberOfBytes": "32"
           },
@@ -121,7 +107,7 @@
             "label": "mapping(uint256 => uint256)",
             "numberOfBytes": "32"
           },
-          "t_struct(Activity)23_storage": {
+          "t_struct(Activity)33558_storage": {
             "label": "struct ActivityPunchIn.Activity",
             "members": [
               {
@@ -157,7 +143,7 @@
             ],
             "numberOfBytes": "160"
           },
-          "t_struct(UserInfo)30_storage": {
+          "t_struct(UserInfo)33565_storage": {
             "label": "struct ActivityPunchIn.UserInfo",
             "members": [
               {
@@ -188,9 +174,9 @@
         }
       }
     },
-    "4c543f97a36c123dc7e3246b62da3be90f22f52259fd9159abe7df81dce5359a": {
-      "address": "0x41cBb946892DbcdA8757699b61c3d691445e0df2",
-      "txHash": "0xc66c16973eb80bd4489fa032f8ed5ad2cdbd16b1c3e6e0cf913b78de4566ff14",
+    "45133deaaff2b8b6eb789994744df9418a35ed087325e582d4680a8499df17ff": {
+      "address": "0x8aa0D22E528436116fA034a0AD31e301303185F9",
+      "txHash": "0xd8f30e28d7a9c09c550d9c5198fc3acb300300b10a02c2935d1b0b222d89e42a",
       "layout": {
         "storage": [
           {
@@ -230,48 +216,32 @@
             "offset": 0,
             "slot": "2",
             "type": "t_address",
-            "contract": "ChristmasPunchIn",
-            "src": "contracts/punchIn/ChristmasPunchIn.sol:14"
+            "contract": "ActivityPunchIn",
+            "src": "contracts/punchIn/ActivityPunchIn.sol:27"
           },
           {
-            "label": "_signer",
+            "label": "_activities",
             "offset": 0,
             "slot": "3",
-            "type": "t_address",
-            "contract": "ChristmasPunchIn",
-            "src": "contracts/punchIn/ChristmasPunchIn.sol:15"
+            "type": "t_array(t_struct(Activity)33558_storage)dyn_storage",
+            "contract": "ActivityPunchIn",
+            "src": "contracts/punchIn/ActivityPunchIn.sol:28"
           },
           {
-            "label": "_rewardToken",
+            "label": "_activity2UserInfoes",
             "offset": 0,
             "slot": "4",
-            "type": "t_address",
-            "contract": "ChristmasPunchIn",
-            "src": "contracts/punchIn/ChristmasPunchIn.sol:16"
+            "type": "t_mapping(t_uint256,t_mapping(t_address,t_struct(UserInfo)33565_storage))",
+            "contract": "ActivityPunchIn",
+            "src": "contracts/punchIn/ActivityPunchIn.sol:29"
           },
           {
-            "label": "_rewardAmount",
+            "label": "_activity2SuccessAmount",
             "offset": 0,
             "slot": "5",
-            "type": "t_uint256",
-            "contract": "ChristmasPunchIn",
-            "src": "contracts/punchIn/ChristmasPunchIn.sol:17"
-          },
-          {
-            "label": "_userTimestamps",
-            "offset": 0,
-            "slot": "6",
-            "type": "t_mapping(t_address,t_array(t_uint64)dyn_storage)",
-            "contract": "ChristmasPunchIn",
-            "src": "contracts/punchIn/ChristmasPunchIn.sol:19"
-          },
-          {
-            "label": "_userIsClaimed",
-            "offset": 0,
-            "slot": "7",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "ChristmasPunchIn",
-            "src": "contracts/punchIn/ChristmasPunchIn.sol:20"
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "ActivityPunchIn",
+            "src": "contracts/punchIn/ActivityPunchIn.sol:30"
           }
         ],
         "types": {
@@ -279,147 +249,89 @@
             "label": "address",
             "numberOfBytes": "20"
           },
-          "t_array(t_uint64)dyn_storage": {
-            "label": "uint64[]",
+          "t_array(t_struct(Activity)33558_storage)dyn_storage": {
+            "label": "struct ActivityPunchIn.Activity[]",
             "numberOfBytes": "32"
           },
           "t_bool": {
             "label": "bool",
             "numberOfBytes": "1"
           },
-          "t_mapping(t_address,t_array(t_uint64)dyn_storage)": {
-            "label": "mapping(address => uint64[])",
+          "t_mapping(t_address,t_struct(UserInfo)33565_storage)": {
+            "label": "mapping(address => struct ActivityPunchIn.UserInfo)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
+          "t_mapping(t_uint256,t_mapping(t_address,t_struct(UserInfo)33565_storage))": {
+            "label": "mapping(uint256 => mapping(address => struct ActivityPunchIn.UserInfo))",
             "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Activity)33558_storage": {
+            "label": "struct ActivityPunchIn.Activity",
+            "members": [
+              {
+                "label": "startTimestamp",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "endTimestamp",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "limitAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "rewardAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "rewardToken",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "4"
+              }
+            ],
+            "numberOfBytes": "160"
+          },
+          "t_struct(UserInfo)33565_storage": {
+            "label": "struct ActivityPunchIn.UserInfo",
+            "members": [
+              {
+                "label": "lastTimestamp",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "amount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "isClaimed",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
           },
           "t_uint256": {
             "label": "uint256",
             "numberOfBytes": "32"
-          },
-          "t_uint64": {
-            "label": "uint64",
-            "numberOfBytes": "8"
-          }
-        }
-      }
-    },
-    "8f029e45a521f9033f584783ee04e45915a979aefdc447bf657fb946596e0fb9": {
-      "address": "0x36C5755C867503e6752725151E6e853b41926DC6",
-      "txHash": "0x3cab0b4d4c36e93444407aca597a57766e12cfa98eb45e25d9bd78bfa8f78653",
-      "layout": {
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "contracts/lib/openzeppelin/contracts/proxy/utils/Initializable.sol:39"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "contracts/lib/openzeppelin/contracts/proxy/utils/Initializable.sol:44"
-          },
-          {
-            "label": "config",
-            "offset": 2,
-            "slot": "0",
-            "type": "t_address",
-            "contract": "Configable",
-            "src": "contracts/Configable.sol:10"
-          },
-          {
-            "label": "owner",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_address",
-            "contract": "Configable",
-            "src": "contracts/Configable.sol:11"
-          },
-          {
-            "label": "_treasury",
-            "offset": 0,
-            "slot": "2",
-            "type": "t_address",
-            "contract": "ChristmasPunchIn",
-            "src": "contracts/punchIn/ChristmasPunchIn.sol:14"
-          },
-          {
-            "label": "_signer",
-            "offset": 0,
-            "slot": "3",
-            "type": "t_address",
-            "contract": "ChristmasPunchIn",
-            "src": "contracts/punchIn/ChristmasPunchIn.sol:15"
-          },
-          {
-            "label": "_rewardToken",
-            "offset": 0,
-            "slot": "4",
-            "type": "t_address",
-            "contract": "ChristmasPunchIn",
-            "src": "contracts/punchIn/ChristmasPunchIn.sol:16"
-          },
-          {
-            "label": "_rewardAmount",
-            "offset": 0,
-            "slot": "5",
-            "type": "t_uint256",
-            "contract": "ChristmasPunchIn",
-            "src": "contracts/punchIn/ChristmasPunchIn.sol:17"
-          },
-          {
-            "label": "_userTimestamps",
-            "offset": 0,
-            "slot": "6",
-            "type": "t_mapping(t_address,t_array(t_uint64)dyn_storage)",
-            "contract": "ChristmasPunchIn",
-            "src": "contracts/punchIn/ChristmasPunchIn.sol:19"
-          },
-          {
-            "label": "_userIsClaimed",
-            "offset": 0,
-            "slot": "7",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "ChristmasPunchIn",
-            "src": "contracts/punchIn/ChristmasPunchIn.sol:20"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_uint64)dyn_storage": {
-            "label": "uint64[]",
-            "numberOfBytes": "32"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_mapping(t_address,t_array(t_uint64)dyn_storage)": {
-            "label": "mapping(address => uint64[])",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint64": {
-            "label": "uint64",
-            "numberOfBytes": "8"
           }
         }
       }
