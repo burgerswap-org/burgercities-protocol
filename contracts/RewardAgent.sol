@@ -1,15 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
-import "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
+import "@openzeppelin/contracts-upgradeable/utils/cryptography/SignatureCheckerUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "./interfaces/IRewardAgent.sol";
 import "./TransferHelper.sol";
 import "./Configable.sol";
 
-contract RewardAgent is IRewardAgent, Configable {
+contract RewardAgent is IRewardAgent, Configable, Initializable {
     address public signer;
     address public treasury;
 
@@ -18,8 +16,7 @@ contract RewardAgent is IRewardAgent, Configable {
 
     mapping(uint64 => bool) private _orders;
     
-
-    constructor(address signer_, address treasury_) {
+    function initialize(address signer_, address treasury_) external initializer {
         require(signer_ != address(0), 'Zero address');
         owner = msg.sender;
         signer = signer_;
@@ -35,7 +32,7 @@ contract RewardAgent is IRewardAgent, Configable {
         treasury = treasury_;
     }
 
-    function rewardERC20(
+    function claimERC20(
         address to,
         address token,
         uint256 amount,
@@ -43,7 +40,7 @@ contract RewardAgent is IRewardAgent, Configable {
         bytes memory signature
     ) external override returns(bool) {
         require(!_orders[orderId], "OrderId already exists");
-        require(verifyRewardERC20(to, token, amount, orderId, signature), "Invalid signature");
+        require(verifyClaimERC20(to, token, amount, orderId, signature), "Invalid signature");
 
         _orders[orderId] = true;
         userCounter[to] += 1;
@@ -55,17 +52,17 @@ contract RewardAgent is IRewardAgent, Configable {
         return true;
     }
 
-    function rewardERC721(address, address, uint256, uint64, bytes memory) external pure override returns(bool) {
+    function claimERC721(address, address, uint256, uint64, bytes memory) external pure override returns(bool) {
         // Extension
         return true;
     }
 
-    function rewardERC1155(address, address, uint256, uint256, uint64, bytes memory) external pure returns(bool) {
+    function claimERC1155(address, address, uint256, uint256, uint64, bytes memory) external pure returns(bool) {
         // Extension
         return true;
     }
 
-    function verifyRewardERC20(
+    function verifyClaimERC20(
         address to,
         address token,
         uint256 amount,
@@ -74,6 +71,6 @@ contract RewardAgent is IRewardAgent, Configable {
     ) public view returns (bool) {
         bytes32 message = keccak256(abi.encodePacked(to, token, amount, orderId, address(this)));
         bytes32 hash = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", message));
-        return SignatureChecker.isValidSignatureNow(signer, hash, signature);
+        return SignatureCheckerUpgradeable.isValidSignatureNow(signer, hash, signature);
     }
 }

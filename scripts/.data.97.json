@@ -401,5 +401,28 @@
     "deployed": true,
     "upgraded": true,
     "verified": true
+  },
+  "RaffleTicket": {
+    "proxy": false,
+    "address": "0xbfEC1dbb1a63522dd46795c981007586379FCe31",
+    "constructorArgs": [
+      "${signerWallet.address}"
+    ],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  },
+  "RewardAgent": {
+    "proxy": true,
+    "address": "0xe11491504D3D8f65dECf7b846B2e7AD4f7B30f32",
+    "constructorArgs": [
+      "${ownerWallet.address}",
+      "${signerWallet.address}"
+    ],
+    "upgradedAddress": "0xFC17a7Bc57b2Fe2d3752a0Ca027bBB6dB8a4e9D5",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
   }
 }

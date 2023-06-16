@@ -278,5 +278,28 @@
 		"deployed": false,
 		"upgraded": false,
 		"verified": false
+	},
+	"RaffleTicket": {
+		"proxy": false,
+		"address": "",
+		"constructorArgs": [
+			"${signerWallet.address}"
+		],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
+	},
+	"RewardAgent": {
+		"proxy": true,
+		"address": "",
+		"constructorArgs": [
+			"${ownerWallet.address}",
+			"${signerWallet.address}"
+		],
+		"upgradedAddress": "",
+		"deployed": false,
+		"upgraded": false,
+		"verified": false
 	}
 }

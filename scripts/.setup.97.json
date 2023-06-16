@@ -1472,5 +1472,29 @@
                 "${Hero721_v2.address}"
             ]
         ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setupConfig",
+        "contractName": "RaffleTicket",
+        "contractAddr": "",
+        "args": [
+            [
+                "${BurgerCityConfig.address}"
+            ]
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "setupConfig",
+        "contractName": "RewardAgent",
+        "contractAddr": "",
+        "args": [
+            [
+                "${BurgerCityConfig.address}"
+            ]
+        ]
     }
 ]

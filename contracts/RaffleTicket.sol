@@ -11,7 +11,6 @@ contract RaffleTicket is ERC20, Configable {
 
     mapping(uint64 => bool) private _orders;
 
-
     constructor(address signer_) ERC20("Raffle Ticket", "RT") {
         require(signer_ != address(0), "Signer can not be zero address");
         signer = signer_;
@@ -32,6 +31,10 @@ contract RaffleTicket is ERC20, Configable {
         require(verifyClaim(msg.sender, amount, orderId, signature), "Invalid signature");
 
         _mint(msg.sender, amount);
+    }
+
+    function exchange(uint256 amount) external {
+        _burn(msg.sender, amount);
     }
 
     function verifyClaim(

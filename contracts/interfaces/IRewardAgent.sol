@@ -8,7 +8,7 @@ interface IRewardAgent {
 
     function signer() external view returns(address);
 
-    function rewardERC20(
+    function claimERC20(
         address to,
         address token, 
         uint256 amount,
@@ -16,7 +16,7 @@ interface IRewardAgent {
         bytes memory signature
     ) external returns(bool);
 
-    function rewardERC721(
+    function claimERC721(
         address to,
         address nft, 
         uint256 tokenId,
@@ -24,7 +24,7 @@ interface IRewardAgent {
         bytes memory signature
     ) external returns(bool);
 
-    function rewardERC1155(
+    function claimERC1155(
         address to,
         address token,
         uint256 tokenId,
