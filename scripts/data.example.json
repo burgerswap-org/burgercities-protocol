@@ -294,8 +294,8 @@
 		"proxy": true,
 		"address": "",
 		"constructorArgs": [
-			"${ownerWallet.address}",
-			"${signerWallet.address}"
+			"${signerWallet.address}",
+			"${ownerWallet.address}"
 		],
 		"upgradedAddress": "",
 		"deployed": false,

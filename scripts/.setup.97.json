@@ -1475,26 +1475,32 @@
     },
     {
         "call": true,
-        "called": false,
-        "functionName": "setupConfig",
-        "contractName": "RaffleTicket",
+        "called": true,
+        "functionName": "setTreasury",
+        "contractName": "RewardAgent",
         "contractAddr": "",
         "args": [
-            [
-                "${BurgerCityConfig.address}"
-            ]
+            "${ownerWallet.address}"
         ]
     },
     {
         "call": true,
-        "called": false,
-        "functionName": "setupConfig",
+        "called": true,
+        "functionName": "setSigner",
         "contractName": "RewardAgent",
         "contractAddr": "",
         "args": [
-            [
-                "${BurgerCityConfig.address}"
-            ]
+            "${signerWallet.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "functionName": "setSigner",
+        "contractName": "RaffleTicket",
+        "contractAddr": "",
+        "args": [
+            "${signerWallet.address}"
         ]
     }
 ]
