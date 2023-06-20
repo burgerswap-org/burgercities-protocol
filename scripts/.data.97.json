@@ -311,7 +311,7 @@
     "upgradedAddress": "0x8aa0D22E528436116fA034a0AD31e301303185F9",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   },
   "ChristmasPunchIn": {
     "proxy": true,
@@ -349,7 +349,7 @@
     "upgradedAddress": "0x71DA06f0527956BEDFaED398bB00Cf2916CA2b71",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   },
   "HeroBox_v2": {
     "contractName": "HeroBoxV2",
@@ -361,7 +361,7 @@
     "upgradedAddress": "0xd504e9c8350dD1f670f46171EdfFf33a1344c044",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   },
   "HeroManage_v2": {
     "contractName": "HeroManageV2",
@@ -374,7 +374,7 @@
     "upgradedAddress": "0x4F8A0d310b09752E44D92F3fCa0DFFdb25f81Ca7",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   },
   "NFTLease_v2": {
     "contractName": "NFTLeaseV2",
@@ -404,25 +404,25 @@
   },
   "RaffleTicket": {
     "proxy": false,
-    "address": "0xbfEC1dbb1a63522dd46795c981007586379FCe31",
+    "address": "0xf18a1B0793C11412980eAd3219e6E6e075e39506",
     "constructorArgs": [
       "${signerWallet.address}"
     ],
-    "upgradedAddress": "",
+    "upgradedAddress": "0xf18a1B0793C11412980eAd3219e6E6e075e39506",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   },
   "RewardAgent": {
     "proxy": true,
-    "address": "0xe11491504D3D8f65dECf7b846B2e7AD4f7B30f32",
+    "address": "0x3417aB7224382D42a470Ef1Cf551239eF4e5b375",
     "constructorArgs": [
       "${signerWallet.address}",
       "${ownerWallet.address}"
     ],
-    "upgradedAddress": "0xFC17a7Bc57b2Fe2d3752a0Ca027bBB6dB8a4e9D5",
+    "upgradedAddress": "0x9eC2f211ED4aE56E0dccCED50e45543486aE377D",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   }
 }

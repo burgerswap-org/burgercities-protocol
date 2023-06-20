@@ -39,8 +39,9 @@ describe('RewardAgent', async () => {
       // Claim rallfle ticket
       let claimAmountRT = BigNumber.from(100)
       let orderIdRT = BigNumber.from(123)
+      let txIdRT = BigNumber.from(123)
       let signatureRT = await signRaffleTicketClaim(wallet, otherA.address, claimAmountRT.toString(), orderIdRT.toString(), raffleTicket.address)
-      await raffleTicket.connect(otherA).claim(claimAmountRT, orderIdRT, signatureRT)
+      await raffleTicket.connect(otherA).claim(claimAmountRT, orderIdRT, txIdRT, signatureRT)
       expect(await raffleTicket.balanceOf(otherA.address)).to.eq(claimAmountRT)
 
       // Exchange raffle ticket
@@ -51,6 +52,7 @@ describe('RewardAgent', async () => {
       // Claim reward
       let rewardAmountRA = BigNumber.from(100)
       let orderIdRA = BigNumber.from(456)
+      let txIdRA = BigNumber.from(456)
       let signatureRA = await signRewardAgentClaimERC20(
         wallet,
         otherA.address,
@@ -59,7 +61,7 @@ describe('RewardAgent', async () => {
         orderIdRA.toString(),
         rewardAgent.address
       )
-      await rewardAgent.claimERC20(otherA.address, rewardToken.address, rewardAmountRA, orderIdRA, signatureRA)
+      await rewardAgent.claimERC20(otherA.address, rewardToken.address, rewardAmountRA, orderIdRA, txIdRA, signatureRA)
       expect(await rewardToken.balanceOf(otherA.address)).to.eq(rewardAmountRA)
     })
   })

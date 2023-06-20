@@ -3,11 +3,10 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts-upgradeable/utils/cryptography/SignatureCheckerUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "./interfaces/IRewardAgent.sol";
 import "./TransferHelper.sol";
 import "./Configable.sol";
 
-contract RewardAgent is IRewardAgent, Configable, Initializable {
+contract RewardAgent is Configable, Initializable {
     address public signer;
     address public treasury;
 
@@ -15,6 +14,10 @@ contract RewardAgent is IRewardAgent, Configable, Initializable {
     mapping(address => uint64) public userCounter;
 
     mapping(uint64 => bool) private _orders;
+
+    event SendERC20Reward(address indexed receiver, address token, uint256 amount, uint64 orderId, uint64 txId);
+    event SendERC721Reward(address indexed receiver, address nft, uint256 tokenId, uint64 orderId, uint64 txId);
+    event SendERC1155Reward(address indexed receiver, address nft, uint256 tokenId, uint256 amount, uint64 orderId, uint64 txId);
     
     function initialize(address signer_, address treasury_) external initializer {
         require(signer_ != address(0), 'Zero address');
@@ -37,8 +40,9 @@ contract RewardAgent is IRewardAgent, Configable, Initializable {
         address token,
         uint256 amount,
         uint64 orderId,
+        uint64 txId,
         bytes memory signature
-    ) external override returns(bool) {
+    ) external returns(bool) {
         require(!_orders[orderId], "OrderId already exists");
         require(verifyClaimERC20(to, token, amount, orderId, signature), "Invalid signature");
 
@@ -48,16 +52,16 @@ contract RewardAgent is IRewardAgent, Configable, Initializable {
 
         TransferHelper.safeTransferFrom(token, treasury, to, amount);
 
-        emit SendERC20Reward(to, token, amount, orderId);
+        emit SendERC20Reward(to, token, amount, orderId, txId);
         return true;
     }
 
-    function claimERC721(address, address, uint256, uint64, bytes memory) external pure override returns(bool) {
+    function claimERC721(address, address, uint256, uint64, uint64, bytes memory) external pure returns(bool) {
         // Extension
         return true;
     }
 
-    function claimERC1155(address, address, uint256, uint256, uint64, bytes memory) external pure returns(bool) {
+    function claimERC1155(address, address, uint256, uint256, uint64, uint64, bytes memory) external pure returns(bool) {
         // Extension
         return true;
     }
