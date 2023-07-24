@@ -402,13 +402,13 @@
     "upgraded": true,
     "verified": true
   },
-  "RaffleTicket": {
-    "proxy": false,
-    "address": "0xf18a1B0793C11412980eAd3219e6E6e075e39506",
+  "BurgerDiamond": {
+    "proxy": true,
+    "address": "0xB264Af1B2A2Ce01c51881548f21E6eCa424Deb3B",
     "constructorArgs": [
       "${signerWallet.address}"
     ],
-    "upgradedAddress": "0xf18a1B0793C11412980eAd3219e6E6e075e39506",
+    "upgradedAddress": "0x120a91212dA39E78579501315A447764DfE891F4",
     "deployed": true,
     "upgraded": true,
     "verified": true

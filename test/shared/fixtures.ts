@@ -11,7 +11,7 @@ import { ActivityPunchIn } from '../../typechain/ActivityPunchIn'
 import { ChristmasPunchIn } from '../../typechain/ChristmasPunchIn'
 import { Props721 } from '../../typechain/Props721'
 import { RewardAgent } from '../../typechain/RewardAgent'
-import { RaffleTicket } from '../../typechain/RaffleTicket'
+import { BurgerDiamond } from '../../typechain/BurgerDiamond'
 import { Fixture } from 'ethereum-waffle'
 
 async function testERC20(): Promise<TestERC20> {
@@ -252,7 +252,7 @@ export const signPropsBurn = async function (
 interface RewardAgentFixture {
     rewardToken: TestERC20
     rewardAgent: RewardAgent
-    raffleTicket: RaffleTicket
+    burgerDiamond: BurgerDiamond
 }
 
 export const rewardAgentFixture: Fixture<RewardAgentFixture> = async function ([wallet]: Wallet[]): Promise<RewardAgentFixture> {
@@ -262,10 +262,11 @@ export const rewardAgentFixture: Fixture<RewardAgentFixture> = async function ([
     const rewardAgent = (await rewardAgentFactory.deploy()) as RewardAgent
     await rewardAgent.initialize(wallet.address, wallet.address)
 
-    const raffleTicketFactory = await ethers.getContractFactory('RaffleTicket')
-    const raffleTicket = (await raffleTicketFactory.deploy(wallet.address)) as RaffleTicket
+    const burgerDiamondFactory = await ethers.getContractFactory('BurgerDiamond')
+    const burgerDiamond = (await burgerDiamondFactory.deploy()) as BurgerDiamond
+    await burgerDiamond.initialize(wallet.address);
 
-    return { rewardToken, rewardAgent, raffleTicket }
+    return { rewardToken, rewardAgent, burgerDiamond }
 }
 
 export const signRewardAgentClaimERC20 = async function(
@@ -283,16 +284,17 @@ export const signRewardAgentClaimERC20 = async function(
     return s;
 }
 
-export const signRaffleTicketClaim = async function(
+export const signBurgerDiamond = async function(
     signer: Wallet,
     to: string,
     amount: string,
     orderId: string,
+    operation: string,
     addr: string
 ): Promise<string> {
-    let types = ['address', "uint256", "uint256", "address"]
-    let values = [to, amount, orderId, addr]
-    let message = ethers.utils.solidityKeccak256(types, values)
-    let s = await network.provider.send('eth_sign', [signer.address, message])
+    let types = ['address', "uint256", "uint256", "uint8", "address"];
+    let values = [to, amount, orderId, operation, addr];
+    let message = ethers.utils.solidityKeccak256(types, values);
+    let s = await network.provider.send('eth_sign', [signer.address, message]);
     return s;
 }

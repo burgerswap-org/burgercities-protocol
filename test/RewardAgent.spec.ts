@@ -2,9 +2,9 @@ import { Wallet, BigNumber } from 'ethers'
 import { ethers, waffle } from 'hardhat'
 import { TestERC20 } from '../typechain/TestERC20'
 import { RewardAgent } from '../typechain/RewardAgent'
-import { RaffleTicket } from '../typechain/RaffleTicket'
+import { BurgerDiamond } from '../typechain/BurgerDiamond'
 import { expect } from './shared/expect'
-import { rewardAgentFixture, signRewardAgentClaimERC20, signRaffleTicketClaim } from './shared/fixtures'
+import { rewardAgentFixture, signRewardAgentClaimERC20, signBurgerDiamond } from './shared/fixtures'
 
 const createFixtureLoader = waffle.createFixtureLoader
 
@@ -13,7 +13,7 @@ describe('RewardAgent', async () => {
 
   let rewardToken: TestERC20
   let rewardAgent: RewardAgent
-  let raffleTicket: RaffleTicket
+  let burgerDiamond: BurgerDiamond
 
   let loadFixTure: ReturnType<typeof createFixtureLoader>;
 
@@ -23,7 +23,7 @@ describe('RewardAgent', async () => {
   })
 
   beforeEach('deploy instance', async () => {
-    ; ({ rewardToken, rewardAgent, raffleTicket } = await loadFixTure(rewardAgentFixture));
+    ; ({ rewardToken, rewardAgent, burgerDiamond } = await loadFixTure(rewardAgentFixture));
     await rewardToken.mint(wallet.address, BigNumber.from(10000))
     await rewardToken.approve(rewardAgent.address, ethers.constants.MaxUint256)
   })
@@ -31,23 +31,27 @@ describe('RewardAgent', async () => {
   it('check state', async () => {
     expect(await rewardAgent['signer()']()).to.eq(wallet.address)
     expect(await rewardAgent.treasury()).to.eq(wallet.address)
-    expect(await raffleTicket.decimals()).to.eq(0)
+    expect(await burgerDiamond.decimals()).to.eq(0)
   })
 
   describe('#claimERC20', async () => {
     it('success', async () => {
-      // Claim rallfle ticket
-      let claimAmountRT = BigNumber.from(100)
-      let orderIdRT = BigNumber.from(123)
-      let txIdRT = BigNumber.from(123)
-      let signatureRT = await signRaffleTicketClaim(wallet, otherA.address, claimAmountRT.toString(), orderIdRT.toString(), raffleTicket.address)
-      await raffleTicket.connect(otherA).claim(claimAmountRT, orderIdRT, txIdRT, signatureRT)
-      expect(await raffleTicket.balanceOf(otherA.address)).to.eq(claimAmountRT)
+      // Claim BurgerDiamond
+      let claimAmountBD = BigNumber.from(100)
+      let orderIdBDC = BigNumber.from(123)
+      let txIdBDC = BigNumber.from(123)
+      let signatureBDC = await signBurgerDiamond(wallet, otherA.address, claimAmountBD.toString(), orderIdBDC.toString(), "0", burgerDiamond.address)
+      await burgerDiamond.connect(otherA).claim(claimAmountBD, orderIdBDC, txIdBDC, signatureBDC)
+      console.log("helloworld")
+      expect(await burgerDiamond.balanceOf(otherA.address)).to.eq(claimAmountBD)
 
-      // Exchange raffle ticket
-      let exchangedAmountRT = BigNumber.from(10)
-      await raffleTicket.connect(otherA).exchange(exchangedAmountRT)
-      expect(await raffleTicket.balanceOf(otherA.address)).to.eq(claimAmountRT.sub(exchangedAmountRT))
+      // Exchange BurgerDiamond
+      let exchangedAmountBD = BigNumber.from(10)
+      let orderIdBDE = BigNumber.from(124)
+      let txIdBDE = BigNumber.from(124)
+      let signatureBDE = await signBurgerDiamond(wallet, otherA.address, exchangedAmountBD.toString(), orderIdBDE.toString(), "1", burgerDiamond.address)
+      await burgerDiamond.connect(otherA).exchange(exchangedAmountBD, orderIdBDE, txIdBDE, signatureBDE);
+      expect(await burgerDiamond.balanceOf(otherA.address)).to.eq(claimAmountBD.sub(exchangedAmountBD))
 
       // Claim reward
       let rewardAmountRA = BigNumber.from(100)
