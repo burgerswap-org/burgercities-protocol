@@ -269,7 +269,7 @@ export const rewardAgentFixture: Fixture<RewardAgentFixture> = async function ([
     return { rewardToken, rewardAgent, burgerDiamond }
 }
 
-export const signRewardAgentClaimERC20 = async function(
+export const signRewardAgentClaimERC20 = async function (
     signer: Wallet,
     to: string,
     token: string,
@@ -284,16 +284,17 @@ export const signRewardAgentClaimERC20 = async function(
     return s;
 }
 
-export const signBurgerDiamond = async function(
+export const signBurgerDiamond = async function (
     signer: Wallet,
     to: string,
     amount: string,
-    orderId: string,
+    id: string,
+    txId: string,
     operation: string,
     addr: string
 ): Promise<string> {
-    let types = ['address', "uint256", "uint256", "uint8", "address"];
-    let values = [to, amount, orderId, operation, addr];
+    let types = ['address', "uint256", "uint256", "string", "uint8", "address"];
+    let values = [to, amount, id, txId, operation, addr];
     let message = ethers.utils.solidityKeccak256(types, values);
     let s = await network.provider.send('eth_sign', [signer.address, message]);
     return s;

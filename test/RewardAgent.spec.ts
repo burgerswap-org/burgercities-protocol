@@ -38,19 +38,19 @@ describe('RewardAgent', async () => {
     it('success', async () => {
       // Claim BurgerDiamond
       let claimAmountBD = BigNumber.from(100)
-      let orderIdBDC = BigNumber.from(123)
-      let txIdBDC = BigNumber.from(123)
-      let signatureBDC = await signBurgerDiamond(wallet, otherA.address, claimAmountBD.toString(), orderIdBDC.toString(), "0", burgerDiamond.address)
-      await burgerDiamond.connect(otherA).claim(claimAmountBD, orderIdBDC, txIdBDC, signatureBDC)
+      let orderId = BigNumber.from(123)
+      let txIdBDC = "123"
+      let signatureBDC = await signBurgerDiamond(wallet, otherA.address, claimAmountBD.toString(), orderId.toString(), txIdBDC, "0", burgerDiamond.address)
+      await burgerDiamond.connect(otherA).claim(claimAmountBD, orderId, txIdBDC, signatureBDC)
       console.log("helloworld")
       expect(await burgerDiamond.balanceOf(otherA.address)).to.eq(claimAmountBD)
 
       // Exchange BurgerDiamond
       let exchangedAmountBD = BigNumber.from(10)
-      let orderIdBDE = BigNumber.from(124)
-      let txIdBDE = BigNumber.from(124)
-      let signatureBDE = await signBurgerDiamond(wallet, otherA.address, exchangedAmountBD.toString(), orderIdBDE.toString(), "1", burgerDiamond.address)
-      await burgerDiamond.connect(otherA).exchange(exchangedAmountBD, orderIdBDE, txIdBDE, signatureBDE);
+      let contentId = BigNumber.from(124)
+      let txIdBDE = "124"
+      let signatureBDE = await signBurgerDiamond(wallet, otherA.address, exchangedAmountBD.toString(), contentId.toString(), txIdBDE, "1", burgerDiamond.address)
+      await burgerDiamond.connect(otherA).exchange(exchangedAmountBD, contentId, txIdBDE, signatureBDE);
       expect(await burgerDiamond.balanceOf(otherA.address)).to.eq(claimAmountBD.sub(exchangedAmountBD))
 
       // Claim reward

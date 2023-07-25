@@ -11,10 +11,10 @@ contract BurgerDiamond is ERC20Upgradeable, Configable {
 
     enum Operation {Claim, Exchange}
 
-    mapping(uint64 => bool) private _orders;
+    mapping(uint256 => bool) private _orders;
 
-    event Claim(address indexed receiver, uint256 amount, uint64 orderId, uint64 txId);
-    event Exchange(address indexed user, uint256 amount, uint64 orderId, uint64 txId);
+    event Claim(address indexed receiver, uint256 amount, uint256 orderId, string txId);
+    event Exchange(address indexed user, uint256 amount, uint256 contentId, string txId);
 
     function initialize(address signer_) external initializer {
         require(signer_ != address(0), "Signer can not be zero address");
@@ -32,9 +32,9 @@ contract BurgerDiamond is ERC20Upgradeable, Configable {
         _mint(to, amount);
     }
 
-    function claim(uint256 amount, uint64 orderId, uint64 txId, bytes memory signature) external {
+    function claim(uint256 amount, uint256 orderId, string memory txId, bytes memory signature) external {
         require(!_orders[orderId], "OrderId already exists");
-        require(verify(msg.sender, amount, orderId, Operation.Claim, signature), "Invalid signature");
+        require(verify(msg.sender, amount, orderId, txId, Operation.Claim, signature), "Invalid signature");
 
         _orders[orderId] = true;
         _mint(msg.sender, amount);
@@ -42,24 +42,23 @@ contract BurgerDiamond is ERC20Upgradeable, Configable {
         emit Claim(msg.sender, amount, orderId, txId);
     }
 
-    function exchange(uint256 amount, uint64 orderId, uint64 txId, bytes memory signature) external {
-        require(!_orders[orderId], "OrderId already exists");
-        require(verify(msg.sender, amount, orderId, Operation.Exchange, signature), "Invalid signature");
+    function exchange(uint256 amount, uint256 contentId, string memory txId, bytes memory signature) external {
+        require(verify(msg.sender, amount, contentId, txId, Operation.Exchange, signature), "Invalid signature");
 
-        _orders[orderId] = true;
         _burn(msg.sender, amount);
 
-        emit Exchange(msg.sender, amount, orderId, txId);
+        emit Exchange(msg.sender, amount, contentId, txId);
     }
 
     function verify(
         address user,
         uint256 amount,
-        uint256 orderId,
+        uint256 id,
+        string memory txId,
         Operation operation,
         bytes memory signature
     ) public view returns (bool) {
-        bytes32 message = keccak256(abi.encodePacked(user, amount, orderId, operation, address(this)));
+        bytes32 message = keccak256(abi.encodePacked(user, amount, id, txId, operation, address(this)));
         bytes32 hash = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", message));
         return SignatureCheckerUpgradeable.isValidSignatureNow(signer, hash, signature);
     }

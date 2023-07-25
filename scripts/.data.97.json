@@ -404,11 +404,11 @@
   },
   "BurgerDiamond": {
     "proxy": true,
-    "address": "0xB264Af1B2A2Ce01c51881548f21E6eCa424Deb3B",
+    "address": "0xf31c35E4080e4bF9E06356B56B7c5b76e0e2887a",
     "constructorArgs": [
       "${signerWallet.address}"
     ],
-    "upgradedAddress": "0x120a91212dA39E78579501315A447764DfE891F4",
+    "upgradedAddress": "0x1Df97A8b207383eb0EB841C6FafC752d2A785ce3",
     "deployed": true,
     "upgraded": true,
     "verified": true
