@@ -66,4 +66,8 @@ contract BurgerDiamond is ERC20Upgradeable, Configable {
     function decimals() public pure override returns(uint8) {
         return 0;
     }
+
+    function orderIdExists(uint256 orderId) public view returns(bool) {
+        return _orders[orderId];
+    }
 }

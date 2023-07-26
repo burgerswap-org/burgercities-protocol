@@ -408,7 +408,7 @@
     "constructorArgs": [
       "${signerWallet.address}"
     ],
-    "upgradedAddress": "0x1Df97A8b207383eb0EB841C6FafC752d2A785ce3",
+    "upgradedAddress": "0x765a42938257fEbce6fB05aD100c39B97Fd96F01",
     "deployed": true,
     "upgraded": true,
     "verified": true
