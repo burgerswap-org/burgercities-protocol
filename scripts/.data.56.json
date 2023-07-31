@@ -394,7 +394,7 @@
     "address": "",
     "constructorArgs": [
       "${signerWallet.address}",
-      "${ownerWallet.address}"
+      "0xec2E0F9140bC7f08E421952687f363DA7BAC0862"
     ],
     "upgradedAddress": "",
     "deployed": false,
