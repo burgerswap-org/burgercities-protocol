@@ -19,6 +19,11 @@
       "address": "0xb68c460dd8e5F645C1c6881A955DAF04E65c1882",
       "txHash": "0xa34c4a322b89203563d33a17206adf257579fbb8eb65d6e23ea28fe877fe8704",
       "kind": "transparent"
+    },
+    {
+      "address": "0x58F8e1EE9389C3Ee03c408925818DD8e12ad253D",
+      "txHash": "0x0e93581d10eb1a9a030a7bb09b07a24d20898e4c9dd4d2299f873a2608f293ae",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -611,6 +616,113 @@
           "t_uint256": {
             "label": "uint256",
             "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    "536d2b6d5191bcec98490d5e2c99d8941676567748219ca98a2604d165f0b512": {
+      "address": "0x3cdd7cB17182939019949635B5e91aA7E2945bD5",
+      "txHash": "0xeaf62c8456e07590ea55be2d2704e6bf797fb95d085996adc571437b6e402e05",
+      "layout": {
+        "solcVersion": "0.8.9",
+        "storage": [
+          {
+            "label": "config",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Configable",
+            "src": "contracts/Configable.sol:10"
+          },
+          {
+            "label": "owner",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Configable",
+            "src": "contracts/Configable.sol:11"
+          },
+          {
+            "label": "_initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:39"
+          },
+          {
+            "label": "_initializing",
+            "offset": 21,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:44"
+          },
+          {
+            "label": "signer",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_address",
+            "contract": "RewardAgent",
+            "src": "contracts/RewardAgent.sol:10"
+          },
+          {
+            "label": "treasury",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_address",
+            "contract": "RewardAgent",
+            "src": "contracts/RewardAgent.sol:11"
+          },
+          {
+            "label": "totalCount",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint128",
+            "contract": "RewardAgent",
+            "src": "contracts/RewardAgent.sol:13"
+          },
+          {
+            "label": "userCounter",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint64)",
+            "contract": "RewardAgent",
+            "src": "contracts/RewardAgent.sol:14"
+          },
+          {
+            "label": "_orders",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint64,t_bool)",
+            "contract": "RewardAgent",
+            "src": "contracts/RewardAgent.sol:16"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_uint64)": {
+            "label": "mapping(address => uint64)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint64,t_bool)": {
+            "label": "mapping(uint64 => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_uint128": {
+            "label": "uint128",
+            "numberOfBytes": "16"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
           }
         }
       }
