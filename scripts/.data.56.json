@@ -380,13 +380,13 @@
   },
   "BurgerDiamond": {
     "proxy": true,
-    "address": "",
+    "address": "0xb68c460dd8e5F645C1c6881A955DAF04E65c1882",
     "constructorArgs": [
       "${signerWallet.address}"
     ],
-    "upgradedAddress": "",
-    "deployed": false,
-    "upgraded": false,
-    "verified": false
+    "upgradedAddress": "0x3ee06fEf0A3c5A9790FF1fc68BbF5b9486e136Ac",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
   }
 }
