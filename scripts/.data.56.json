@@ -391,14 +391,14 @@
   },
   "RewardAgent": {
     "proxy": true,
-    "address": "",
+    "address": "0x58F8e1EE9389C3Ee03c408925818DD8e12ad253D",
     "constructorArgs": [
       "${signerWallet.address}",
       "0xec2E0F9140bC7f08E421952687f363DA7BAC0862"
     ],
-    "upgradedAddress": "",
-    "deployed": false,
-    "upgraded": false,
-    "verified": false
+    "upgradedAddress": "0x3cdd7cB17182939019949635B5e91aA7E2945bD5",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
   }
 }
