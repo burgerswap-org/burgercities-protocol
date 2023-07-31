@@ -388,5 +388,17 @@
     "deployed": true,
     "upgraded": true,
     "verified": true
+  },
+  "RewardAgent": {
+    "proxy": true,
+    "address": "",
+    "constructorArgs": [
+      "${signerWallet.address}",
+      "${ownerWallet.address}"
+    ],
+    "upgradedAddress": "",
+    "deployed": false,
+    "upgraded": false,
+    "verified": false
   }
 }
