@@ -377,5 +377,16 @@
     "deployed": true,
     "upgraded": true,
     "verified": true
+  },
+  "BurgerDiamond": {
+    "proxy": true,
+    "address": "",
+    "constructorArgs": [
+      "${signerWallet.address}"
+    ],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
   }
 }
