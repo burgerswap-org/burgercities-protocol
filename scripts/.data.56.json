@@ -385,8 +385,8 @@
       "${signerWallet.address}"
     ],
     "upgradedAddress": "",
-    "deployed": true,
-    "upgraded": true,
-    "verified": true
+    "deployed": false,
+    "upgraded": false,
+    "verified": false
   }
 }
