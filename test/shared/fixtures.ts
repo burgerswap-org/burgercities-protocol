@@ -12,6 +12,7 @@ import { ChristmasPunchIn } from '../../typechain/ChristmasPunchIn'
 import { Props721 } from '../../typechain/Props721'
 import { RewardAgent } from '../../typechain/RewardAgent'
 import { BurgerDiamond } from '../../typechain/BurgerDiamond'
+import { OpGift } from "../../typechain/OpGift"
 import { Fixture } from 'ethereum-waffle'
 
 async function testERC20(): Promise<TestERC20> {
@@ -298,4 +299,17 @@ export const signBurgerDiamond = async function (
     let message = ethers.utils.solidityKeccak256(types, values);
     let s = await network.provider.send('eth_sign', [signer.address, message]);
     return s;
+}
+
+interface OpGiftFixture {
+    opGift: OpGift
+}
+
+export const opGiftFixture: Fixture<OpGiftFixture> = async function ([wallet]: Wallet[]): Promise<OpGiftFixture> {
+    let metadataIpfs = "https://ipfsr.burgerswap.org/ipfs/QmNrvztbU9wnZamb98mdnaNKbg2f3qVbmbxbJFghrBLiMS"
+
+    let factory = await ethers.getContractFactory('OpGift')
+    let opGift = (await factory.deploy(metadataIpfs)) as OpGift
+
+    return { opGift }
 }

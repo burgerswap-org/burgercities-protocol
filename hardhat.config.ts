@@ -93,6 +93,14 @@
        url: `https://rpc.ankr.com/bsc`,
        accounts: [data.PrivateKey]
      },
+     opbnbtestnet: {
+      url: `https://opbnb-testnet-rpc.bnbchain.org`,
+      accounts: [data.PrivateKey]
+    },
+     opbnbmainnet: {
+      url: `https://opbnb-mainnet-rpc.bnbchain.org`,
+      accounts: [data.PrivateKey]
+    },
      arbitrum_goerli: {
        url: `https://arbitrum-goerli.infura.io/v3/${data.InfuraApiKey}`,
        accounts: [data.PrivateKey],

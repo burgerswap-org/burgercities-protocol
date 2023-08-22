@@ -1,8 +1,6 @@
 {
-  "name": "BurgerCities-protocol",
+  "name": "burgercities-protocol",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "wcompile": "waffle .waffle.json",
     "wflatten": "waffle flatten .waffle.json",
@@ -24,6 +22,12 @@
     "deploy:bscmainnet": "node hardhat.switch.js bscmainnet && npx hardhat run --network bscmainnet scripts/deploy.ts",
     "verify:bscmainnet": "node hardhat.switch.js bscmainnet && npx hardhat run --network bscmainnet scripts/verify.ts",
     "setup:bscmainnet": "node hardhat.switch.js bscmainnet && npx hardhat run --network bscmainnet scripts/setup.ts",
+    "deploy:opbnbtestnet": "node hardhat.switch.js opbnbtestnet && npx hardhat run --network opbnbtestnet scripts/deploy.ts",
+    "verify:opbnbtestnet": "node hardhat.switch.js opbnbtestnet && npx hardhat run --network opbnbtestnet scripts/verify.ts",
+    "setup:opbnbtestnet": "node hardhat.switch.js opbnbtestnet && npx hardhat run --network opbnbtestnet scripts/setup.ts",
+    "deploy:opbnbmainnet": "node hardhat.switch.js opbnbmainnet && npx hardhat run --network opbnbmainnet scripts/deploy.ts",
+    "verify:opbnbmainnet": "node hardhat.switch.js opbnbmainnet && npx hardhat run --network opbnbmainnet scripts/verify.ts",
+    "setup:opbnbmainnet": "node hardhat.switch.js opbnbmainnet && npx hardhat run --network opbnbmainnet scripts/setup.ts",
     "deploy:arbitrum": "node hardhat.switch.js arbitrum && npx hardhat run --network arbitrum scripts/deploy.ts",
     "verify:arbitrum": "node hardhat.switch.js arbitrum && npx hardhat run --network arbitrum scripts/verify.ts",
     "setup:arbitrum": "node hardhat.switch.js arbitrum && npx hardhat run --network arbitrum scripts/setup.ts",

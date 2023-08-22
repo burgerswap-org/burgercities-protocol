@@ -1,0 +1,21 @@
+{
+  "ownerWallet": {
+    "address": "0x2d4e68cAF597d1e980b5e8684164460161f8C29b",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "OpGift": {
+    "proxy": false,
+    "address": "0xbb5bE64be05eB41A7e95280640E329d771FCC381",
+    "constructorArgs": [
+      "https://ipfsr.burgerswap.org/ipfs/QmNrvztbU9wnZamb98mdnaNKbg2f3qVbmbxbJFghrBLiMS"
+    ],
+    "upgradedAddress": "0xbb5bE64be05eB41A7e95280640E329d771FCC381",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  }
+}
