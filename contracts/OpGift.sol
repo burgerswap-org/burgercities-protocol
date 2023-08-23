@@ -13,7 +13,7 @@ contract OpGift is Configable, ERC721Enumerable, ReentrancyGuard {
     bool public mintable = true;
     string public metadataIpfs;
 
-    mapping (address => bool) userList;
+    mapping (address => bool) public userList;
 
     modifier OnlyMintable() {
         require(mintable, "Mint func is deactivated");
