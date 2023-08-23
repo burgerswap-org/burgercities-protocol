@@ -9,13 +9,13 @@
   },
   "OpGift": {
     "proxy": false,
-    "address": "",
+    "address": "0x93EE8daaA55151Dc205B94FdF0807812cFca6DEa",
     "constructorArgs": [
       "https://ipfsr.burgerswap.org/ipfs/QmNrvztbU9wnZamb98mdnaNKbg2f3qVbmbxbJFghrBLiMS"
     ],
     "upgradedAddress": "",
-    "deployed": false,
-    "upgraded": false,
+    "deployed": true,
+    "upgraded": true,
     "verified": false
   }
 }
