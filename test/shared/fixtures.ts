@@ -309,7 +309,8 @@ export const opGiftFixture: Fixture<OpGiftFixture> = async function ([wallet]: W
     let metadataIpfs = "https://ipfsr.burgerswap.org/ipfs/QmNrvztbU9wnZamb98mdnaNKbg2f3qVbmbxbJFghrBLiMS"
 
     let factory = await ethers.getContractFactory('OpGift')
-    let opGift = (await factory.deploy(metadataIpfs)) as OpGift
+    let endTimestamp = BigNumber.from(Date.now()).div(1000).add(7);
+    let opGift = (await factory.deploy('OpGift', 'OpGift', metadataIpfs, endTimestamp)) as OpGift
 
     return { opGift }
 }

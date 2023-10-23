@@ -110,6 +110,14 @@
        url: `https://arbitrum-mainnet.infura.io/v3/${data.InfuraApiKey}`,
        accounts: [data.PrivateKey],
      },
+     mantatestnet: {
+      url: `https://pacific-rpc.testnet.manta.network/http`,
+      accounts: [data.PrivateKey]
+    },
+     mantamainnet: {
+      url: `https://pacific-rpc.manta.network/http`,
+      accounts: [data.PrivateKey]
+    },
    },
    etherscan: {
       apiKey: {

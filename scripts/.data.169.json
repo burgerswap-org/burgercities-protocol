@@ -1,0 +1,24 @@
+{
+  "ownerWallet": {
+    "address": "",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "OpGift": {
+    "proxy": false,
+    "address": "",
+    "constructorArgs": [
+      "MantaBurger NFT",
+      "MantaBurger NFT",
+      "",
+      1700150400
+    ],
+    "upgradedAddress": "",
+    "deployed": false,
+    "upgraded": false,
+    "verified": false
+  }
+}

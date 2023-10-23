@@ -10,18 +10,21 @@ contract OpGift is Configable, ERC721Enumerable, ReentrancyGuard {
     using Counters for Counters.Counter;
 
     Counters.Counter public counter;
+    uint256 public endTimestamp;
     bool public mintable = true;
     string public metadataIpfs;
 
-    mapping (address => bool) public userList;
+    mapping(address => bool) public userList;
 
-    modifier OnlyMintable() {
-        require(mintable, "Mint func is deactivated");
-        _;
-    }
-
-    constructor(string memory metadataIpfs_) ERC721("OpBurgerCities Gift NFT", "OpBurgerCities Gift") {
+    constructor(
+        string memory name_,
+        string memory symbol_,
+        string memory metadataIpfs_,
+        uint256 endTimestamp_
+    ) ERC721(name_, symbol_) {
+        require(endTimestamp_ > block.timestamp, "Invalid endTimestamp");
         metadataIpfs = metadataIpfs_;
+        endTimestamp = endTimestamp_;
         owner = msg.sender;
     }
 
@@ -33,7 +36,13 @@ contract OpGift is Configable, ERC721Enumerable, ReentrancyGuard {
         metadataIpfs = metadataIpfs_;
     }
 
-    function mint() external OnlyMintable nonReentrant {
+    function setEndTimestamp(uint256 endTimestamp_) external onlyDev {
+        endTimestamp = endTimestamp_;
+    }
+
+    function mint() external nonReentrant {
+        require(mintable, "Mint func is deactivated");
+        require(block.timestamp <= endTimestamp, "Activity is expired");
         require(!userList[msg.sender], "Each user only mint once.");
         uint256 tokenId = counter.current();
         _mint(msg.sender, tokenId);
@@ -45,8 +54,13 @@ contract OpGift is Configable, ERC721Enumerable, ReentrancyGuard {
         _burn(tokenId);
     }
 
-    function tokenURI(uint256 tokenId) public view override returns (string memory) {
-        require( _exists(tokenId),"ERC721Metadata: URI query for nonexistent token");
+    function tokenURI(
+        uint256 tokenId
+    ) public view override returns (string memory) {
+        require(
+            _exists(tokenId),
+            "ERC721Metadata: URI query for nonexistent token"
+        );
         return metadataIpfs;
     }
 }

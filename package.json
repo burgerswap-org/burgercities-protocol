@@ -31,6 +31,10 @@
     "deploy:arbitrum": "node hardhat.switch.js arbitrum && npx hardhat run --network arbitrum scripts/deploy.ts",
     "verify:arbitrum": "node hardhat.switch.js arbitrum && npx hardhat run --network arbitrum scripts/verify.ts",
     "setup:arbitrum": "node hardhat.switch.js arbitrum && npx hardhat run --network arbitrum scripts/setup.ts",
+    "deploy:mantatestnet": "node hardhat.switch.js mantatestnet && npx hardhat run --network mantatestnet scripts/deploy.ts",
+    "verify:mantatestnet": "node hardhat.switch.js mantatestnet && npx hardhat run --network mantatestnet scripts/verify.ts",
+    "deploy:mantamainnet": "node hardhat.switch.js mantamainnet && npx hardhat run --network mantamainnet scripts/deploy.ts",
+    "verify:mantamainnet": "node hardhat.switch.js mantamainnet && npx hardhat run --network mantamainnet scripts/verify.ts",
     "clean": "npx hardhat clean"
   },
   "keywords": [],
