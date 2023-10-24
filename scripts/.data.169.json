@@ -9,7 +9,7 @@
   },
   "OpGift": {
     "proxy": false,
-    "address": "",
+    "address": "0x93EE8daaA55151Dc205B94FdF0807812cFca6DEa",
     "constructorArgs": [
       "MantaBurger NFT",
       "MantaBurger NFT",
@@ -17,8 +17,8 @@
       1700150400
     ],
     "upgradedAddress": "",
-    "deployed": false,
-    "upgraded": false,
+    "deployed": true,
+    "upgraded": true,
     "verified": false
   }
 }
