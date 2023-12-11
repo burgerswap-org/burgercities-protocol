@@ -146,6 +146,16 @@
     "upgraded": true,
     "verified": false
   },
+  "Reward3": {
+    "address": "0xDf30781f903A28144f6cd111Ecb2cafBb3C06F57",
+    "contractName": "Reward",
+    "constructorArgs": [],
+    "upgradeArgs": [],
+    "upgradedAddress": "0xDf30781f903A28144f6cd111Ecb2cafBb3C06F57",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
   "HeroExchange": {
     "address": "0xcf46073e4EfF7053126cF7d7e28c426Cc6441822",
     "constructorArgs": [

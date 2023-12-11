@@ -1669,5 +1669,27 @@
             "10000000000000000000000",
             "${Burger.address}"
         ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "name": "Reward3",
+        "functionName": "setupConfig",
+        "contractName": "Reward",
+        "contractAddr": "",
+        "args": [
+            "${BurgerCityConfig.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": true,
+        "name": "Reward3",
+        "functionName": "updateSigner",
+        "contractName": "Reward",
+        "contractAddr": "",
+        "args": [
+            "${signerWallet.address}"
+        ]
     }
 ]
