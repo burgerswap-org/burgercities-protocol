@@ -1691,5 +1691,47 @@
         "args": [
             "${signerWallet.address}"
         ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "createActivity",
+        "contractName": "ActivityPunchIn",
+        "contractAddr": "",
+        "args": [
+            "1704067200",
+            31,
+            31,
+            "10000000000000000000000",
+            "${Burger.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "createActivity",
+        "contractName": "ActivityPunchIn",
+        "contractAddr": "",
+        "args": [
+            "1706745600",
+            29,
+            29,
+            "10000000000000000000000",
+            "${Burger.address}"
+        ]
+    },
+    {
+        "call": true,
+        "called": false,
+        "functionName": "createActivity",
+        "contractName": "ActivityPunchIn",
+        "contractAddr": "",
+        "args": [
+            "1709251200",
+            31,
+            31,
+            "10000000000000000000000",
+            "${Burger.address}"
+        ]
     }
 ]
