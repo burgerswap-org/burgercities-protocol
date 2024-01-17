@@ -1,0 +1,24 @@
+{
+  "ownerWallet": {
+    "address": "0x2d4e68cAF597d1e980b5e8684164460161f8C29b",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
+  },
+  "OpGift": {
+    "proxy": false,
+    "address": "0x75432566b2ef86B20EC130000618063EDB1AbE16",
+    "constructorArgs": [
+      "BlastBurger NFT",
+      "BlastBurger NFT",
+      "https://ipfsr.burgerswap.org/ipfs/QmUyAqMARroyc54sa6A6BzaVCdvrgmz6NKxzQhHVQyeA5s",
+      1708185600
+    ],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
+  }
+}

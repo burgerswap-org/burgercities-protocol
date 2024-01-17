@@ -35,6 +35,8 @@
     "verify:mantatestnet": "node hardhat.switch.js mantatestnet && npx hardhat run --network mantatestnet scripts/verify.ts",
     "deploy:mantamainnet": "node hardhat.switch.js mantamainnet && npx hardhat run --network mantamainnet scripts/deploy.ts",
     "verify:mantamainnet": "node hardhat.switch.js mantamainnet && npx hardhat run --network mantamainnet scripts/verify.ts",
+    "deploy:blasttestnet": "node hardhat.switch.js blasttestnet && npx hardhat run --network blasttestnet scripts/deploy.ts",
+    "verify:blasttestnet": "node hardhat.switch.js blasttestnet && npx hardhat run --network blasttestnet scripts/verify.ts",
     "clean": "npx hardhat clean"
   },
   "keywords": [],
