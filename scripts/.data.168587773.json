@@ -16,9 +16,9 @@
       "https://ipfsr.burgerswap.org/ipfs/QmUyAqMARroyc54sa6A6BzaVCdvrgmz6NKxzQhHVQyeA5s",
       1708185600
     ],
-    "upgradedAddress": "",
+    "upgradedAddress": "0x75432566b2ef86B20EC130000618063EDB1AbE16",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   }
 }
