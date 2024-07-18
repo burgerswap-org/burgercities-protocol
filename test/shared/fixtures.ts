@@ -13,6 +13,7 @@ import { Props721 } from '../../typechain/Props721'
 import { RewardAgent } from '../../typechain/RewardAgent'
 import { BurgerDiamond } from '../../typechain/BurgerDiamond'
 import { OpGift } from "../../typechain/OpGift"
+import { ActivityClaim } from "../../typechain/ActivityClaim"
 import { Fixture } from 'ethereum-waffle'
 
 async function testERC20(): Promise<TestERC20> {
@@ -313,4 +314,29 @@ export const opGiftFixture: Fixture<OpGiftFixture> = async function ([wallet]: W
     let opGift = (await factory.deploy('OpGift', 'OpGift', metadataIpfs, endTimestamp)) as OpGift
 
     return { opGift }
+}
+
+interface ActivityClaimFixture {
+    activityClaim: ActivityClaim
+}
+
+export const activityClaimFixture: Fixture<ActivityClaimFixture> = async function ([wallet]: Wallet[]): Promise<ActivityClaimFixture> {
+    let factory = await ethers.getContractFactory('ActivityClaim')
+    let activityClaim = (await factory.deploy()) as ActivityClaim
+    await activityClaim.initialize(wallet.address)
+
+    return { activityClaim }
+}
+
+export const signActivityClaim = async function (
+    signer: Wallet,
+    user: string,
+    datetime: string,
+    addr: string
+): Promise<string> {
+    let types = ['address', "uint256", "address"]
+    let values = [user, datetime, addr]
+    let message = ethers.utils.solidityKeccak256(types, values)
+    let s = await network.provider.send('eth_sign', [signer.address, message])
+    return s;
 }
