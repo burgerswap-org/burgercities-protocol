@@ -332,10 +332,11 @@ export const signActivityClaim = async function (
     signer: Wallet,
     user: string,
     datetime: string,
+    txId: string,
     addr: string
 ): Promise<string> {
-    let types = ['address', "uint256", "address"]
-    let values = [user, datetime, addr]
+    let types = ['address', "uint256", "string", "address"]
+    let values = [user, datetime, txId, addr]
     let message = ethers.utils.solidityKeccak256(types, values)
     let s = await network.provider.send('eth_sign', [signer.address, message])
     return s;

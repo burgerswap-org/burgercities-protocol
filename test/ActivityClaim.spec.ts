@@ -10,7 +10,7 @@ describe('Activity', async () => {
   let wallet: Wallet, otherA: Wallet, otherB: Wallet;
 
   let activityClaim: ActivityClaim
-  let txId = "test"
+  let txId = "test-dev"
 
   let loadFixTure: ReturnType<typeof createFixtureLoader>;
 
@@ -26,28 +26,29 @@ describe('Activity', async () => {
   describe('#claim', async () => {
     it('success for first time', async () => {
       let datetime = BigNumber.from(Date.now()).div(1000).toString()
-      let signature = await signActivityClaim(wallet, otherA.address, datetime, activityClaim.address)
+      let signature = await signActivityClaim(wallet, otherA.address, datetime, txId, activityClaim.address)
       await activityClaim.connect(otherA).claim(datetime, signature, txId)
       expect(await activityClaim.userLastClaimTimestamps(otherA.address)).to.gt(0)
     })
 
     it('failed for claim twice in one day', async () => {
       let datetime = BigNumber.from(Date.now()).div(1000)
-      let signature = await signActivityClaim(wallet, otherA.address, datetime.toString(), activityClaim.address)
+      let signature = await signActivityClaim(wallet, otherA.address, datetime.toString(), txId, activityClaim.address)
       await activityClaim.connect(otherA).claim(datetime, signature, txId)
       let newDateTime = datetime.add(3600)
-      let newSignature = await signActivityClaim(wallet, otherA.address, newDateTime.toString(), activityClaim.address)
+      let newSignature = await signActivityClaim(wallet, otherA.address, newDateTime.toString(), txId, activityClaim.address)
       await expect(activityClaim.connect(otherA).claim(newDateTime.toString(), newSignature, txId)).revertedWith("Invalid parameter datetime")
     })
 
     it('success for claim second day', async () => {
       let datetime = BigNumber.from(Date.now()).div(1000)
-      let signature = await signActivityClaim(wallet, otherA.address, datetime.toString(), activityClaim.address)
+      let signature = await signActivityClaim(wallet, otherA.address, datetime.toString(), txId, activityClaim.address)
       await activityClaim.connect(otherA).claim(datetime, signature, txId)
+      let userLastClaimTimestamp = await activityClaim.userLastClaimTimestamps(otherA.address)
       let newDateTime = datetime.add(86400)
-      let newSignature = await signActivityClaim(wallet, otherA.address, newDateTime.toString(), activityClaim.address)
+      let newSignature = await signActivityClaim(wallet, otherA.address, newDateTime.toString(), txId, activityClaim.address)
       await activityClaim.connect(otherA).claim(newDateTime.toString(), newSignature, txId)
-      expect(await activityClaim.userLastClaimTimestamps(otherA.address)).to.gt(datetime)
+      expect(await activityClaim.userLastClaimTimestamps(otherA.address)).to.gt(userLastClaimTimestamp)
     })
   })
 })
