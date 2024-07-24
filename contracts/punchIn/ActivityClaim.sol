@@ -25,8 +25,9 @@ contract ActivityClaim is Initializable, Configable {
 
     function claim(uint256 datetime, bytes memory signature, string memory txId) external {
         require(verify(msg.sender, datetime, txId, signature), "Invalid parameter signature");
-        require(datetime - _userLastClaimTimestamps[msg.sender] >= 86400, "Invalid parameter datetime");
-        _userLastClaimTimestamps[msg.sender] = block.timestamp;
+        // require(datetime - _userLastClaimTimestamps[msg.sender] >= 86400, "Invalid parameter datetime");
+        require(_userLastClaimTimestamps[msg.sender] < datetime, "Invalid parameter datetime");
+        _userLastClaimTimestamps[msg.sender] = datetime;
         emit Claim(msg.sender, block.timestamp, txId);
     }
 

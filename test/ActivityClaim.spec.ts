@@ -31,13 +31,12 @@ describe('Activity', async () => {
       expect(await activityClaim.userLastClaimTimestamps(otherA.address)).to.gt(0)
     })
 
-    it('failed for claim twice in one day', async () => {
+    it('failed for same datetime', async () => {
       let datetime = BigNumber.from(Date.now()).div(1000)
       let signature = await signActivityClaim(wallet, otherA.address, datetime.toString(), txId, activityClaim.address)
       await activityClaim.connect(otherA).claim(datetime, signature, txId)
-      let newDateTime = datetime.add(3600)
-      let newSignature = await signActivityClaim(wallet, otherA.address, newDateTime.toString(), txId, activityClaim.address)
-      await expect(activityClaim.connect(otherA).claim(newDateTime.toString(), newSignature, txId)).revertedWith("Invalid parameter datetime")
+      let newSignature = await signActivityClaim(wallet, otherA.address, datetime.toString(), txId, activityClaim.address)
+      await expect(activityClaim.connect(otherA).claim(datetime.toString(), newSignature, txId)).revertedWith("Invalid parameter datetime")
     })
 
     it('success for claim second day', async () => {
