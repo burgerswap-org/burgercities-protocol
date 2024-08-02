@@ -413,13 +413,13 @@
   },
   "ActivityClaim": {
     "proxy": true,
-    "address": "",
+    "address": "0x9797cCB3C90E0F61410749b420ed92A4E3CDE5bF",
     "constructorArgs": [
       "${signerWallet.address}"
     ],
-    "upgradedAddress": "",
-    "deployed": false,
-    "upgraded": false,
-    "verified": false
+    "upgradedAddress": "0xe576CD1e2934cF7dEFe57B5ED1E3146043669FE6",
+    "deployed": true,
+    "upgraded": true,
+    "verified": true
   }
 }

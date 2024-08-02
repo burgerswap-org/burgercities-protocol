@@ -24,6 +24,11 @@
       "address": "0x58F8e1EE9389C3Ee03c408925818DD8e12ad253D",
       "txHash": "0x0e93581d10eb1a9a030a7bb09b07a24d20898e4c9dd4d2299f873a2608f293ae",
       "kind": "transparent"
+    },
+    {
+      "address": "0x9797cCB3C90E0F61410749b420ed92A4E3CDE5bF",
+      "txHash": "0x05048901e082100266370ffd63ad7e9b50538e7103fdbd645b4c0f86c83e27b2",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -725,6 +730,82 @@
             "numberOfBytes": "8"
           }
         }
+      }
+    },
+    "67ef2990feaa9ebbcec490d615974b31e84e73541dae5942ceced3ae105c30e7": {
+      "address": "0xe576CD1e2934cF7dEFe57B5ED1E3146043669FE6",
+      "txHash": "0x2fe80ab883fbd87ba938f35a39fdcf79925f646562895a01c3627419c6bf41f3",
+      "layout": {
+        "solcVersion": "0.8.9",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts/proxy/utils/Initializable.sol:39"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts/proxy/utils/Initializable.sol:44"
+          },
+          {
+            "label": "config",
+            "offset": 2,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Configable",
+            "src": "contracts/Configable.sol:10"
+          },
+          {
+            "label": "owner",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Configable",
+            "src": "contracts/Configable.sol:11"
+          },
+          {
+            "label": "_signer",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_address",
+            "contract": "ActivityClaim",
+            "src": "contracts/punchIn/ActivityClaim.sol:13"
+          },
+          {
+            "label": "_userLastClaimTimestamps",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "ActivityClaim",
+            "src": "contracts/punchIn/ActivityClaim.sol:15"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        },
+        "namespaces": {}
       }
     }
   }
