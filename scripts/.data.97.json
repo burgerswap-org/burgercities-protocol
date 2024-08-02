@@ -431,9 +431,9 @@
     "constructorArgs": [
       "${signerWallet.address}"
     ],
-    "upgradedAddress": "",
+    "upgradedAddress": "0xdE474e1850A7f1A96369cDa2a7b6181b45907DC1",
     "deployed": true,
     "upgraded": true,
-    "verified": false
+    "verified": true
   }
 }

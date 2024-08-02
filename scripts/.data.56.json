@@ -410,5 +410,16 @@
     "deployed": true,
     "upgraded": true,
     "verified": true
+  },
+  "ActivityClaim": {
+    "proxy": true,
+    "address": "",
+    "constructorArgs": [
+      "${signerWallet.address}"
+    ],
+    "upgradedAddress": "",
+    "deployed": false,
+    "upgraded": false,
+    "verified": false
   }
 }
