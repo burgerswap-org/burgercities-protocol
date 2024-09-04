@@ -435,5 +435,14 @@
     "deployed": true,
     "upgraded": true,
     "verified": true
+  },
+  "BatchTransferEvm": {
+    "proxy": false,
+    "address": "0x4e823E451f2a993cC0B602cd9a9e656343ABe654",
+    "constructorArgs": [],
+    "upgradedAddress": "",
+    "deployed": true,
+    "upgraded": true,
+    "verified": false
   }
 }
